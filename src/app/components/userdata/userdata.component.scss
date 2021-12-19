@@ -52,4 +52,12 @@
       border-style: none;
     }
   }
+  .btnexperiencia {
+    background-color: #25262e;
+    color: aliceblue;
+    border-radius: 10px;
+  }
+  .btnexperiencia:hover {
+    box-shadow: inset 0 0 7px 0 #3577cb;
+  }
 }

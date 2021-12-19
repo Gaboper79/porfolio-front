@@ -1,0 +1,34 @@
+.card {
+  background-color: #17181d;
+  width: 85%;
+  height: 15%;
+  margin: 20px auto;
+  box-shadow: inset 0 0 7px 0 #3577cb;
+  border-radius: 40px;
+  .imgcontainer {
+    .card-img-top {
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      height: 15rem;
+    }
+  }
+  .card-body {
+    margin-top: 0.5rem;
+    .textCard {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .icoConice {
+        color: white;
+      }
+    }
+  }
+  .card-text {
+    margin-left: 1rem;
+    color: #fff;
+  }
+  .card-title {
+    color: #fff;
+    margin-left: 3rem;
+  }
+}

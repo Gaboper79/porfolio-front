@@ -1,5 +1,6 @@
 .site-header {
   height: 3rem;
+
   .container {
     justify-content: space-between;
     .hederizq {
@@ -30,6 +31,12 @@
     color: white;
     text-decoration: none;
     background-color: #1a1111;
-    box-shadow: inset 0 0 7px 0 rgb(209, 40, 40);
+    box-shadow: inset 0 0 7px 0 rgb(40, 141, 209);
   }
+}
+.site-header:hover {
+  transition: all 0.5 ease-in-out;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: inset 0 0 7px 0 rgb(209, 40, 40);
 }
