@@ -1,4 +1,5 @@
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+
 import { Component, OnInit } from "@angular/core";
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class HeaderComponent implements OnInit {
   constructor() {}
-  faEdit = faEdit;
+  faBlog = faUser;
+
   ngOnInit(): void {}
 }
