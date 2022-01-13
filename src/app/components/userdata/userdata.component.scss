@@ -1,10 +1,14 @@
 .card {
   background-color: #25262e;
   width: 85%;
+
   height: 15%;
   margin: 20px auto;
   border: 2px solid #3577cb;
   border-radius: 40px;
+  h1 {
+    margin-top: 1rem;
+  }
   .imgcontainer {
     .card-img-top {
       border-top-left-radius: 40px;
@@ -12,7 +16,6 @@
       height: 15rem;
     }
     .card-img-user {
-      border-radius: 50%;
       width: 11rem;
     }
     .imgheader {
@@ -35,9 +38,16 @@
       .icoConice {
         color: white;
       }
+      .nivel-academico {
+        color: #3577cb;
+      }
+      .aboutme {
+        color: #3577cb;
+      }
     }
   }
   .card-text {
+    margin-top: 2rem;
     margin-left: 1rem;
     color: #fff;
   }
@@ -60,4 +70,10 @@
   .btnexperiencia:hover {
     box-shadow: inset 0 0 7px 0 #3577cb;
   }
+}
+.svg-border-mask {
+  -webkit-mask-box-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/stampTiles.svg)
+    30 repeat;
+  mask-border: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/stampTiles.svg)
+    30 repeat;
 }

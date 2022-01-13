@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
   selector: "app-userdata",
@@ -7,7 +8,12 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./userdata.component.scss"],
 })
 export class UserdataComponent implements OnInit {
-  constructor() {}
+  userdata: any;
+  constructor(public userService: UserDataService) {}
   faEdit = faEdit;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getDatauser().subscribe((data) => {
+      this.userdata = data[0];
+    });
+  }
 }

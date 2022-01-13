@@ -11,6 +11,12 @@ import { EducacionComponent } from "./components/educacion/educacion.component";
 import { SkillsComponent } from "./components/skills/skills.component";
 import { ProyectosComponent } from "./components/proyectos/proyectos.component";
 import { LoginComponent } from "./components/login/login.component";
+import { RoundprogressModule } from "angular-svg-round-progressbar";
+import { HttpClientModule } from "@angular/common/http";
+import { HomeComponent } from "./components/home/home.component";
+import { FormsModule } from "@angular/forms";
+import { UserDataService } from "./servicios/user-data.service";
+import { FormuserdataComponent } from './components/userdata/formuserdata/formuserdata.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +28,18 @@ import { LoginComponent } from "./components/login/login.component";
     SkillsComponent,
     ProyectosComponent,
     LoginComponent,
+    HomeComponent,
+    FormuserdataComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    RoundprogressModule,
+    HttpClientModule,
+    FormsModule,
+  ],
+  providers: [UserDataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

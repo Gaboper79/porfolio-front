@@ -9,7 +9,9 @@
         <img
           class="logoarprog"
           src="https://argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1638313837/APLogo-20-20.png"
+          alt="Argentinaprograma.inti.gob.ar"
         />
+        #YoProgramo
       </a>
     </div>
 
@@ -26,10 +28,23 @@
         ></a>
       </div>
       <div class="login">
-        <a class="py-2 d-none d-md-inline-block" href="#"
-          ><fa-icon [icon]="faBlog" style="color: rgb(226, 95, 72);"></fa-icon
+        <a
+          class="py-2 d-none d-md-inline-block"
+          routerLink="login"
+          *ngIf="!usuario"
+          ><span>
+            <fa-icon
+              [icon]="faBlog"
+              style="color: rgb(226, 95, 72);"
+            ></fa-icon> </span
         ></a>
+        <div *ngIf="usuario">
+          <a>
+            {{usuario.email}}
+          </a>
+        </div>
       </div>
     </div>
   </nav>
 </header>
+<ng-template #logouser></ng-template>

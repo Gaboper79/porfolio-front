@@ -1,6 +1,8 @@
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import { Component, OnInit } from "@angular/core";
+import { UserDataService } from "src/app/servicios/user-data.service";
+import { UserI } from "src/app/model/userlogin";
 
 @Component({
   selector: "app-header",
@@ -8,8 +10,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  constructor(public userService: UserDataService) {}
   faBlog = faUser;
-
-  ngOnInit(): void {}
+  usuario!: UserI;
+  ngOnInit(): void {
+    this.userService.getuser().subscribe((res) => {
+      this.usuario = res;
+      console.log(this.usuario);
+    });
+  }
 }

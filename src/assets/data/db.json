@@ -1,0 +1,33 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "email": "",
+      "datospersonales": {
+        "nombre": "Gabriel Perdomo",
+        "imgUser": "https://drive.google.com/file/d/1ftMD2Kwpsuk0UZ9KCqVoEQzP9jnOARm5/view?usp=sharing",
+        "titulo": "Full Stack Developer JR",
+        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier."
+      },
+      "educacion": { "titulo": "Bachiller con orientacion en cumputacion" },
+      "experiencia": [
+        {
+          "empresa": "Proanalisis S.A.",
+          "img": "http://",
+          "descripcion": "larala laraila",
+          "fechIni": "10/10/2019",
+          "fechaFin": "10/10/2021",
+          "puesto": "Tecnico Muestreador"
+        }
+      ],
+
+      "skills": [],
+      "proyectos": []
+    },
+    {}
+  ],
+  "signupUsers": [
+    { "id": 1, "email": "gabo", "password": "1234", "role": "administrator" },
+    { "id": 2, "email": "lau", "password": "", "role": "user" }
+  ]
+}

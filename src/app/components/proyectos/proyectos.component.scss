@@ -30,6 +30,8 @@
   .card-title {
     color: #fff;
     margin-left: 3rem;
+    font-size: 2.5rem;
+    text-align: center;
   }
   .btnexperiencia {
     background-color: #25262e;
@@ -39,4 +41,7 @@
   .btnexperiencia:hover {
     box-shadow: inset 0 0 7px 0 #b14295;
   }
+}
+.btnFlashero {
+  margin-left: 1rem;
 }

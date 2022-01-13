@@ -8,6 +8,9 @@
       </ul>
     </div>
 
-    <a href="#" class="btnFlashero">Go somewhere</a>
+    <a href="#" class="btnFlashero" *ngIf="userService.userlogin"
+      >Editar
+      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon
+    ></a>
   </div>
 </div>

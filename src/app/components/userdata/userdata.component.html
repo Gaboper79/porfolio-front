@@ -8,33 +8,58 @@
       />
     </div>
     <div class="imguser">
-      <img
-        src="../../../assets/img/foto cv.jpg"
-        class="card-img-user"
-        alt="..."
-      />
-    </div>
-    <div class="btnEdit">
-      <button class="btn btn-primary">
-        <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"
-          >lalal</fa-icon
-        >
-      </button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="180"
+        height="190"
+      >
+        <defs>
+          <filter id="filter">
+            <feGaussianBlur stdDeviation="5" />
+          </filter>
+          <mask id="mask">
+            <ellipse
+              cx="50%"
+              cy="50%"
+              rx="30%"
+              ry="30%"
+              fill="white"
+              filter="url(#filter)"
+            ></ellipse>
+          </mask>
+        </defs>
+
+        <image
+          xlink:href="./assets/img/foto cv.jpg"
+          width="180"
+          height="210"
+          mask="url(#mask)"
+        ></image>
+      </svg>
     </div>
   </div>
 
   <div class="card-body">
-    <h5 class="card-title">Gabriel Perdomo</h5>
     <div class="textCard">
-      <p class="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </p>
-      <div class="icoConice">
-        <p>Aca van iconos del conicet y no se que mas</p>
+      <div class="card-text col-sm-6">
+        <h1 style="text-align: center;">{{userdata.datospersonales.nombre}}</h1>
+
+        <h5 class="nivel-academico" style="text-align: center;">
+          {{userdata.datospersonales.titulo}}
+        </h5>
+      </div>
+      <div class="card-text col-sm-6">
+        <h5 class="aboutme">Acerca de mi...</h5>
+        <p style="max-width: 500px;">
+          {{userdata.datospersonales.acerdemi}}
+        </p>
       </div>
     </div>
 
-    <a href="#" class="btnFlashero">Go somewhere</a>
+    <a routerLink="formuser" class="btnFlashero" *ngIf="userService.userlogin"
+      >Editar
+      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon
+    ></a>
   </div>
 </div>
