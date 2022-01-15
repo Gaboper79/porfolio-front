@@ -17,6 +17,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { FormsModule } from "@angular/forms";
 import { UserDataService } from "./servicios/user-data.service";
 import { FormuserdataComponent } from './components/userdata/formuserdata/formuserdata.component';
+import { PorfolioComponent } from './components/porfolio/porfolio.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormuserdataComponent } from './components/userdata/formuserdata/formus
     LoginComponent,
     HomeComponent,
     FormuserdataComponent,
+    PorfolioComponent,
   ],
   imports: [
     BrowserModule,
