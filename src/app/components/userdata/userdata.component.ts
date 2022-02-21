@@ -10,9 +10,23 @@ import { UserDataService } from "src/app/servicios/user-data.service";
   styleUrls: ["./userdata.component.scss"],
 })
 export class UserdataComponent implements OnInit {
-  @Input() userdata!: PortfolioI;
+  //@Input() userdata!: PortfolioI;
+  modifico = false;
+  portfolio!: PortfolioI;
+  constructor(
+    public portfolioSVC: PortfolioService,
+    public userService: UserDataService
+  ) {}
 
-  constructor(public userService: UserDataService) {}
   faEdit = faEdit;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.portfolio = this.portfolioSVC.portfolio;
+  }
+
+  CambioModifico() {
+    if (this.modifico) {
+    } else {
+    }
+    this.modifico = !this.modifico;
+  }
 }

@@ -43,23 +43,31 @@
   <div class="card-body">
     <div class="textCard">
       <div class="card-text col-sm-6">
-        <h1 style="text-align: center;">{{userdata.datospersonales.nombre}}</h1>
+        <h1 style="text-align: center;">
+          {{portfolio.datospersonales.nombre}}
+        </h1>
 
         <h5 class="nivel-academico" style="text-align: center;">
-          {{userdata.datospersonales.titulo}}
+          {{portfolio.datospersonales.titulo}}
         </h5>
       </div>
       <div class="card-text col-sm-6">
         <h5 class="aboutme">Acerca de mi...</h5>
         <p style="max-width: 500px;">
-          {{userdata.datospersonales.acerdemi}}
+          {{portfolio.datospersonales.acerdemi}}
         </p>
       </div>
     </div>
+    <app-formuserdata *ngIf="modifico"></app-formuserdata>
 
-    <a routerLink="formuser" class="btnFlashero" *ngIf="userService.userlogin"
-      >Editar
-      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon
-    ></a>
+    <button
+      type="button"
+      class="btnFlashero"
+      *ngIf="userService.userlogin"
+      (click)="CambioModifico()"
+    >
+      {{(modifico)?"Grabar":"Editar"}}
+      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
+    </button>
   </div>
 </div>

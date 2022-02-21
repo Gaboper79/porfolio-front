@@ -1,7 +1,7 @@
 <div class="container botonesHomecontainer">
   <h2>Portfolios disponibles</h2>
   <div *ngIf="userService.userlogin">
-    <button class="btn btnFlashero">Nuevo</button>
+    <button class="btn btnFlashero" (click)="nuevoPortfolio()">Nuevo</button>
   </div>
 </div>
 <div class="container">

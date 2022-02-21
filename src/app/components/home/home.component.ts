@@ -26,4 +26,7 @@ export class HomeComponent implements OnInit {
     this.portfolioSvc.setPortfolio(portfolio);
     this.ruta.navigateByUrl("portfolio");
   }
+  nuevoPortfolio() {
+    this.ruta.navigateByUrl("formPort");
+  }
 }
