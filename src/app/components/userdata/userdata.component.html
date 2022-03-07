@@ -63,8 +63,8 @@
     <button
       type="button"
       class="btnFlashero"
-      *ngIf="userService.userlogin"
       (click)="CambioModifico()"
+      *ngIf="userService.userlogin"
     >
       {{(modifico)?"Grabar":"Editar"}}
       <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>

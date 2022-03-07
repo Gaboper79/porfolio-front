@@ -1,22 +1,26 @@
 <div class="container-form userData">
-  <div class="mb-3">
-    <h3>Datos personales</h3>
-    <label for="usuario" class="form-label">Nombre</label>
-    <input type="text" class="form-control" name="nombre" />
-  </div>
-  <div class="mb-3">
-    <label for="titulo" class="form-label">Titulo</label>
-    <input type="text" class="form-control" name="titulo" />
-  </div>
-  <div class="mb-3">
-    <label for="acerdemi" class="form-label">Acerca de mi</label>
-    <input type="textArea" class="form-control" name="acerdemi" />
-  </div>
-  <div class="mb-3">
-    <label for="acerdemi" class="form-label">Imagen</label>
-    <input type="textArea" class="form-control" name="imguser" />
-  </div>
-  <div class="btn-container">
-    <button class="btn btnFlashero">Grabar</button>
-  </div>
+  <form [formGroup]="productForm">
+    <div class="mb-3">
+      <h3>Datos personales</h3>
+      <label for="usuario" class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre" />
+    </div>
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Titulo</label>
+      <input type="text" class="form-control" formControlName="titulo" />
+    </div>
+    <div class="mb-3">
+      <label for="acerdemi" class="form-label">Acerca de mi</label>
+      <input type="textArea" class="form-control" formControlName="acerdemi" />
+    </div>
+    <div class="mb-3">
+      <label for="acerdemi" class="form-label">Imagen</label>
+      <input type="textArea" class="form-control" formControlName="imguser" />
+    </div>
+    <div class="btn-container">
+      <button class="btn btnFlashero" [disabled]="productForm.invalid">
+        Grabar
+      </button>
+    </div>
+  </form>
 </div>

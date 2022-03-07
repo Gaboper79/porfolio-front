@@ -24,9 +24,6 @@ export class UserdataComponent implements OnInit {
   }
 
   CambioModifico() {
-    if (this.modifico) {
-    } else {
-    }
     this.modifico = !this.modifico;
   }
 }
