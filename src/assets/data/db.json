@@ -4,10 +4,10 @@
       "id": 1,
       "email": "pepe@hotmail.com",
       "datospersonales": {
-        "nombre": "PePe Suarez",
-        "imgUser": "./assets/img/foto cv.jpg",
+        "nombre": "Gabriel Perdomo",
         "titulo": "Full Stack Developer JR",
-        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier."
+        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier.",
+        "imguser": "./assets/img/foto cv.jpg"
       },
       "educacion": [
         {
@@ -48,7 +48,20 @@
         }
       ],
       "skills": [],
-      "proyectos": []
+      "proyectos": [
+        {
+          "nombre": "ADM-Porfolio",
+          "link": "http://localhost:4200/portfolio",
+          "descripcion": "Proyecto final de argenitna programa",
+          "img": ""
+        },
+        {
+          "nombre": "Vanilla JavaScript",
+          "link": "www.google.com",
+          "descripcion": "Pagina realizada en javascript puro",
+          "img": ""
+        }
+      ]
     },
     {
       "id": 2,

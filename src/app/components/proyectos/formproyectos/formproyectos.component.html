@@ -1,11 +1,41 @@
-<div class="container-form Experiencia">
-  <h3>Proyectos</h3>
-  <div class="mb-3">
-    <label for="usuario" class="form-label">Email</label>
-    <input type="text" class="form-control" name="mail" />
+<form [formGroup]="userDataForm">
+  <div class="container-form Experiencia">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Nombre o Titulo</label>
+          <input type="text" class="form-control" formControlName="nombre" />
+        </div>
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripcion</label>
+          <textarea
+            rows="4"
+            class="form-control"
+            formControlName="descripcion"
+            placeholder="Descripcion"
+          >
+          </textarea>
+        </div>
+        <div class="mb-3">
+          <label for="puesto" class="form-label">Link</label>
+          <input type="text" class="form-control" formControlName="link" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="puesto" class="form-label">Imagen</label>
+          <input type="text" class="form-control" formControlName="img" />
+        </div>
+
+        <div class="container mt-5">
+          <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
+            Guardar
+          </button>
+          <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" name="exampleInputPassword1" />
-  </div>
-</div>
+</form>

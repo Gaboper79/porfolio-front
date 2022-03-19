@@ -1,3 +1,4 @@
+import { ProyectoI } from "./proyectoI";
 export interface PortfolioI {
   id: number;
   email: string;
@@ -18,4 +19,5 @@ export interface PortfolioI {
       puesto: string;
     }
   ];
+  proyectos: ProyectoI[];
 }

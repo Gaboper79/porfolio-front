@@ -1,28 +1,24 @@
-<div class="card">
+<div class="card cardprincipal">
   <div class="card-body">
     <h5 class="card-title">Proyectos</h5>
-    <div class="textCard">
-      <ul>
-        <li>Proyectos</li>
-        <li>Proyectos</li>
-      </ul>
-    </div>
-    <app-formproyectos *ngIf="modifico"></app-formproyectos>
+    <span *ngIf="!nuevaProy">
+      <app-itemproy
+        *ngFor="let proyectoItem of proyectoList;let i=index "
+        [proyecto]="proyectoItem"
+        [indexProy]="i"
+      ></app-itemproy>
+    </span>
+    <app-formproyectos
+      *ngIf="nuevaProy"
+      (evento)="graboNuevaExp()"
+    ></app-formproyectos>
     <button
       type="button"
-      class="btnFlashero"
-      (click)="CambioModifico()"
-      *ngIf="userService.userlogin && !modifico"
+      class="btnFlashero mt-2"
+      *ngIf="userService.userlogin && !nuevaProy"
+      (click)="nuevaExpeFuncion()"
     >
-      {{(modifico)?"Grabar":"Editar"}}
-      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
-    </button>
-    <button
-      type="button"
-      class="btnFlashero"
-      *ngIf="userService.userlogin && !modifico"
-    >
-      {{(modifico)?"Grabar":"Agregar"}}
+      Agregar
       <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>
     </button>
   </div>

@@ -1,0 +1,33 @@
+<div class="card mb-3 item_experiencia" style="max-width: 80%;">
+  <div class="row g-0">
+    <div class="col-md-3 img_experiencia">
+      <img src="{{proyecto.img}}" class="img-fluid rounded-start" alt="Logo" />
+    </div>
+
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{proyecto.nombre}}</h5>
+
+        <p class="card-text">
+          {{proyecto.descripcion}}
+        </p>
+        <a href="#">{{proyecto.link}}</a>
+      </div>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btnFlashero mb-3"
+    *ngIf="userService.userlogin && !modifico"
+    (click)="CambioModifico()"
+  >
+    {{(modifico)?"Grabar":"Editar"}}
+    <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
+  </button>
+  <app-formproyectos
+    *ngIf="modifico"
+    (evento)="evento($event)"
+    [indexProy]="indexProy"
+    [modifico]="modifico"
+  ></app-formproyectos>
+</div>
