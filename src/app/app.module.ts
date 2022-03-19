@@ -24,7 +24,8 @@ import { FormexperComponent } from "./components/experiencia/formexper/formexper
 import { FormeducComponent } from "./components/educacion/formeduc/formeduc.component";
 import { FormskillsComponent } from "./components/skills/formskills/formskills.component";
 import { FormproyectosComponent } from "./components/proyectos/formproyectos/formproyectos.component";
-import { ItemexperienciaComponent } from './components/experiencia/itemexperiencia/itemexperiencia.component';
+import { ItemexperienciaComponent } from "./components/experiencia/itemexperiencia/itemexperiencia.component";
+import { ItemeducacionComponent } from './components/educacion/itemeducacion/itemeducacion.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ItemexperienciaComponent } from './components/experiencia/itemexperienc
     FormskillsComponent,
     FormproyectosComponent,
     ItemexperienciaComponent,
+    ItemeducacionComponent,
   ],
   imports: [
     BrowserModule,

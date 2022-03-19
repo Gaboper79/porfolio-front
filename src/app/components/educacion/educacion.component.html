@@ -1,28 +1,21 @@
-<div class="cardBg">
+<div class="card cardprincipal">
   <div class="card-body">
     <h5 class="card-title">Educacion</h5>
-    <div class="textCard">
-      <ul>
-        <li>eEducacion</li>
-        <li>eEducacion</li>
-      </ul>
-    </div>
-    <app-formeduc *ngIf="modifico"></app-formeduc>
+    <span *ngIf="!nuevaEdu">
+      <app-itemeducacion
+        *ngFor="let educacionItem of educacionList;let i=index "
+        [educacion]="educacionItem"
+        [indexEdu]="i"
+      ></app-itemeducacion>
+    </span>
+    <app-formeduc *ngIf="nuevaEdu" (evento)="graboNuevaEdu()"></app-formeduc>
     <button
       type="button"
-      class="btnFlashero"
-      (click)="CambioModifico()"
-      *ngIf="userService.userlogin && !modifico"
+      class="btnFlashero mt-2"
+      *ngIf="userService.userlogin && !nuevaEdu"
+      (click)="nuevaEduFuncion()"
     >
-      {{(modifico)?"Grabar":"Editar"}}
-      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
-    </button>
-    <button
-      type="button"
-      class="btnFlashero"
-      *ngIf="userService.userlogin && !modifico"
-    >
-      {{(modifico)?"Grabar":"Agregar"}}
+      Agregar
       <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>
     </button>
   </div>

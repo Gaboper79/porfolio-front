@@ -7,7 +7,7 @@ export interface PortfolioI {
     titulo: string;
     acerdemi: string;
   };
-  educacion: string;
+  educacion: [{ titulo: string; establecimiento: string; fecha: string }];
   experiencia: [
     {
       empresa: string;
