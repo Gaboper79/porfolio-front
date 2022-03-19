@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { UserDataService } from "src/app/servicios/user-data.service";
 @Component({
   selector: "app-proyectos",
@@ -8,7 +8,12 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 })
 export class ProyectosComponent implements OnInit {
   faEdit = faEdit;
+  faAdd = faPlusCircle;
+  modifico = false;
   constructor(public userService: UserDataService) {}
 
   ngOnInit(): void {}
+  CambioModifico() {
+    this.modifico = !this.modifico;
+  }
 }

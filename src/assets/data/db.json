@@ -2,25 +2,42 @@
   "portfolio": [
     {
       "id": 1,
-      "email": "gp130579@gmail.com",
+      "email": "pepe@hotmail.com",
       "datospersonales": {
-        "nombre": "Gabriel Perdomo",
+        "nombre": "PePe Suarez",
         "imgUser": "./assets/img/foto cv.jpg",
         "titulo": "Full Stack Developer JR",
         "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier."
       },
-      "educacion": { "titulo": "Bachiller con orientacion en cumputacion" },
+      "educacion": {
+        "titulo": "Bachiller con orientacion en cumputacion"
+      },
       "experiencia": [
         {
           "empresa": "Proanalisis S.A.",
-          "img": "http://",
-          "descripcion": "larala laraila",
-          "fechIni": "10/10/2019",
+          "descripcion": "Toma de muestras para su posterior analisis",
+          "fechIni": "10/10/2009",
           "fechaFin": "10/10/2021",
-          "puesto": "Tecnico Muestreador"
+          "puesto": "Tecnico Muestreador",
+          "img": "./assets/img/proanalisis2.png"
+        },
+        {
+          "empresa": "Royal & SunAlliance",
+          "descripcion": "Emisor de polizas",
+          "fechIni": "10/10/2001",
+          "fechaFin": "10/10/2006",
+          "puesto": "Emisor de polizas",
+          "img": "./assets/img/royal.png"
+        },
+        {
+          "empresa": "Gptec",
+          "descripcion": "Reparacion de pc",
+          "fechIni": "10/10/1990",
+          "fechaFin": "10/10/1995",
+          "puesto": "Tecnico reparacion de pc",
+          "img": ""
         }
       ],
-
       "skills": [],
       "proyectos": []
     },
@@ -33,7 +50,9 @@
         "titulo": "Full Stack Developer JR",
         "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier."
       },
-      "educacion": { "titulo": "Bachiller con orientacion en cumputacion" },
+      "educacion": {
+        "titulo": "Bachiller con orientacion en cumputacion"
+      },
       "experiencia": [
         {
           "empresa": "Proanalisis S.A.",
@@ -44,7 +63,6 @@
           "puesto": "Tecnico Muestreador"
         }
       ],
-
       "skills": [],
       "proyectos": []
     },
@@ -57,7 +75,9 @@
         "titulo": "Full Stack Developer JR",
         "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier."
       },
-      "educacion": { "titulo": "Bachiller con orientacion en cumputacion" },
+      "educacion": {
+        "titulo": "Bachiller con orientacion en cumputacion"
+      },
       "experiencia": [
         {
           "empresa": "Proanalisis S.A.",
@@ -68,13 +88,46 @@
           "puesto": "Tecnico Muestreador"
         }
       ],
-
       "skills": [],
       "proyectos": []
     }
   ],
   "signupUsers": [
-    { "id": 1, "email": "gabo", "password": "1234", "role": "administrator" },
-    { "id": 2, "email": "lau", "password": "", "role": "user" }
+    {
+      "id": 1,
+      "email": "gabo",
+      "password": "1234",
+      "role": "administrator"
+    },
+    {
+      "id": 2,
+      "email": "lau",
+      "password": "",
+      "role": "user"
+    }
+  ],
+  "prueba": [
+    [
+      {
+        "id": 1,
+        "nombre": "Gabo"
+      },
+      {
+        "id": 1,
+        "nombre": "Gabo"
+      },
+      {
+        "id": 1,
+        "nombre": "Gabo"
+      }
+    ],
+    {
+      "id": 2,
+      "nombre": "Gabosssss"
+    },
+    {
+      "id": 3,
+      "nombre": "Gabosssss"
+    }
   ]
 }

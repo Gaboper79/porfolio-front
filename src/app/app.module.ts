@@ -24,6 +24,7 @@ import { FormexperComponent } from "./components/experiencia/formexper/formexper
 import { FormeducComponent } from "./components/educacion/formeduc/formeduc.component";
 import { FormskillsComponent } from "./components/skills/formskills/formskills.component";
 import { FormproyectosComponent } from "./components/proyectos/formproyectos/formproyectos.component";
+import { ItemexperienciaComponent } from './components/experiencia/itemexperiencia/itemexperiencia.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { FormproyectosComponent } from "./components/proyectos/formproyectos/for
     FormeducComponent,
     FormskillsComponent,
     FormproyectosComponent,
+    ItemexperienciaComponent,
   ],
   imports: [
     BrowserModule,

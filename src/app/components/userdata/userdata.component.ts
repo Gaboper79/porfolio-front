@@ -10,7 +10,7 @@ import { UserDataService } from "src/app/servicios/user-data.service";
   styleUrls: ["./userdata.component.scss"],
 })
 export class UserdataComponent implements OnInit {
-  //@Input() userdata!: PortfolioI;
+  @Input() usermodifico!: boolean;
   modifico = false;
   portfolio!: PortfolioI;
   constructor(
@@ -23,7 +23,10 @@ export class UserdataComponent implements OnInit {
     this.portfolio = this.portfolioSVC.portfolio;
   }
 
-  CambioModifico() {
+  muestroModifico() {
+    this.modifico = !this.modifico;
+  }
+  saveModificacion() {
     this.modifico = !this.modifico;
   }
 }

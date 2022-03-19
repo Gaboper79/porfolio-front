@@ -1,5 +1,5 @@
 <div class="container-form userData">
-  <form [formGroup]="productForm">
+  <form [formGroup]="userDataForm" (ngSubmit)="guardoCambios()">
     <div class="mb-3">
       <h3>Datos personales</h3>
       <label for="usuario" class="form-label">Nombre</label>
@@ -18,7 +18,11 @@
       <input type="textArea" class="form-control" formControlName="imguser" />
     </div>
     <div class="btn-container">
-      <button class="btn btnFlashero" [disabled]="productForm.invalid">
+      <button
+        class="btn btnFlashero"
+        type="submit"
+        [disabled]="userDataForm.invalid"
+      >
         Grabar
       </button>
     </div>

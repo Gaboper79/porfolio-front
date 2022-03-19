@@ -36,9 +36,23 @@
         <div class="text-rounder-title">GitHub</div>
       </div>
     </div>
-    <a href="#" class="btnFlashero" *ngIf="userService.userlogin"
-      >Editar
-      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon
-    ></a>
+    <app-formskills *ngIf="modifico"></app-formskills>
+    <button
+      type="button"
+      class="btnFlashero"
+      (click)="CambioModifico()"
+      *ngIf="userService.userlogin && !modifico"
+    >
+      {{(modifico)?"Grabar":"Editar"}}
+      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
+    </button>
+    <button
+      type="button"
+      class="btnFlashero"
+      *ngIf="userService.userlogin && !modifico"
+    >
+      {{(modifico)?"Grabar":"Agregar"}}
+      <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>
+    </button>
   </div>
 </div>

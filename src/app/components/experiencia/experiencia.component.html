@@ -1,58 +1,22 @@
 <div class="card cardprincipal">
   <div class="card-body">
     <h5 class="card-title">Experiencia</h5>
-    <div class="card mb-3 item_experiencia" style="max-width: 80%;">
-      <div class="row g-0">
-        <div class="col-md-3 img_experiencia">
-          <img
-            src="../../../assets/img/proanalisis2.png"
-            class="img-fluid rounded-start"
-            alt="..."
-          />
-        </div>
-
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Proanalisis s.a.</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card mb-3 item_experiencia" style="max-width: 80%;">
-      <div class="row g-0">
-        <div class="col-md-3 img_experiencia">
-          <img
-            src="../../../assets/img/royal.png"
-            class="img-fluid rounded-start"
-            alt="..."
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Royal & SunAlliance</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="#" class="btnFlashero" *ngIf="userService.userlogin"
-      >Editar
-      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon
-    ></a>
+    <span *ngIf="!nuevaExpe">
+      <app-itemexperiencia
+        *ngFor="let experienciaItem of experienciaList;let i=index "
+        [experiencia]="experienciaItem"
+        [indexExp]="i"
+      ></app-itemexperiencia>
+    </span>
+    <app-formexper *ngIf="nuevaExpe" (evento)="graboNuevaExp()"></app-formexper>
+    <button
+      type="button"
+      class="btnFlashero mt-2"
+      *ngIf="userService.userlogin && !nuevaExpe"
+      (click)="nuevaExpeFuncion()"
+    >
+      Agregar
+      <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>
+    </button>
   </div>
 </div>

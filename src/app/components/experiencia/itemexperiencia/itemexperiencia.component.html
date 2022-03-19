@@ -1,0 +1,44 @@
+<div class="card mb-3 item_experiencia" style="max-width: 80%;">
+  <div class="row g-0">
+    <div class="col-md-3 img_experiencia">
+      <img
+        src="{{experiencia.img}}"
+        class="img-fluid rounded-start"
+        alt="Logo"
+      />
+    </div>
+
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{experiencia.empresa}}</h5>
+        <p class="card-text puesto">
+          {{experiencia.puesto}}
+        </p>
+        <p class="card-text">
+          {{experiencia.descripcion}}
+        </p>
+        <p class="card-text">
+          <small class="text-muted"
+            >Desde: {{experiencia.fechIni}} - Hasta:
+            {{experiencia.fechaFin}}</small
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btnFlashero mb-3"
+    *ngIf="userService.userlogin && !modifico"
+    (click)="CambioModifico()"
+  >
+    {{(modifico)?"Grabar":"Editar"}}
+    <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
+  </button>
+  <app-formexper
+    *ngIf="modifico"
+    (evento)="evento($event)"
+    [indexExp]="indexExp"
+    [modifico]="modifico"
+  ></app-formexper>
+</div>

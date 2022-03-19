@@ -58,13 +58,16 @@
         </p>
       </div>
     </div>
-    <app-formuserdata *ngIf="modifico"></app-formuserdata>
+    <app-formuserdata
+      *ngIf="modifico"
+      (modificoEvent)="saveModificacion()"
+    ></app-formuserdata>
 
     <button
       type="button"
       class="btnFlashero"
-      (click)="CambioModifico()"
-      *ngIf="userService.userlogin"
+      (click)="muestroModifico()"
+      *ngIf="userService.userlogin && !modifico"
     >
       {{(modifico)?"Grabar":"Editar"}}
       <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>

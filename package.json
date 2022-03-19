@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "init": "concurrently \"ng s -o\" \"json-server --watch ./src/assets/data/db.json\"",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

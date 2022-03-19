@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { PortfolioI } from "src/app/model/portfolio";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
@@ -9,22 +9,31 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
   styleUrls: ["./formuserdata.component.scss"],
 })
 export class FormuserdataComponent implements OnInit {
+  @Output() modificoEvent = new EventEmitter();
+
   constructor(
     private formBuilder: FormBuilder,
     public portfolioSVC: PortfolioService
   ) {}
 
-  productForm!: FormGroup;
+  userDataForm!: FormGroup;
   portfolio!: PortfolioI;
 
   ngOnInit(): void {
     this.portfolio = this.portfolioSVC.portfolio;
 
-    this.productForm = this.formBuilder.group({
+    this.userDataForm = this.formBuilder.group({
       nombre: [this.portfolio.datospersonales.nombre],
       titulo: [this.portfolio.datospersonales.titulo],
       acerdemi: [this.portfolio.datospersonales.acerdemi],
-      imgUser: [this.portfolio.datospersonales.imgUser],
+      imguser: [this.portfolio.datospersonales.imgUser],
     });
+  }
+
+  guardoCambios() {
+    this.portfolio.datospersonales = this.userDataForm.value;
+
+    this.portfolioSVC.savePortfolio(this.portfolio);
+    this.modificoEvent.emit();
   }
 }
