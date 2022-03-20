@@ -1,0 +1,26 @@
+.rounderes {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+.rounder {
+  .text-rounder {
+    position: relative;
+    font-size: 2rem;
+    top: 41%;
+    bottom: auto;
+    left: 41%;
+  }
+  .text-rounder-title {
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+.btnFlashero {
+  margin-left: 2.5rem;
+  margin-top: 1rem;
+  background-color: #17181d;
+}

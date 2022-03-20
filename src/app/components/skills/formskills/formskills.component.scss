@@ -1,10 +1,11 @@
-.container {
+.container-form {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.container-form {
   margin-top: 5%;
+  margin-bottom: 10px;
+  margin-left: 10px;
   min-width: 200px;
   width: 500px;
   padding: 2rem;
@@ -22,5 +23,8 @@
       color: white;
       font-size: 1.5rem;
     }
+  }
+  .btnFlashero {
+    color: white;
   }
 }

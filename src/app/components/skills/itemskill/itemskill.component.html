@@ -1,0 +1,28 @@
+<div class="rounderes">
+  <div class="rounder">
+    <div class="text-rounder">{{skill.valor}}</div>
+    <round-progress
+      [current]="current"
+      [max]="max"
+      [radius]="radius"
+      [background]="background"
+      [color]="color"
+    ></round-progress>
+    <div class="text-rounder-title">{{skill.skill}}</div>
+    <button
+      type="button"
+      class="btnFlashero mb-3"
+      *ngIf="userService.userlogin && !modifico"
+      (click)="CambioModifico()"
+    >
+      {{(modifico)?"Grabar":"Editar"}}
+      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
+    </button>
+  </div>
+  <app-formskills
+    *ngIf="modifico"
+    (evento)="evento($event)"
+    [indexSkill]="indexSkil"
+    [modifico]="modifico"
+  ></app-formskills>
+</div>

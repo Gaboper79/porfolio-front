@@ -1,11 +1,26 @@
-<div class="container-form Experiencia">
-  <h3>Skills</h3>
-  <div class="mb-3">
-    <label for="usuario" class="form-label">Email</label>
-    <input type="text" class="form-control" name="mail" />
+<form [formGroup]="userDataForm">
+  <div class="container-form Experiencia">
+    <div class="row">
+      <div class="container">
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Nombre del Skill</label>
+          <input type="text" class="form-control" formControlName="skill" />
+        </div>
+
+        <div class="mb-3">
+          <label for="puesto" class="form-label">% del Skill</label>
+          <input type="number" class="form-control" formControlName="valor" />
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
+          Guardar
+        </button>
+        <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
+          Cancelar
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" name="exampleInputPassword1" />
-  </div>
-</div>
+</form>

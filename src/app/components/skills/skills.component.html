@@ -1,57 +1,24 @@
 <div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Skills</h5>
-    <div class="rounderes">
-      <div class="rounder">
-        <div class="text-rounder">50</div>
-        <round-progress
-          [current]="50"
-          [max]="max"
-          [radius]="radius"
-          [background]="background"
-          [color]="color"
-        ></round-progress>
-        <div class="text-rounder-title">Programacion en java</div>
-      </div>
-      <div class="rounder">
-        <div class="text-rounder">70</div>
-        <round-progress
-          [current]="70"
-          [max]="max"
-          [radius]="radius"
-          [color]="color"
-          [background]="background"
-        ></round-progress>
-        <div class="text-rounder-title">Programacion en BBDD</div>
-      </div>
-      <div class="rounder">
-        <div class="text-rounder">90</div>
-        <round-progress
-          [current]="90"
-          [max]="max"
-          [radius]="radius"
-          [color]="color"
-          [background]="background"
-        ></round-progress>
-        <div class="text-rounder-title">GitHub</div>
-      </div>
-    </div>
-    <app-formskills *ngIf="modifico"></app-formskills>
+  <h5 class="card-title">Skills</h5>
+  <span *ngIf="!nuevaSkill">
+    <app-itemskill
+      *ngFor="let skillItem of skillList;let i=index "
+      [skill]="skillItem"
+      [indexSkil]="i"
+    ></app-itemskill>
+  </span>
+  <app-formskills
+    *ngIf="nuevaSkill"
+    (evento)="graboNuevaExp()"
+  ></app-formskills>
+  <div class="container">
     <button
       type="button"
       class="btnFlashero"
-      (click)="CambioModifico()"
-      *ngIf="userService.userlogin && !modifico"
+      (click)="nuevaSkillFuncion()"
+      *ngIf="userService.userlogin && !nuevaSkill"
     >
-      {{(modifico)?"Grabar":"Editar"}}
-      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
-    </button>
-    <button
-      type="button"
-      class="btnFlashero"
-      *ngIf="userService.userlogin && !modifico"
-    >
-      {{(modifico)?"Grabar":"Agregar"}}
+      Agregar
       <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>
     </button>
   </div>
