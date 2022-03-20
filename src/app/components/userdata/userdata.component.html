@@ -60,7 +60,7 @@
     </div>
     <app-formuserdata
       *ngIf="modifico"
-      (modificoEvent)="saveModificacion()"
+      (evento)="evento($event)"
     ></app-formuserdata>
 
     <button

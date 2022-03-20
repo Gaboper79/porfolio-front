@@ -1,97 +1,13 @@
 {
   "portfolio": [
     {
-      "id": 1,
-      "email": "pepe@hotmail.com",
-      "datospersonales": {
-        "nombre": "Gabriel Perdomo",
-        "titulo": "Full Stack Developer JR",
-        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier.",
-        "imguser": null
-      },
-      "educacion": [
-        {
-          "titulo": "Bachiller con orientacion en pcs",
-          "establecimiento": "Virgen del valle",
-          "fecha": "2018"
-        },
-        {
-          "titulo": "Fundamentos de la programacion",
-          "establecimiento": "UTN",
-          "fecha": "2020"
-        }
-      ],
-      "experiencia": [
-        {
-          "empresa": "Proanalisis S.A.",
-          "descripcion": "Toma de muestras para su posterior analisis",
-          "fechIni": "10/10/2009",
-          "fechaFin": "10/10/2021",
-          "puesto": "Tecnico Muestreador",
-          "img": "./assets/img/proanalisis2.png"
-        },
-        {
-          "empresa": "Royal & SunAlliance",
-          "descripcion": "Emisor de polizas",
-          "fechIni": "10/10/2001",
-          "fechaFin": "10/10/2006",
-          "puesto": "Emisor de polizas",
-          "img": "./assets/img/royal.png"
-        },
-        {
-          "empresa": "Gptec",
-          "descripcion": "Reparacion de pc",
-          "fechIni": "10/10/1990",
-          "fechaFin": "10/10/1995",
-          "puesto": "Tecnico reparacion de pc",
-          "img": ""
-        }
-      ],
-      "skills": [
-        {
-          "skill": "Programacion en Java",
-          "valor": 61
-        },
-        {
-          "skill": "Javascript",
-          "valor": 70
-        },
-        {
-          "skill": "Angular",
-          "valor": 80
-        },
-        {
-          "skill": "Css",
-          "valor": 85
-        }
-      ],
-      "proyectos": [
-        {
-          "nombre": "ADM-Porfolio",
-          "link": "http://localhost:4200/portfolio",
-          "descripcion": "Proyecto final de argenitna programa",
-          "img": ""
-        },
-        {
-          "nombre": "Vanilla JavaScript",
-          "link": "www.google.com",
-          "descripcion": "Pagina realizada en javascript puro",
-          "img": ""
-        },
-        {
-          "skill": "css",
-          "valor": 80
-        }
-      ]
-    },
-    {
       "id": 2,
       "email": "pepe@hotmail.com",
       "datospersonales": {
-        "nombre": "PePe Suarez",
-        "imgUser": "./assets/img/foto cv.jpg",
+        "nombre": "Gabriel Perdomossss",
         "titulo": "Full Stack Developer JR",
-        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier."
+        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier.",
+        "imgUser": "./assets/img/foto cv.jpg"
       },
       "educacion": {
         "titulo": "Bachiller con orientacion en cumputacion"

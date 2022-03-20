@@ -9,8 +9,8 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
   styleUrls: ["./formuserdata.component.scss"],
 })
 export class FormuserdataComponent implements OnInit {
-  @Output() modificoEvent = new EventEmitter();
-
+  // @Output() modificoEvent = new EventEmitter();
+  @Output() evento = new EventEmitter<String>();
   constructor(
     private formBuilder: FormBuilder,
     public portfolioSVC: PortfolioService
@@ -26,7 +26,7 @@ export class FormuserdataComponent implements OnInit {
       nombre: [this.portfolio.datospersonales.nombre],
       titulo: [this.portfolio.datospersonales.titulo],
       acerdemi: [this.portfolio.datospersonales.acerdemi],
-      imguser: [this.portfolio.datospersonales.imgUser],
+      imgUser: [this.portfolio.datospersonales.imgUser],
     });
   }
 
@@ -34,6 +34,11 @@ export class FormuserdataComponent implements OnInit {
     this.portfolio.datospersonales = this.userDataForm.value;
 
     this.portfolioSVC.savePortfolio(this.portfolio);
-    this.modificoEvent.emit();
+  }
+  emitirEvento(opcion: String) {
+    if (opcion == "guardar") {
+      this.guardoCambios();
+    }
+    this.evento.emit();
   }
 }

@@ -29,4 +29,9 @@ export class UserdataComponent implements OnInit {
   saveModificacion() {
     this.modifico = !this.modifico;
   }
+  evento(data: String) {
+    if (this.modifico == true) {
+    }
+    this.modifico = !this.modifico;
+  }
 }
