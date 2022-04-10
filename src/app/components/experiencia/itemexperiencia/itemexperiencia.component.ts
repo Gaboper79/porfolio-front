@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ExperienciaI } from "../../../model/experiencia";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { ExperienciaService } from "src/app/servicios/experiencia.service";
 
 @Component({
   selector: "app-itemexperiencia",
@@ -11,11 +12,12 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons";
 })
 export class ItemexperienciaComponent implements OnInit {
   @Input() experiencia!: ExperienciaI;
-  @Input() indexExp!: number;
+  @Input() item!: number;
   modifico = false;
   faEdit = faEdit;
+  faDelete = faTrash;
   constructor(
-    public portfolioSVC: PortfolioService,
+    public experienciaSVC: ExperienciaService,
     public userService: UserDataService
   ) {}
 
@@ -27,5 +29,8 @@ export class ItemexperienciaComponent implements OnInit {
     if (this.modifico == true) {
     }
     this.modifico = !this.modifico;
+  }
+  eliminarExperiencia() {
+    this.experienciaSVC.deleteExperiencia(this.experiencia, this.item);
   }
 }

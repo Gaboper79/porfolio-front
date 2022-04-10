@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getDatauser().subscribe((res) => {
+    /* this.portfolioSvc.getAllPortfolio().subscribe((res) => {
       this.portfolios = res;
-    });
+    }); */
   }
   mostrarporfolio(portfolio: PortfolioI) {
     this.portfolioSvc.setPortfolio(portfolio);

@@ -49,8 +49,14 @@
 .btnFlashero {
   margin-left: 1rem;
   width: 6rem;
+  border: none;
+  background-color: transparent;
 }
 .puesto {
   text-align: center;
   text-decoration-line: underline;
+}
+.btnOptions {
+  display: flex;
+  justify-content: space-between;
 }

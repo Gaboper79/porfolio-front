@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
+import { Observable } from "rxjs/internal/Observable";
+import { Subject } from "rxjs/internal/Subject";
+import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
 import { PortfolioI } from "src/app/model/portfolio";
+import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
 
@@ -12,15 +17,20 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 export class UserdataComponent implements OnInit {
   @Input() usermodifico!: boolean;
   modifico = false;
-  portfolio!: PortfolioI;
+
+  datospersonales!: DatosPersonalesI[];
+
+  faAdd = faPlusCircle;
+  faEdit = faEdit;
+
   constructor(
-    public portfolioSVC: PortfolioService,
+    public datosPSvc: DatosPersonalesService,
     public userService: UserDataService
   ) {}
-
-  faEdit = faEdit;
   ngOnInit(): void {
-    this.portfolio = this.portfolioSVC.portfolio;
+    this.datosPSvc
+      .getdatosP$()
+      .subscribe((result) => (this.datospersonales = result));
   }
 
   muestroModifico() {

@@ -1,19 +1,24 @@
 <div class="card cardprincipal">
   <div class="card-body">
     <h5 class="card-title">Experiencia</h5>
-    <span *ngIf="!nuevaExpe">
-      <app-itemexperiencia
-        *ngFor="let experienciaItem of experienciaList;let i=index "
-        [experiencia]="experienciaItem"
-        [indexExp]="i"
-      ></app-itemexperiencia>
-    </span>
-    <app-formexper *ngIf="nuevaExpe" (evento)="graboNuevaExp()"></app-formexper>
+
+    <app-itemexperiencia
+      *ngFor="let experienciaItem of experienciaList;let i=index "
+      [experiencia]="experienciaItem"
+      [item]="i"
+    ></app-itemexperiencia>
+
+    <app-formexper
+      *ngIf="nuevaExpe"
+      [nuevaExpe]="nuevaExpe"
+      (evento)="graboNuevaExp()"
+    ></app-formexper>
+
     <button
       type="button"
       class="btnFlashero mt-2"
-      *ngIf="userService.userlogin && !nuevaExpe"
       (click)="nuevaExpeFuncion()"
+      *ngIf="!nuevaExpe"
     >
       Agregar
       <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>

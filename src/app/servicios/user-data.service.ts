@@ -20,9 +20,6 @@ export class UserDataService {
     this.user$ = new Subject<UserI>();
   }
 
-  getDatauser(): Observable<any> {
-    return this.http.get(this.Url + "/portfolio");
-  }
   getAllSignUser(): Observable<any> {
     return this.http.get(this.Url + "/signupUsers");
   }

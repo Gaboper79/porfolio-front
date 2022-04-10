@@ -40,21 +40,21 @@
     </div>
   </div>
 
-  <div class="card-body">
+  <div class="card-body" *ngIf="datospersonales">
     <div class="textCard">
       <div class="card-text col-sm-6">
         <h1 style="text-align: center;">
-          {{portfolio.datospersonales.nombre}}
+          {{datospersonales[0].nombre}}
         </h1>
 
         <h5 class="nivel-academico" style="text-align: center;">
-          {{portfolio.datospersonales.titulo}}
+          {{datospersonales[0].titulo}}
         </h5>
       </div>
       <div class="card-text col-sm-6">
         <h5 class="aboutme">Acerca de mi...</h5>
         <p style="max-width: 500px;">
-          {{portfolio.datospersonales.acerdemi}}
+          {{datospersonales[0].aboutMe}}
         </p>
       </div>
     </div>
@@ -62,12 +62,11 @@
       *ngIf="modifico"
       (evento)="evento($event)"
     ></app-formuserdata>
-
     <button
       type="button"
       class="btnFlashero"
       (click)="muestroModifico()"
-      *ngIf="userService.userlogin && !modifico"
+      *ngIf="!modifico"
     >
       {{(modifico)?"Grabar":"Editar"}}
       <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>

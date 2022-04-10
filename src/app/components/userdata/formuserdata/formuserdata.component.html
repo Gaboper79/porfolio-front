@@ -1,5 +1,5 @@
-<div class="container-form userData">
-  <form [formGroup]="userDataForm">
+<div *ngIf="datospersonales" class="container-form userData">
+  <form [formGroup]="userDataForm" (ngSubmit)="guardoCambios()">
     <div class="mb-3">
       <h3>Datos personales</h3>
       <label for="usuario" class="form-label">Nombre</label>
@@ -11,7 +11,14 @@
     </div>
     <div class="mb-3">
       <label for="acerdemi" class="form-label">Acerca de mi</label>
-      <input type="textArea" class="form-control" formControlName="acerdemi" />
+      <textarea
+        class="form-control"
+        rows="5"
+        cols="10"
+        class="form-control"
+        formControlName="aboutMe"
+      >
+      </textarea>
     </div>
     <div class="mb-3">
       <label for="acerdemi" class="form-label">Imagen</label>
@@ -20,7 +27,7 @@
     <div class="btn-container">
       <button
         class="btn btnFlashero"
-        (click)="emitirEvento('guardar')"
+        type="submit"
         [disabled]="userDataForm.invalid"
       >
         Grabar

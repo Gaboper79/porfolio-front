@@ -10,11 +10,14 @@ export class PortfolioService {
   portfolio!: PortfolioI;
   private portf$!: Subject<PortfolioI>;
 
-  Url = "http://localhost:3000/portfolio";
+  Url = "http://localhost:8080/api";
   constructor(private http: HttpClient) {
     this.portf$ = new Subject<PortfolioI>();
   }
 
+  getAllPortfolio(): Observable<any> {
+    return this.http.get(this.Url);
+  }
   setPortfolio(portfolio: PortfolioI) {
     this.portfolio = portfolio;
     this.portf$.next(this.portfolio);
@@ -33,4 +36,5 @@ export class PortfolioService {
       console.log("item agregado correctamente.-");
     });
   }
+  creoNuevoPorfolio() {}
 }

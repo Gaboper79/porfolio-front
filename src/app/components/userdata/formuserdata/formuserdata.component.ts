@@ -1,7 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { PortfolioI } from "src/app/model/portfolio";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+import { Observable } from "rxjs";
+import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
+
+import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
+import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
   selector: "app-formuserdata",
@@ -9,31 +12,39 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
   styleUrls: ["./formuserdata.component.scss"],
 })
 export class FormuserdataComponent implements OnInit {
-  // @Output() modificoEvent = new EventEmitter();
   @Output() evento = new EventEmitter<String>();
+  private datosP$!: Observable<DatosPersonalesI[]>;
+  userDataForm!: FormGroup;
+  datospersonales!: DatosPersonalesI[];
+  id!: number;
+
   constructor(
     private formBuilder: FormBuilder,
-    public portfolioSVC: PortfolioService
-  ) {}
-
-  userDataForm!: FormGroup;
-  portfolio!: PortfolioI;
-
-  ngOnInit(): void {
-    this.portfolio = this.portfolioSVC.portfolio;
-
-    this.userDataForm = this.formBuilder.group({
-      nombre: [this.portfolio.datospersonales.nombre],
-      titulo: [this.portfolio.datospersonales.titulo],
-      acerdemi: [this.portfolio.datospersonales.acerdemi],
-      imgUser: [this.portfolio.datospersonales.imgUser],
-    });
+    public userService: UserDataService,
+    public datosPSvc: DatosPersonalesService
+  ) {
+    this.datospersonales = this.datosPSvc.datospersonales;
   }
 
+  ngOnInit(): void {
+    this.id = this.datospersonales[0].id;
+    this.cargorFormulario();
+  }
+  cargorFormulario() {
+    this.userDataForm = this.formBuilder.group({
+      nombre: [this.datospersonales[0].nombre],
+      titulo: [this.datospersonales[0].titulo],
+      aboutMe: [this.datospersonales[0].aboutMe],
+      imgUser: [this.datospersonales[0].imgUser],
+      id: [this.id],
+    });
+  }
   guardoCambios() {
-    this.portfolio.datospersonales = this.userDataForm.value;
+    this.datospersonales[0] = this.userDataForm.value;
 
-    this.portfolioSVC.savePortfolio(this.portfolio);
+    this.datosPSvc.updateDatosP(this.datospersonales[0]);
+
+    this.evento.emit();
   }
   emitirEvento(opcion: String) {
     if (opcion == "guardar") {

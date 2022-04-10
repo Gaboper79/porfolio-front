@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { Observable } from "rxjs";
 import { ExperienciaI } from "src/app/model/experiencia";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+import { ExperienciaService } from "src/app/servicios/experiencia.service";
+
 import { UserDataService } from "src/app/servicios/user-data.service";
 @Component({
   selector: "app-experiencia",
@@ -16,11 +18,13 @@ export class ExperienciaComponent implements OnInit {
   nuevaExpe: boolean = false;
 
   constructor(
-    public portfolioSVC: PortfolioService,
+    public experienciaSVC: ExperienciaService,
     public userService: UserDataService
   ) {}
   ngOnInit(): void {
-    this.experienciaList = this.portfolioSVC.portfolio.experiencia;
+    this.experienciaSVC.getExperiencia$().subscribe((res) => {
+      this.experienciaList = res;
+    });
   }
 
   nuevaExpeFuncion() {
@@ -28,6 +32,5 @@ export class ExperienciaComponent implements OnInit {
   }
   graboNuevaExp() {
     this.nuevaExpe = !this.nuevaExpe;
-    this.portfolioSVC.agregoNuevoItemAPorfolio;
   }
 }

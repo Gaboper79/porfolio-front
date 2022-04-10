@@ -1,92 +1,61 @@
 {
-  "portfolio": [
-    {
-      "id": 2,
-      "email": "pepe@hotmail.com",
-      "datospersonales": {
-        "nombre": "Gabriel Perdomossss",
-        "titulo": "Full Stack Developer JR",
-        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier.",
-        "imgUser": "./assets/img/foto cv.jpg"
-      },
-      "educacion": {
-        "titulo": "Bachiller con orientacion en cumputacion"
-      },
-      "experiencia": [
-        {
-          "empresa": "Proanalisis S.A.",
-          "img": "http://",
-          "descripcion": "larala laraila",
-          "fechIni": "10/10/2019",
-          "fechaFin": "10/10/2021",
-          "puesto": "Tecnico Muestreador"
-        }
-      ],
-      "skills": [],
-      "proyectos": []
-    },
-    {
-      "id": 3,
-      "email": "pepe@hotmail.com",
-      "datospersonales": {
-        "nombre": "PePe Suarez",
-        "imgUser": "./assets/img/foto cv.jpg",
-        "titulo": "Full Stack Developer JR",
-        "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier."
-      },
-      "educacion": {
-        "titulo": "Bachiller con orientacion en cumputacion"
-      },
-      "experiencia": [
-        {
-          "empresa": "Proanalisis S.A.",
-          "img": "http://",
-          "descripcion": "larala laraila",
-          "fechIni": "10/10/2019",
-          "fechaFin": "10/10/2021",
-          "puesto": "Tecnico Muestreador"
-        }
-      ],
-      "skills": [],
-      "proyectos": []
-    }
-  ],
-  "signupUsers": [
+  "email": "pepe@hotmail.com",
+  "redesSociales": {
+    "id": 1,
+    "fb": "lsls",
+    "twiter": "el pajarinto",
+    "ws": "111-111",
+    "github": "mi gitgub"
+  },
+  "datospersonales": {
+    "id": 1,
+    "nombre": "Gabriel Perdomossss",
+    "titulo": "Full Stack Developer JR",
+    "acerdemi": "Soy una persona constante, perseverante y responsable. Me gustan los desafios e incorporar nuevos conocimientos. Ademas disfruto trabajar con la madera, me considero un aprendiz de luthier.",
+    "imgUser": "./assets/img/foto cv.jpg"
+  },
+  "educacion": [
     {
       "id": 1,
-      "email": "gabo",
-      "password": "1234",
-      "role": "administrator"
-    },
-    {
-      "id": 2,
-      "email": "lau",
-      "password": "",
-      "role": "user"
+      "titulo": "Bachiller con orientacion en cumputacion",
+      "establecimiento": "Virgen del valler",
+      "fecha": "1990"
     }
   ],
-  "prueba": [
-    [
-      {
-        "id": 1,
-        "nombre": "Gabo"
-      },
-      {
-        "id": 1,
-        "nombre": "Gabo"
-      },
-      {
-        "id": 1,
-        "nombre": "Gabo"
-      }
-    ],
+  "experiencia": [
     {
-      "id": 2,
-      "nombre": "Gabosssss"
+      "id": 1,
+      "empresa": "Proanalisis S.A.",
+      "descripcion": "larala laraila",
+      "fechIni": "10/10/2019",
+      "fechaFin": "10/10/2021",
+      "puesto": "Tecnico Muestreador",
+      "img": "./assets/img/proanalisis2.png"
     },
     {
-      "id": 3,
-      "nombre": "Gabosssss"
+      "id": 2,
+      "empresa": "royal and sun",
+      "descripcion": "asdfas",
+      "fechIni": "2009",
+      "fechaFin": "20010",
+      "puesto": "Emisor de polizas",
+      "img": "./assets/img/royal.png"
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "skill": "java scrip",
+      "valor": 80
+    }
+  ],
+  "proyectos": [
+    {
+      "id": 1,
+      "nombre": "Adm-porfolio",
+      "link": "",
+      "descripcion": "asdfa",
+      "img": ""
     }
   ]
 }

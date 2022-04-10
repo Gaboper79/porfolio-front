@@ -1,24 +1,6 @@
 <div class="container botonesHomecontainer">
-  <h2>Portfolios disponibles</h2>
-  <div *ngIf="userService.userlogin">
-    <button class="btn btnFlashero" (click)="nuevoPortfolio()">Nuevo</button>
-  </div>
+  <h2>PORFOLIO</h2>
 </div>
 <div class="container">
-  <table class="mitabla">
-    <tbody>
-      <tr
-        *ngFor="let portfolio of portfolios"
-        (click)="mostrarporfolio(portfolio)"
-      >
-        <td>{{portfolio.id}}</td>
-        <td>{{portfolio.datospersonales.nombre}}</td>
-        <td>{{portfolio.email}}</td>
-        <td><img src="{{portfolio.datospersonales.imgUser}}" /></td>
-        <td *ngIf="userService.userlogin">
-          <button class="btn btnFlashero">X</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <app-porfolio></app-porfolio>
 </div>

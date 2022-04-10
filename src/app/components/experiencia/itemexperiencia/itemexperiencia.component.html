@@ -2,7 +2,7 @@
   <div class="row g-0">
     <div class="col-md-3 img_experiencia">
       <img
-        src="{{experiencia.img}}"
+        src="./assets/img/proanalisis2.png"
         class="img-fluid rounded-start"
         alt="Logo"
       />
@@ -25,20 +25,25 @@
         </p>
       </div>
     </div>
+    <app-formexper
+      *ngIf="modifico"
+      (evento)="evento($event)"
+      [experiencia]="experiencia"
+      [item]="item"
+      [modifico]="modifico"
+    ></app-formexper>
   </div>
-  <button
-    type="button"
-    class="btnFlashero mb-3"
-    *ngIf="userService.userlogin && !modifico"
-    (click)="CambioModifico()"
-  >
-    {{(modifico)?"Grabar":"Editar"}}
-    <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
-  </button>
-  <app-formexper
-    *ngIf="modifico"
-    (evento)="evento($event)"
-    [indexExp]="indexExp"
-    [modifico]="modifico"
-  ></app-formexper>
+  <div class="container btnOptions">
+    <button type="button" class="btnFlashero mb-3" (click)="CambioModifico()">
+      Editar
+      <fa-icon [icon]="faEdit" style="color: rgb(228, 231, 82);"></fa-icon>
+    </button>
+    <button
+      type="button"
+      class="btnFlashero mb-3"
+      (click)="eliminarExperiencia()"
+    >
+      <fa-icon [icon]="faDelete" style="color: rgb(226, 95, 72);"></fa-icon>
+    </button>
+  </div>
 </div>

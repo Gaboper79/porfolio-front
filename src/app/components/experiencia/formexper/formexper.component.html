@@ -1,5 +1,5 @@
-<form [formGroup]="userDataForm">
-  <div class="container-form Experiencia">
+<div class="container-form Experiencia" *ngIf="modifico || nuevaExpe">
+  <form [formGroup]="userDataForm">
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
@@ -44,5 +44,5 @@
         </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { ExperienciaI } from "src/app/model/experiencia";
 import { PortfolioI } from "src/app/model/portfolio";
+import { ExperienciaService } from "src/app/servicios/experiencia.service";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 
 @Component({
@@ -10,19 +12,20 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
 })
 export class FormexperComponent implements OnInit {
   userDataForm!: FormGroup;
-  portfolio!: PortfolioI;
-
+  id!: number;
   @Output() evento = new EventEmitter<String>();
-  @Input() indexExp!: number;
+  @Input() experiencia!: ExperienciaI;
   @Input() modifico!: boolean;
+  @Input() nuevaExpe!: boolean;
+  @Input() item!: number;
+
   constructor(
     private formBuilder: FormBuilder,
-    public portfolioSVC: PortfolioService
+    private experienciaScv: ExperienciaService
   ) {}
 
   ngOnInit(): void {
-    this.portfolio = this.portfolioSVC.portfolio;
-    if (this.modifico) {
+    if (this.modifico || !this.nuevaExpe) {
       this.cargoformModifico();
     } else {
       this.cargoformNuevo();
@@ -31,13 +34,14 @@ export class FormexperComponent implements OnInit {
 
   cargoformModifico() {
     this.userDataForm = this.formBuilder.group({
-      empresa: [this.portfolio.experiencia[this.indexExp].empresa],
-      descripcion: [this.portfolio.experiencia[this.indexExp].descripcion],
-      fechIni: [this.portfolio.experiencia[this.indexExp].fechIni],
-      fechaFin: [this.portfolio.experiencia[this.indexExp].fechaFin],
-      puesto: [this.portfolio.experiencia[this.indexExp].puesto],
-      img: [this.portfolio.experiencia[this.indexExp].img],
+      empresa: [this.experiencia.empresa],
+      descripcion: [this.experiencia.descripcion],
+      fechIni: [this.experiencia.fechIni],
+      fechaFin: [this.experiencia.fechaFin],
+      puesto: [this.experiencia.puesto],
+      img: [this.experiencia.img],
     });
+    this.id = this.experiencia.id;
   }
   cargoformNuevo() {
     this.userDataForm = this.formBuilder.group({
@@ -59,13 +63,13 @@ export class FormexperComponent implements OnInit {
   guardoCambios() {
     if (this.modifico) {
       //modifico
-      this.portfolio.experiencia[this.indexExp] = this.userDataForm.value;
-      this.portfolioSVC.savePortfolio(this.portfolio);
+      this.experiencia = this.userDataForm.value;
+      this.experiencia.id = this.id;
+      this.experienciaScv.updateExperiencia(this.experiencia, this.item);
     } else {
       //agrego nueva exp
-      this.portfolio.experiencia.push(this.userDataForm.value);
 
-      this.portfolioSVC.savePortfolio(this.portfolio);
+      this.experienciaScv.addExperiencia(this.userDataForm.value);
     }
   }
 }
