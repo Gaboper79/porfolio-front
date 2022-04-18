@@ -1,4 +1,3 @@
-import { FormPortfolioComponent } from "./components/form-portfolio/form-portfolio.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
@@ -8,7 +7,6 @@ import { PorfolioComponent } from "./components/porfolio/porfolio.component";
 const routes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent },
-  { path: "formPort", component: FormPortfolioComponent },
   { path: "portfolio", component: PorfolioComponent },
 ];
 

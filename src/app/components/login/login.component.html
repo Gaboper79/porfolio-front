@@ -1,26 +1,55 @@
 <div class="container">
-  <form class="container-form" (submit)="ingresar()">
+  <form
+    class="container-form"
+    (submit)="ingresar()"
+    [formGroup]="loginDataForm"
+  >
     <div class="mb-3">
-      <label for="usuario" class="form-label">Email</label>
+      <label for="usuario" class="form-label"> Email</label>
       <input
-        type="text"
+        type="email"
         class="form-control"
-        name="mail"
-        [(ngModel)]="usuario.mail"
+        name="email"
+        formControlName="email"
+        required
       />
     </div>
+    <p
+      *ngIf="loginDataForm.get('email')?.touched && loginDataForm.get('email')?.errors"
+      class="alert alert-danger"
+    >
+      {{loginDataForm.get('email')?.errors?.['required']? "El mail no debe "+
+      "estar vacio":"Debeingresar un mail valido...." }}
+    </p>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Password</label>
       <input
         type="password"
         class="form-control"
         name="exampleInputPassword1"
-        [(ngModel)]="usuario.password"
+        formControlName="password"
+        required
       />
     </div>
+    <p
+      class="alert alert-danger"
+      *ngIf="loginDataForm.get('password')?.touched && loginDataForm.get('password')?.errors?.['required']"
+    >
+      La contraseña es requerida
+    </p>
+    <p
+      class="alert alert-danger"
+      *ngIf="loginDataForm.get('password')?.touched && loginDataForm.get('password')?.errors?.['minlength']"
+    >
+      Minimo 4 caracteres...
+    </p>
 
     <div class="container-btnlogin">
-      <button type="submit" class="btn btnFlashero btnLogin">
+      <button
+        type="submit"
+        class="btn btnFlashero btnLogin"
+        [disabled]="loginDataForm.invalid"
+      >
         Login
       </button>
     </div>
