@@ -5,17 +5,19 @@
       <app-itemproy
         *ngFor="let proyectoItem of proyectoList;let i=index "
         [proyecto]="proyectoItem"
-        [indexProy]="i"
+        [item]="i"
       ></app-itemproy>
     </span>
     <app-formproyectos
       *ngIf="nuevaProy"
+      [nuevaProy]="nuevaProy"
       (evento)="graboNuevaExp()"
     ></app-formproyectos>
+
     <button
       type="button"
       class="btnFlashero mt-2"
-      *ngIf="userService.userlogin && !nuevaProy"
+      *ngIf="!nuevaProy"
       (click)="nuevaExpeFuncion()"
     >
       Agregar

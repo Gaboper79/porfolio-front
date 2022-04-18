@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ExperienciaI } from "../../../model/experiencia";
-
-import { UserDataService } from "src/app/servicios/user-data.service";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { ExperienciaService } from "src/app/servicios/experiencia.service";
 
@@ -16,10 +14,7 @@ export class ItemexperienciaComponent implements OnInit {
   modifico = false;
   faEdit = faEdit;
   faDelete = faTrash;
-  constructor(
-    public experienciaSVC: ExperienciaService,
-    public userService: UserDataService
-  ) {}
+  constructor(private experienciaSVC: ExperienciaService) {}
 
   ngOnInit(): void {}
   CambioModifico() {

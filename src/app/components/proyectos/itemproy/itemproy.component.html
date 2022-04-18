@@ -14,20 +14,31 @@
         <a href="#">{{proyecto.link}}</a>
       </div>
     </div>
+    <app-formproyectos
+      *ngIf="modifico"
+      (evento)="evento($event)"
+      [proyecto]="proyecto"
+      [item]="item"
+      [modifico]="modifico"
+    ></app-formproyectos>
   </div>
-  <button
-    type="button"
-    class="btnFlashero mb-3"
-    *ngIf="userService.userlogin && !modifico"
-    (click)="CambioModifico()"
-  >
-    {{(modifico)?"Grabar":"Editar"}}
-    <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
-  </button>
-  <app-formproyectos
-    *ngIf="modifico"
-    (evento)="evento($event)"
-    [indexProy]="indexProy"
-    [modifico]="modifico"
-  ></app-formproyectos>
+  <div class="container btnOptions">
+    <button
+      type="button"
+      class="btnFlashero mb-3"
+      *ngIf="!modifico"
+      (click)="CambioModifico()"
+    >
+      Editar
+      <fa-icon [icon]="faEdit" style="color: rgb(228, 231, 82);"></fa-icon>
+    </button>
+    <button
+      *ngIf="!modifico"
+      type="button"
+      class="btnFlashero mb-3"
+      (click)="eliminarProyecto()"
+    >
+      <fa-icon [icon]="faDelete" style="color: rgb(226, 95, 72);"></fa-icon>
+    </button>
+  </div>
 </div>

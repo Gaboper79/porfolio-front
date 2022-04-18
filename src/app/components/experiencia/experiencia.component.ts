@@ -18,8 +18,8 @@ export class ExperienciaComponent implements OnInit {
   nuevaExpe: boolean = false;
 
   constructor(
-    public readonly experienciaSVC: ExperienciaService,
-    public readonly userService: UserDataService
+    private readonly experienciaSVC: ExperienciaService,
+    private readonly userService: UserDataService
   ) {}
   ngOnInit(): void {
     this.experienciaSVC.getExperiencia$().subscribe((res) => {

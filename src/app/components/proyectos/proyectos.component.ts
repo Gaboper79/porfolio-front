@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { ProyectoI } from "src/app/model/proyectoI";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
+import { ProyectoService } from "src/app/servicios/proyecto.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
 @Component({
   selector: "app-proyectos",
@@ -16,11 +17,13 @@ export class ProyectosComponent implements OnInit {
   nuevaProy: boolean = false;
 
   constructor(
-    public portfolioSVC: PortfolioService,
-    public userService: UserDataService
+    private readonly proyectoSVC: ProyectoService,
+    private readonly userService: UserDataService
   ) {}
   ngOnInit(): void {
-    this.proyectoList = this.portfolioSVC.portfolio.proyectos;
+    this.proyectoSVC.getProyecto$().subscribe((res) => {
+      this.proyectoList = res;
+    });
   }
 
   nuevaExpeFuncion() {
@@ -28,6 +31,5 @@ export class ProyectosComponent implements OnInit {
   }
   graboNuevaExp() {
     this.nuevaProy = !this.nuevaProy;
-    this.portfolioSVC.agregoNuevoItemAPorfolio;
   }
 }

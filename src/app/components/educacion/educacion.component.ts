@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { UserDataService } from "src/app/servicios/user-data.service";
 import { EducacionI } from "src/app/model/educacionI";
-
 import { EducacionService } from "src/app/servicios/Educacion.service";
 
 @Component({
@@ -19,10 +17,7 @@ export class EducacionComponent implements OnInit {
 
   modifico = false;
 
-  constructor(
-    public readonly educacionSvc: EducacionService,
-    public readonly userService: UserDataService
-  ) {}
+  constructor(private readonly educacionSvc: EducacionService) {}
 
   ngOnInit(): void {
     this.educacionSvc

@@ -18,8 +18,8 @@ export class FormeducComponent implements OnInit {
   @Input() modifico!: boolean;
   @Input() nuevaEdu!: boolean;
   constructor(
-    private readonly formBuilder: FormBuilder,
-    public readonly educacionSvc: EducacionService
+    private formBuilder: FormBuilder,
+    private readonly educacionSvc: EducacionService
   ) {}
 
   ngOnInit(): void {

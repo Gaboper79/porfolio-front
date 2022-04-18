@@ -3,8 +3,6 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { EducacionI } from "src/app/model/educacionI";
 import { EducacionService } from "src/app/servicios/Educacion.service";
 
-import { UserDataService } from "src/app/servicios/user-data.service";
-
 @Component({
   selector: "app-itemeducacion",
   templateUrl: "./itemeducacion.component.html",
@@ -16,10 +14,7 @@ export class ItemeducacionComponent implements OnInit {
   modifico = false;
   faEdit = faEdit;
   faDelete = faTrash;
-  constructor(
-    public educacionSvc: EducacionService,
-    public userService: UserDataService
-  ) {}
+  constructor(private readonly educacionSvc: EducacionService) {}
 
   ngOnInit(): void {}
   CambioModifico() {

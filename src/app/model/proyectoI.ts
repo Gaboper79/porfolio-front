@@ -3,4 +3,5 @@ export interface ProyectoI {
   link: string;
   descripcion: string;
   img: string;
+  id: number;
 }

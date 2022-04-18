@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ExperienciaI } from "src/app/model/experiencia";
-import { PortfolioI } from "src/app/model/portfolio";
+
 import { ExperienciaService } from "src/app/servicios/experiencia.service";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 
@@ -21,7 +21,7 @@ export class FormexperComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private experienciaScv: ExperienciaService
+    private readonly experienciaScv: ExperienciaService
   ) {}
 
   ngOnInit(): void {

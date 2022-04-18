@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { PortfolioI } from "src/app/model/portfolio";
+import { ProyectoI } from "src/app/model/proyectoI";
+
 import { PortfolioService } from "src/app/servicios/portfolio.service";
+import { ProyectoService } from "src/app/servicios/proyecto.service";
 
 @Component({
   selector: "app-formproyectos",
@@ -10,19 +12,20 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
 })
 export class FormproyectosComponent implements OnInit {
   userDataForm!: FormGroup;
-  portfolio!: PortfolioI;
-
+  id!: number;
   @Output() evento = new EventEmitter<String>();
-  @Input() indexProy!: number;
+  @Input() proyecto!: ProyectoI;
+  @Input() item!: number;
   @Input() modifico!: boolean;
+  @Input() nuevaProy!: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
-    public portfolioSVC: PortfolioService
+    private proyectoSvc: ProyectoService
   ) {}
 
   ngOnInit(): void {
-    this.portfolio = this.portfolioSVC.portfolio;
-    if (this.modifico) {
+    if (this.modifico || !this.nuevaProy) {
       this.cargoformModifico();
     } else {
       this.cargoformNuevo();
@@ -31,19 +34,18 @@ export class FormproyectosComponent implements OnInit {
 
   cargoformModifico() {
     this.userDataForm = this.formBuilder.group({
-      nombre: [this.portfolio.proyectos[this.indexProy].nombre],
-      link: [this.portfolio.proyectos[this.indexProy].link],
-      descripcion: [this.portfolio.proyectos[this.indexProy].descripcion],
-
-      img: [this.portfolio.proyectos[this.indexProy].img],
+      nombre: [this.proyecto.nombre],
+      link: [this.proyecto.link],
+      descripcion: [this.proyecto.descripcion],
+      img: [this.proyecto.img],
     });
+    this.id = this.proyecto.id;
   }
   cargoformNuevo() {
     this.userDataForm = this.formBuilder.group({
       nombre: [""],
       link: [""],
       descripcion: [""],
-
       img: [""],
     });
   }
@@ -57,13 +59,12 @@ export class FormproyectosComponent implements OnInit {
   guardoCambios() {
     if (this.modifico) {
       //modifico
-      this.portfolio.proyectos[this.indexProy] = this.userDataForm.value;
-      this.portfolioSVC.savePortfolio(this.portfolio);
+      this.proyecto = this.userDataForm.value;
+      this.proyecto.id = this.id;
+      this.proyectoSvc.updateProyecto(this.proyecto, this.item);
     } else {
       //agrego nueva exp
-      this.portfolio.proyectos.push(this.userDataForm.value);
-
-      this.portfolioSVC.savePortfolio(this.portfolio);
+      this.proyectoSvc.addProyecto(this.userDataForm.value);
     }
   }
 }
