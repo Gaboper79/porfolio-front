@@ -5,24 +5,35 @@
         <h5>{{educacion.fecha}}</h5>
       </div>
       <div class="col-md-9 text-center">
-        <h4>{{educacion.establecimiento}}</h4>
+        <h4>{{educacion.institucion}}</h4>
         <p>{{educacion.titulo}}</p>
       </div>
     </div>
   </div>
-  <button
-    type="button"
-    class="btnFlashero mb-3"
-    *ngIf="userService.userlogin && !modifico"
-    (click)="CambioModifico()"
-  >
-    {{(modifico)?"Grabar":"Editar"}}
-    <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
-  </button>
   <app-formeduc
     *ngIf="modifico"
     (evento)="evento($event)"
-    [indexEdu]="indexEdu"
+    [educacion]="educacion"
+    [item]="item"
     [modifico]="modifico"
   ></app-formeduc>
+  <div class="container btnOptions">
+    <button
+      *ngIf="!modifico"
+      type="button"
+      class="btnFlashero mb-3"
+      (click)="CambioModifico()"
+    >
+      Editar
+      <fa-icon [icon]="faEdit" style="color: rgb(228, 231, 82);"></fa-icon>
+    </button>
+    <button
+      *ngIf="!modifico"
+      type="button"
+      class="btnFlashero mb-3"
+      (click)="eliminarEducacion()"
+    >
+      <fa-icon [icon]="faDelete" style="color: rgb(226, 95, 72);"></fa-icon>
+    </button>
+  </div>
 </div>

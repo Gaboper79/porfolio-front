@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { SkillI } from "src/app/model/skill";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+
+import { SkillService } from "src/app/servicios/skill.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
@@ -12,16 +13,20 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 export class SkillsComponent implements OnInit {
   faEdit = faEdit;
   faAdd = faPlusCircle;
-  modifico = false;
+
   skillList!: SkillI[];
+
+  modifico = false;
   nuevaSkill: boolean = false;
 
   constructor(
-    public portfolioSVC: PortfolioService,
-    public userService: UserDataService
+    public readonly skillSVC: SkillService,
+    public readonly userService: UserDataService
   ) {}
   ngOnInit(): void {
-    this.skillList = this.portfolioSVC.portfolio.skills;
+    this.skillSVC.getSkill$().subscribe((result) => {
+      this.skillList = result;
+    });
   }
   nuevaSkillFuncion() {
     this.nuevaSkill = !this.nuevaSkill;
@@ -29,6 +34,5 @@ export class SkillsComponent implements OnInit {
 
   graboNuevaExp() {
     this.nuevaSkill = !this.nuevaSkill;
-    this.portfolioSVC.agregoNuevoItemAPorfolio;
   }
 }

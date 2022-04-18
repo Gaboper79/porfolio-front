@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { PortfolioI } from "src/app/model/portfolio";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+import { EducacionI } from "src/app/model/educacionI";
+import { EducacionService } from "src/app/servicios/Educacion.service";
 
 @Component({
   selector: "app-formeduc",
@@ -10,19 +10,20 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
 })
 export class FormeducComponent implements OnInit {
   userDataForm!: FormGroup;
-  portfolio!: PortfolioI;
+  id!: number;
 
   @Output() evento = new EventEmitter<String>();
-  @Input() indexEdu!: number;
+  @Input() educacion!: EducacionI;
+  @Input() item!: number;
   @Input() modifico!: boolean;
+  @Input() nuevaEdu!: boolean;
   constructor(
-    private formBuilder: FormBuilder,
-    public portfolioSVC: PortfolioService
+    private readonly formBuilder: FormBuilder,
+    public readonly educacionSvc: EducacionService
   ) {}
 
   ngOnInit(): void {
-    this.portfolio = this.portfolioSVC.portfolio;
-    if (this.modifico) {
+    if (this.modifico || !this.nuevaEdu) {
       this.cargoformModifico();
     } else {
       this.cargoformNuevo();
@@ -30,17 +31,16 @@ export class FormeducComponent implements OnInit {
   }
   cargoformModifico() {
     this.userDataForm = this.formBuilder.group({
-      titulo: [this.portfolio.educacion[this.indexEdu].titulo],
-      establecimiento: [
-        this.portfolio.educacion[this.indexEdu].establecimiento,
-      ],
-      fecha: [this.portfolio.educacion[this.indexEdu].fecha],
+      titulo: [this.educacion.titulo],
+      institucion: [this.educacion.institucion],
+      fecha: [this.educacion.fecha],
     });
+    this.id = this.educacion.id;
   }
   cargoformNuevo() {
     this.userDataForm = this.formBuilder.group({
       titulo: [""],
-      establecimiento: [""],
+      institucion: [""],
       fecha: [""],
     });
   }
@@ -53,13 +53,12 @@ export class FormeducComponent implements OnInit {
   guardoCambios() {
     if (this.modifico) {
       //modifico
-      this.portfolio.educacion[this.indexEdu] = this.userDataForm.value;
-      this.portfolioSVC.savePortfolio(this.portfolio);
+      this.educacion = this.userDataForm.value;
+      this.educacion.id = this.id;
+      this.educacionSvc.updateEducacion(this.educacion, this.item);
     } else {
       //agrego nueva exp
-      this.portfolio.educacion.push(this.userDataForm.value);
-
-      this.portfolioSVC.savePortfolio(this.portfolio);
+      this.educacionSvc.addEducacion(this.userDataForm.value);
     }
   }
 }

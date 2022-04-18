@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ExperienciaI } from "../../../model/experiencia";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+
 import { UserDataService } from "src/app/servicios/user-data.service";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { ExperienciaService } from "src/app/servicios/experiencia.service";

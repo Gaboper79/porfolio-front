@@ -1,5 +1,6 @@
 export interface EducacionI {
   titulo: string;
-  establecimiento: string;
+  institucion: string;
   fecha: string;
+  id: number;
 }

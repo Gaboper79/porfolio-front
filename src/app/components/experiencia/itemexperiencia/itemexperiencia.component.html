@@ -34,11 +34,17 @@
     ></app-formexper>
   </div>
   <div class="container btnOptions">
-    <button type="button" class="btnFlashero mb-3" (click)="CambioModifico()">
+    <button
+      *ngIf="!modifico"
+      type="button"
+      class="btnFlashero mb-3"
+      (click)="CambioModifico()"
+    >
       Editar
       <fa-icon [icon]="faEdit" style="color: rgb(228, 231, 82);"></fa-icon>
     </button>
     <button
+      *ngIf="!modifico"
       type="button"
       class="btnFlashero mb-3"
       (click)="eliminarExperiencia()"

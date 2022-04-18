@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { UserDataService } from "src/app/servicios/user-data.service";
 import { EducacionI } from "src/app/model/educacionI";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+
+import { EducacionService } from "src/app/servicios/Educacion.service";
 
 @Component({
   selector: "app-educacion",
@@ -13,23 +14,25 @@ export class EducacionComponent implements OnInit {
   faEdit = faEdit;
   faAdd = faPlusCircle;
 
-  modifico = false;
-
   educacionList!: EducacionI[];
   nuevaEdu: boolean = false;
+
+  modifico = false;
+
   constructor(
-    public portfolioSVC: PortfolioService,
-    public userService: UserDataService
+    public readonly educacionSvc: EducacionService,
+    public readonly userService: UserDataService
   ) {}
 
   ngOnInit(): void {
-    this.educacionList = this.portfolioSVC.portfolio.educacion;
+    this.educacionSvc
+      .geteducacion$()
+      .subscribe((res) => (this.educacionList = res));
   }
   nuevaEduFuncion() {
     this.nuevaEdu = !this.nuevaEdu;
   }
   graboNuevaEdu() {
     this.nuevaEdu = !this.nuevaEdu;
-    this.portfolioSVC.agregoNuevoItemAPorfolio;
   }
 }

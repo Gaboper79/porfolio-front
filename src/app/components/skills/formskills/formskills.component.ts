@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { PortfolioI } from "src/app/model/portfolio";
+import { SkillI } from "src/app/model/skill";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
+import { SkillService } from "src/app/servicios/skill.service";
 
 @Component({
   selector: "app-formskills",
@@ -10,19 +12,21 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
 })
 export class FormskillsComponent implements OnInit {
   userDataForm!: FormGroup;
-  portfolio!: PortfolioI;
+  id!: number;
 
   @Output() evento = new EventEmitter<String>();
-  @Input() indexSkill!: number;
+  @Input() item!: number;
+  @Input() skill!: SkillI;
+  @Input() nuevaSkill!: boolean;
   @Input() modifico!: boolean;
+
   constructor(
-    private formBuilder: FormBuilder,
-    public portfolioSVC: PortfolioService
+    private readonly formBuilder: FormBuilder,
+    private readonly skillSVC: SkillService
   ) {}
 
   ngOnInit(): void {
-    this.portfolio = this.portfolioSVC.portfolio;
-    if (this.modifico) {
+    if (this.modifico || !this.nuevaSkill) {
       this.cargoformModifico();
     } else {
       this.cargoformNuevo();
@@ -31,9 +35,10 @@ export class FormskillsComponent implements OnInit {
 
   cargoformModifico() {
     this.userDataForm = this.formBuilder.group({
-      skill: [this.portfolio.skills[this.indexSkill].skill],
-      valor: [this.portfolio.skills[this.indexSkill].valor],
+      skill: [this.skill.skill],
+      valor: [this.skill.valor],
     });
+    this.id = this.skill.id;
   }
   cargoformNuevo() {
     this.userDataForm = this.formBuilder.group({
@@ -51,13 +56,14 @@ export class FormskillsComponent implements OnInit {
   guardoCambios() {
     if (this.modifico) {
       //modifico
-      this.portfolio.skills[this.indexSkill] = this.userDataForm.value;
-      this.portfolioSVC.savePortfolio(this.portfolio);
+
+      this.skill = this.userDataForm.value;
+      this.skill.id = this.id;
+
+      this.skillSVC.updateSkill(this.skill, this.item);
     } else {
       //agrego nueva exp
-      this.portfolio.skills.push(this.userDataForm.value);
-
-      this.portfolioSVC.savePortfolio(this.portfolio);
+      this.skillSVC.addSkill(this.userDataForm.value);
     }
   }
 }

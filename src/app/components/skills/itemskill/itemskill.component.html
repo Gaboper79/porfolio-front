@@ -9,20 +9,31 @@
       [color]="color"
     ></round-progress>
     <div class="text-rounder-title">{{skill.skill}}</div>
-    <button
-      type="button"
-      class="btnFlashero mb-3"
-      *ngIf="userService.userlogin && !modifico"
-      (click)="CambioModifico()"
-    >
-      {{(modifico)?"Grabar":"Editar"}}
-      <fa-icon [icon]="faEdit" style="color: rgb(226, 95, 72);"></fa-icon>
-    </button>
   </div>
   <app-formskills
     *ngIf="modifico"
     (evento)="evento($event)"
-    [indexSkill]="indexSkil"
+    [skill]="skill"
+    [item]="item"
     [modifico]="modifico"
   ></app-formskills>
+  <div class="container btnOptions">
+    <button
+      type="button"
+      class="btnFlashero mb-3"
+      *ngIf="!modifico"
+      (click)="CambioModifico()"
+    >
+      Editar
+      <fa-icon [icon]="faEdit" style="color: rgb(228, 231, 82);"></fa-icon>
+    </button>
+    <button
+      *ngIf="!modifico"
+      type="button"
+      class="btnFlashero mb-3"
+      (click)="eliminarSkill()"
+    >
+      <fa-icon [icon]="faDelete" style="color: rgb(226, 95, 72);"></fa-icon>
+    </button>
+  </div>
 </div>

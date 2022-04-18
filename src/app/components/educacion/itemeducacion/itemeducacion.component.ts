@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { EducacionI } from "src/app/model/educacionI";
+import { EducacionService } from "src/app/servicios/Educacion.service";
 
-import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
@@ -12,13 +12,12 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 })
 export class ItemeducacionComponent implements OnInit {
   @Input() educacion!: EducacionI;
-  @Input() indexEdu!: number;
-
+  @Input() item!: number;
   modifico = false;
   faEdit = faEdit;
-
+  faDelete = faTrash;
   constructor(
-    public portfolioSVC: PortfolioService,
+    public educacionSvc: EducacionService,
     public userService: UserDataService
   ) {}
 
@@ -30,5 +29,8 @@ export class ItemeducacionComponent implements OnInit {
     if (this.modifico == true) {
     }
     this.modifico = !this.modifico;
+  }
+  eliminarEducacion() {
+    this.educacionSvc.deleteEducacion(this.educacion, this.item);
   }
 }

@@ -1,41 +1,43 @@
-<form [formGroup]="userDataForm">
-  <div class="container-form Experiencia">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label for="empresa" class="form-label">Titulo</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="titulo"
-            placeholder="Titulo"
-          />
+<div class="container" *ngIf="modifico || nuevaEdu">
+  <form [formGroup]="userDataForm">
+    <div class="container-form Experiencia">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="empresa" class="form-label">Titulo</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="titulo"
+              placeholder="Titulo"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="descripcion" class="form-label">Establecimiento</label>
+            <input
+              class="form-control"
+              formControlName="institucion"
+              placeholder="Establecimiento"
+            />
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="descripcion" class="form-label">Establecimiento</label>
+        <div class="col-md-6">
+          <label for="descripcion" class="form-label">Fecha</label>
           <input
             class="form-control"
-            formControlName="establecimiento"
-            placeholder="Establecimiento"
+            formControlName="fecha"
+            placeholder="Fecha"
           />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <label for="descripcion" class="form-label">Fecha</label>
-        <input
-          class="form-control"
-          formControlName="fecha"
-          placeholder="Fecha"
-        />
-        <div class="container mt-5">
-          <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
-            Guardar
-          </button>
-          <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
-            Cancelar
-          </button>
+          <div class="container mt-5">
+            <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
+              Guardar
+            </button>
+            <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
+              Cancelar
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { SkillI } from "src/app/model/skill";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+
+import { SkillService } from "src/app/servicios/skill.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
@@ -12,9 +13,10 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 })
 export class ItemskillComponent implements OnInit {
   @Input() skill!: SkillI;
-  @Input() indexSkil!: number;
+  @Input() item!: number;
   modifico = false;
   faEdit = faEdit;
+  faDelete = faTrash;
 
   current!: number;
   max = 100;
@@ -23,7 +25,7 @@ export class ItemskillComponent implements OnInit {
   color = "#479c4e";
 
   constructor(
-    public portfolioSVC: PortfolioService,
+    public skillSVC: SkillService,
     public userService: UserDataService
   ) {}
 
@@ -37,5 +39,8 @@ export class ItemskillComponent implements OnInit {
     if (this.modifico == true) {
     }
     this.modifico = !this.modifico;
+  }
+  eliminarSkill() {
+    this.skillSVC.deleteSkill(this.skill, this.item);
   }
 }
