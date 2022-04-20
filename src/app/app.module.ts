@@ -28,6 +28,7 @@ import { ItemexperienciaComponent } from "./components/experiencia/itemexperienc
 import { ItemeducacionComponent } from './components/educacion/itemeducacion/itemeducacion.component';
 import { ItemproyComponent } from './components/proyectos/itemproy/itemproy.component';
 import { ItemskillComponent } from './components/skills/itemskill/itemskill.component';
+import { RegistroComponent } from './components/auth/registro.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ItemskillComponent } from './components/skills/itemskill/itemskill.comp
     ItemeducacionComponent,
     ItemproyComponent,
     ItemskillComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
