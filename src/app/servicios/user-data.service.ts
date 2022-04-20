@@ -9,8 +9,7 @@ import { UserI } from "../model/userlogin";
 export class UserDataService {
   private usuario!: UserI;
   private user$!: Subject<UserI>;
-  private modifico: boolean = false;
-  private subjetModifico = new Subject<any>();
+
   userlogin: boolean = false;
 
   Url = "http://localhost:3000";
