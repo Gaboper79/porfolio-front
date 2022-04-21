@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router, Routes } from "@angular/router";
+import { LoginUsuario } from "src/app/model/security/login-usuario";
 import { UserI } from "src/app/model/userlogin";
+import { AuthService } from "src/app/servicios/auth.service";
+import { TokenService } from "src/app/servicios/token.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
@@ -10,29 +13,49 @@ import { UserDataService } from "src/app/servicios/user-data.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
-  usuario = { mail: "", password: "" };
   loginDataForm!: FormGroup;
-  userRegistrado: any;
-  login: boolean = false;
+  islogged: boolean = false;
+  isLoginFailed: boolean = false;
+  loginUsuario!: LoginUsuario;
+  nombreUsuario!: string;
+  password!: string;
+  roles: string[] = [];
+  errMsj!: string;
 
   constructor(
-    private userService: UserDataService,
-    private ruta: Router,
+    private tokenSVC: TokenService,
+    private authSvc: AuthService,
+    private router: Router,
     private formBuilder: FormBuilder
   ) {}
   ngOnInit(): void {
+    if (this.tokenSVC.getToken()) {
+      this.islogged = true;
+      this.isLoginFailed = false;
+      this.roles = this.tokenSVC.getAuthorities();
+    }
     this.loginDataForm = this.cargoformNuevo();
   }
 
-  ingresar() {
-    console.log("loguinn....");
+  onLogin() {
+    this.loginUsuario = this.loginDataForm.value;
+    console.log(
+      this.loginUsuario.nombreUsuario + "  ps " + this.loginUsuario.password
+    );
 
-    /* this.userService.login(this.usuario.mail, this.usuario.password);
-    this.ruta.navigate(["/"]); */
+    this.authSvc.login(this.loginUsuario).subscribe((data) => {
+      this.islogged = true;
+      this.isLoginFailed = false;
+      this.tokenSVC.setToken(data.token);
+      this.tokenSVC.setUserNAme(data.nombreUsuario);
+      this.tokenSVC.setAuthorities(data.authorities);
+      this.roles = data.authorities;
+    });
   }
+
   cargoformNuevo(): FormGroup {
     return this.formBuilder.group({
-      email: ["", [Validators.required, Validators.email]],
+      nombreUsuario: ["", [Validators.required]],
       password: [
         "",
         [
