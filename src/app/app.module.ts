@@ -12,7 +12,7 @@ import { SkillsComponent } from "./components/skills/skills.component";
 import { ProyectosComponent } from "./components/proyectos/proyectos.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RoundprogressModule } from "angular-svg-round-progressbar";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HomeComponent } from "./components/home/home.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UserDataService } from "./servicios/user-data.service";
@@ -25,10 +25,11 @@ import { FormeducComponent } from "./components/educacion/formeduc/formeduc.comp
 import { FormskillsComponent } from "./components/skills/formskills/formskills.component";
 import { FormproyectosComponent } from "./components/proyectos/formproyectos/formproyectos.component";
 import { ItemexperienciaComponent } from "./components/experiencia/itemexperiencia/itemexperiencia.component";
-import { ItemeducacionComponent } from './components/educacion/itemeducacion/itemeducacion.component';
-import { ItemproyComponent } from './components/proyectos/itemproy/itemproy.component';
-import { ItemskillComponent } from './components/skills/itemskill/itemskill.component';
-import { RegistroComponent } from './components/auth/registro.component';
+import { ItemeducacionComponent } from "./components/educacion/itemeducacion/itemeducacion.component";
+import { ItemproyComponent } from "./components/proyectos/itemproy/itemproy.component";
+import { ItemskillComponent } from "./components/skills/itemskill/itemskill.component";
+import { RegistroComponent } from "./components/auth/registro.component";
+import { InterceptorService } from "./interceptors/interceptor.service";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,10 @@ import { RegistroComponent } from './components/auth/registro.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [UserDataService],
+  providers: [
+    UserDataService,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

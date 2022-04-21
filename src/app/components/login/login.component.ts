@@ -39,9 +39,6 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.loginUsuario = this.loginDataForm.value;
-    console.log(
-      this.loginUsuario.nombreUsuario + "  ps " + this.loginUsuario.password
-    );
 
     this.authSvc.login(this.loginUsuario).subscribe((data) => {
       this.islogged = true;
@@ -50,6 +47,8 @@ export class LoginComponent implements OnInit {
       this.tokenSVC.setUserNAme(data.nombreUsuario);
       this.tokenSVC.setAuthorities(data.authorities);
       this.roles = data.authorities;
+      this.router.navigate(["/portfolio"]);
+      console.log("data:" + JSON.stringify(data));
     });
   }
 

@@ -37,3 +37,13 @@ img {
 .btn {
   color: red;
 }
+a {
+  padding: 13px;
+  border-radius: 40px;
+}
+a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #1a1111;
+  box-shadow: inset 0 0 7px 0 rgb(40, 141, 209);
+}

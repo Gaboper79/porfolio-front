@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 import { DatosPersonalesI } from "../model/DatosPersonalesI";
+import { AuthService } from "./auth.service";
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +13,7 @@ export class DatosPersonalesService {
   private datosP$: Subject<DatosPersonalesI[]>;
   Url = "http://localhost:8080/api/datosper";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authSVC: AuthService) {
     this.datosP$ = new Subject();
     this.http.get<DatosPersonalesI[]>(this.Url).subscribe((res) => {
       this.datospersonales = res;

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, map, Observable } from "rxjs";
 import { JwtDTO } from "../model/security/jwt-dto";
 import { LoginUsuario } from "../model/security/login-usuario";
 import { NuevoUsuario } from "../model/security/nuevo-usuario";
@@ -10,16 +10,28 @@ import { NuevoUsuario } from "../model/security/nuevo-usuario";
 })
 export class AuthService {
   authURL = "http://localhost:8080/auth/";
-
-  constructor(private httpClient: HttpClient) {}
+  currentUserSubject: BehaviorSubject<any>;
+  constructor(private httpClient: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<any>(
+      JSON.parse(sessionStorage.getItem("currentUser") || "{}")
+    );
+  }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
     return this.httpClient.post(this.authURL + "nuevo", nuevoUsuario);
   }
 
-  public login(loginUsuario: LoginUsuario): Observable<JwtDTO> {
-    console.log(loginUsuario.nombreUsuario);
+  public login(loginUsuario: LoginUsuario): Observable<any> {
+    return this.httpClient.post<any>(this.authURL + "login", loginUsuario).pipe(
+      map((data) => {
+        sessionStorage.setItem("currentUser", JSON.stringify(data));
+        this.currentUserSubject.next(data);
+        return data;
+      })
+    );
+  }
 
-    return this.httpClient.post<JwtDTO>(this.authURL + "login", loginUsuario);
+  get UsuaroAutenticado() {
+    return this.currentUserSubject.value;
   }
 }

@@ -1,6 +1,18 @@
 <div class="container botonesHomecontainer">
   <h2>PORFOLIO</h2>
 </div>
-<div class="container">
+
+<div *ngIf="currentUser.token" class="container">
   <app-porfolio></app-porfolio>
+</div>
+
+<div *ngIf="!currentUser.token" class="container text-center">
+  <h3>Por favor inicie session aqui.-</h3>
+  <a class="" routerLink="login"
+    ><span>
+      <fa-icon
+        [icon]="faBlog"
+        style="color: rgb(226, 95, 72);"
+      ></fa-icon> </span
+  ></a>
 </div>
