@@ -13,6 +13,7 @@ export class AuthService {
   currentUserSubject: BehaviorSubject<any>;
   isLogged = false;
   isLogged$!: Subject<any>;
+  roles: Array<string> = [];
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<any>(
       JSON.parse(sessionStorage.getItem("currentUser") || "{}")
@@ -42,5 +43,24 @@ export class AuthService {
   public logOut() {
     window.sessionStorage.clear();
     this.currentUserSubject.next("");
+  }
+  public isAdmin(): boolean {
+    this.getAuthorities();
+    if (this.roles.includes("ROLE_ADMIN")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  public getAuthorities() {
+    this.roles = [];
+
+    if (sessionStorage.getItem("currentUser")) {
+      JSON.parse(sessionStorage.getItem("currentUser")!).authorities.forEach(
+        (authority: any) => {
+          this.roles.push(authority.authority);
+        }
+      );
+    }
   }
 }

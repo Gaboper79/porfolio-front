@@ -18,7 +18,7 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 export class UserdataComponent implements OnInit {
   @Input() usermodifico!: boolean;
   modifico = false;
-
+  isAdmin = false;
   currentUserRole: string[] = [];
   datospersonales!: DatosPersonalesI[];
   currentUser: any;
@@ -37,6 +37,7 @@ export class UserdataComponent implements OnInit {
     this.authSVC.currentUserSubject.subscribe(
       (res) => (this.currentUser = res)
     );
+    this.isAdmin = this.authSVC.isAdmin();
   }
 
   muestroModifico() {
