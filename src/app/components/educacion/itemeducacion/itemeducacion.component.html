@@ -19,7 +19,7 @@
   ></app-formeduc>
   <div class="container btnOptions">
     <button
-      *ngIf="!modifico"
+      *ngIf="!modifico && isAdmin"
       type="button"
       class="btnFlashero mb-3"
       (click)="CambioModifico()"
@@ -28,7 +28,7 @@
       <fa-icon [icon]="faEdit" style="color: rgb(228, 231, 82);"></fa-icon>
     </button>
     <button
-      *ngIf="!modifico"
+      *ngIf="!modifico && isAdmin"
       type="button"
       class="btnFlashero mb-3"
       (click)="eliminarEducacion()"

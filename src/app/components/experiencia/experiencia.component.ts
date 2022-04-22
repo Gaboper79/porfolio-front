@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Observable } from "rxjs";
 import { ExperienciaI } from "src/app/model/experiencia";
+import { AuthService } from "src/app/servicios/auth.service";
 import { ExperienciaService } from "src/app/servicios/experiencia.service";
 
 import { UserDataService } from "src/app/servicios/user-data.service";
@@ -13,18 +14,19 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 export class ExperienciaComponent implements OnInit {
   faEdit = faEdit;
   faAdd = faPlusCircle;
-
+  isAdmin = false;
   experienciaList!: ExperienciaI[];
   nuevaExpe: boolean = false;
 
   constructor(
     private readonly experienciaSVC: ExperienciaService,
-    private readonly userService: UserDataService
+    private authSVC: AuthService
   ) {}
   ngOnInit(): void {
     this.experienciaSVC.getExperiencia$().subscribe((res) => {
       this.experienciaList = res;
     });
+    this.isAdmin = this.authSVC.isAdmin();
   }
 
   nuevaExpeFuncion() {

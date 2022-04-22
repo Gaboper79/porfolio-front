@@ -12,7 +12,7 @@
     [nuevaSkill]="nuevaSkill"
     (evento)="graboNuevaExp()"
   ></app-formskills>
-  <div class="container">
+  <div class="container" *ngIf="isAdmin">
     <button type="button" class="btnFlashero" (click)="nuevaSkillFuncion()">
       Agregar
       <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>

@@ -21,14 +21,14 @@
     <button
       type="button"
       class="btnFlashero mb-3"
-      *ngIf="!modifico"
+      *ngIf="!modifico && isAdmin"
       (click)="CambioModifico()"
     >
       Editar
       <fa-icon [icon]="faEdit" style="color: rgb(228, 231, 82);"></fa-icon>
     </button>
     <button
-      *ngIf="!modifico"
+      *ngIf="!modifico && isAdmin"
       type="button"
       class="btnFlashero mb-3"
       (click)="eliminarSkill()"

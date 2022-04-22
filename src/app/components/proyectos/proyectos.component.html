@@ -17,7 +17,7 @@
     <button
       type="button"
       class="btnFlashero mt-2"
-      *ngIf="!nuevaProy"
+      *ngIf="!nuevaProy && isAdmin"
       (click)="nuevaExpeFuncion()"
     >
       Agregar

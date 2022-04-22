@@ -16,7 +16,7 @@
     <button
       type="button"
       class="btnFlashero mt-2"
-      *ngIf="!nuevaEdu"
+      *ngIf="!nuevaEdu && isAdmin"
       (click)="nuevaEduFuncion()"
     >
       Agregar

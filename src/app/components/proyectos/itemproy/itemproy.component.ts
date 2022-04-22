@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { AuthService } from "src/app/servicios/auth.service";
 import { ProyectoService } from "src/app/servicios/proyecto.service";
 import { ProyectoI } from "../../../model/proyectoI";
 
@@ -14,9 +15,15 @@ export class ItemproyComponent implements OnInit {
   modifico = false;
   faEdit = faEdit;
   faDelete = faTrash;
-  constructor(private proyectoSvc: ProyectoService) {}
+  isAdmin = false;
+  constructor(
+    private proyectoSvc: ProyectoService,
+    private authSVC: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isAdmin = this.authSVC.isAdmin();
+  }
   CambioModifico() {
     this.modifico = !this.modifico;
   }

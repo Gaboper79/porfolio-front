@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { ExperienciaI } from "../../../model/experiencia";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { ExperienciaService } from "src/app/servicios/experiencia.service";
+import { AuthService } from "src/app/servicios/auth.service";
 
 @Component({
   selector: "app-itemexperiencia",
@@ -14,9 +15,15 @@ export class ItemexperienciaComponent implements OnInit {
   modifico = false;
   faEdit = faEdit;
   faDelete = faTrash;
-  constructor(private experienciaSVC: ExperienciaService) {}
+  isAdmin = false;
+  constructor(
+    private experienciaSVC: ExperienciaService,
+    private authSVC: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isAdmin = this.authSVC.isAdmin();
+  }
   CambioModifico() {
     this.modifico = !this.modifico;
   }

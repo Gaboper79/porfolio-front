@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { ProyectoI } from "src/app/model/proyectoI";
+import { AuthService } from "src/app/servicios/auth.service";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { ProyectoService } from "src/app/servicios/proyecto.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
@@ -12,18 +13,19 @@ import { UserDataService } from "src/app/servicios/user-data.service";
 export class ProyectosComponent implements OnInit {
   faEdit = faEdit;
   faAdd = faPlusCircle;
-
+  isAdmin = false;
   proyectoList!: ProyectoI[];
   nuevaProy: boolean = false;
 
   constructor(
     private readonly proyectoSVC: ProyectoService,
-    private readonly userService: UserDataService
+    private authSVC: AuthService
   ) {}
   ngOnInit(): void {
     this.proyectoSVC.getProyecto$().subscribe((res) => {
       this.proyectoList = res;
     });
+    this.isAdmin = this.authSVC.isAdmin();
   }
 
   nuevaExpeFuncion() {

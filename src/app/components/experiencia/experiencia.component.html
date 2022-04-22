@@ -18,7 +18,7 @@
       type="button"
       class="btnFlashero mt-2"
       (click)="nuevaExpeFuncion()"
-      *ngIf="!nuevaExpe"
+      *ngIf="!nuevaExpe && isAdmin"
     >
       Agregar
       <fa-icon [icon]="faAdd" style="color: rgb(72, 226, 98);"></fa-icon>

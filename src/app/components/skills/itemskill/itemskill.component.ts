@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { SkillI } from "src/app/model/skill";
+import { AuthService } from "src/app/servicios/auth.service";
 
 import { SkillService } from "src/app/servicios/skill.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
@@ -17,7 +18,7 @@ export class ItemskillComponent implements OnInit {
   modifico = false;
   faEdit = faEdit;
   faDelete = faTrash;
-
+  isAdmin = false;
   current!: number;
   max = 100;
   radius = 80;
@@ -26,11 +27,13 @@ export class ItemskillComponent implements OnInit {
 
   constructor(
     public skillSVC: SkillService,
-    public userService: UserDataService
+    public userService: UserDataService,
+    private authSVC: AuthService
   ) {}
 
   ngOnInit(): void {
     this.current = this.skill.valor;
+    this.isAdmin = this.authSVC.isAdmin();
   }
   CambioModifico() {
     this.modifico = !this.modifico;
