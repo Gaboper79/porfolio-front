@@ -28,7 +28,7 @@
       display: flex;
       justify-content: space-between;
 
-      width: 15rem;
+      width: auto;
       height: 3rem;
       a {
         padding: 13px;
@@ -43,9 +43,22 @@
     }
     .login {
       height: 3rem;
+      margin-left: 1.5rem;
     }
   }
   .py-2 {
     color: rgb(109, 103, 103);
+  }
+}
+.redes {
+  display: flex;
+  justify-content: flex-start;
+}
+.loginOut {
+  a {
+    text-decoration: none;
+  }
+  span {
+    margin-right: 0.3rem;
   }
 }

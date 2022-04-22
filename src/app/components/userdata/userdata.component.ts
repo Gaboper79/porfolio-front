@@ -5,6 +5,7 @@ import { Observable } from "rxjs/internal/Observable";
 import { Subject } from "rxjs/internal/Subject";
 import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
 import { PortfolioI } from "src/app/model/portfolio";
+import { AuthService } from "src/app/servicios/auth.service";
 import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { UserDataService } from "src/app/servicios/user-data.service";
@@ -18,19 +19,24 @@ export class UserdataComponent implements OnInit {
   @Input() usermodifico!: boolean;
   modifico = false;
 
+  currentUserRole: string[] = [];
   datospersonales!: DatosPersonalesI[];
-
+  currentUser: any;
   faAdd = faPlusCircle;
   faEdit = faEdit;
 
   constructor(
     public datosPSvc: DatosPersonalesService,
-    public userService: UserDataService
+    private authSVC: AuthService
   ) {}
   ngOnInit(): void {
     this.datosPSvc
       .getdatosP$()
       .subscribe((result) => (this.datospersonales = result));
+
+    this.authSVC.currentUserSubject.subscribe(
+      (res) => (this.currentUser = res)
+    );
   }
 
   muestroModifico() {

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, map, Observable } from "rxjs";
+import { BehaviorSubject, map, Observable, Subject } from "rxjs";
 import { JwtDTO } from "../model/security/jwt-dto";
 import { LoginUsuario } from "../model/security/login-usuario";
 import { NuevoUsuario } from "../model/security/nuevo-usuario";
@@ -11,6 +11,8 @@ import { NuevoUsuario } from "../model/security/nuevo-usuario";
 export class AuthService {
   authURL = "http://localhost:8080/auth/";
   currentUserSubject: BehaviorSubject<any>;
+  isLogged = false;
+  isLogged$!: Subject<any>;
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<any>(
       JSON.parse(sessionStorage.getItem("currentUser") || "{}")
@@ -26,12 +28,19 @@ export class AuthService {
       map((data) => {
         sessionStorage.setItem("currentUser", JSON.stringify(data));
         this.currentUserSubject.next(data);
+
         return data;
       })
     );
   }
-
+  getisLogged$(): Observable<any> {
+    return this.isLogged$.asObservable();
+  }
   get UsuaroAutenticado() {
     return this.currentUserSubject.value;
+  }
+  public logOut() {
+    window.sessionStorage.clear();
+    this.currentUserSubject.next("");
   }
 }

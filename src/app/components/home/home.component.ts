@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.currentUser.token) {
+      this.ruta.navigate(["/portfolio"]);
+    }
     /* this.portfolioSvc.getAllPortfolio().subscribe((res) => {
       this.portfolios = res;
     }); */

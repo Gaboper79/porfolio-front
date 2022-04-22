@@ -48,18 +48,32 @@
         <a
           class="py-2 d-none d-md-inline-block"
           routerLink="login"
-          *ngIf="!usuario"
+          *ngIf="!isLogged"
           ><span>
             <fa-icon
               [icon]="faBlog"
               style="color: rgb(226, 95, 72);"
             ></fa-icon> </span
         ></a>
-        <div *ngIf="usuario">
+        <div *ngIf="isLogged">
           <a>
-            {{usuario.email}}
+            {{currentUser.nombreUsuario }}
           </a>
         </div>
+      </div>
+      <div class="loginOut" *ngIf="isLogged">
+        <a
+          class="py-2 d-none d-md-inline-block"
+          routerLink="login"
+          (click)="logOut()"
+          ><span>
+            <fa-icon
+              [icon]="faUserOut"
+              style="color: rgb(226, 208, 72);"
+            ></fa-icon>
+          </span>
+          Cerrar sesion</a
+        >
       </div>
     </div>
   </nav>
