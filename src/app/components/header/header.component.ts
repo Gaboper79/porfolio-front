@@ -10,6 +10,7 @@ import { UserI } from "src/app/model/userlogin";
 import { TokenService } from "src/app/servicios/token.service";
 import { AuthService } from "src/app/servicios/auth.service";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -19,7 +20,8 @@ import { Observable } from "rxjs";
 export class HeaderComponent implements OnInit {
   constructor(
     public userService: UserDataService,
-    private authSVC: AuthService
+    private authSVC: AuthService,
+    private rutas: Router
   ) {}
   faBlog = faUser;
   fahome = faHome;
@@ -40,5 +42,6 @@ export class HeaderComponent implements OnInit {
   }
   public logOut() {
     this.authSVC.logOut();
+    window.location.reload();
   }
 }
