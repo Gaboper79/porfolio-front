@@ -30,9 +30,9 @@ export class UserdataComponent implements OnInit {
     private authSVC: AuthService
   ) {}
   ngOnInit(): void {
-    this.datosPSvc
-      .getdatosP$()
-      .subscribe((result) => (this.datospersonales = result));
+    this.datosPSvc.getdatosP$().subscribe((result) => {
+      this.datospersonales = result;
+    });
 
     this.authSVC.currentUserSubject.subscribe(
       (res) => (this.currentUser = res)

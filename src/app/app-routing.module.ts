@@ -15,6 +15,7 @@ const routes: Routes = [
     component: PorfolioComponent,
     canActivate: [GuardGuard],
   },
+  { path: "", component: HomeComponent },
 ];
 
 @NgModule({

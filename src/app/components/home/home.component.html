@@ -1,10 +1,10 @@
 <div class="container botonesHomecontainer">
-  <h2>PORFOLIO</h2>
+  <button type="button" routerLink="portfolio"><h2>PORFOLIO</h2></button>
 </div>
 
-<div *ngIf="currentUser.token" class="container">
+<!-- <div *ngIf="currentUser.token" class="container">
   <app-porfolio></app-porfolio>
-</div>
+</div> -->
 
 <div *ngIf="!currentUser.token" class="container text-center">
   <h3>Por favor inicie session aqui.-</h3>

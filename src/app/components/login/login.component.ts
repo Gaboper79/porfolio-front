@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
       this.tokenSVC.setAuthorities(data.authorities);
       this.roles = data.authorities;
       this.router.navigate(["/portfolio"]);
-      console.log("data:" + JSON.stringify(data));
     });
   }
 
