@@ -24,48 +24,36 @@
 
     <div class="headerderecha">
       <div class="redes">
-        <a
-          class="py-2 d-none d-md-inline-block"
-          href="https://wa.me/5491173676120"
+        <a href="https://wa.me/5491173676120"
           ><i class="fab fa-whatsapp" style="color: rgb(26, 206, 9);"></i
         ></a>
-        <a class="py-2 d-none d-md-inline-block" href="#"
+        <a href="#"
           ><i class="fab fa-twitter" style="color: rgb(253, 253, 253);"></i
         ></a>
-        <a
-          class="py-2 d-none d-md-inline-block"
-          href="https://www.facebook.com/gabriel.perdomo.1023"
+        <a href="https://www.facebook.com/gabriel.perdomo.1023"
           ><i
             class="fab fa-facebook-square"
             style="color: rgb(9, 126, 235);"
           ></i
         ></a>
-        <a class="py-2 d-none d-md-inline-block" href="#"
-          ><i class="fab fa-github"></i
-        ></a>
+        <a href="#"><i class="fab fa-github"></i></a>
       </div>
       <div class="login">
-        <a
-          class="py-2 d-none d-md-inline-block"
-          routerLink="login"
-          *ngIf="!isLogged"
+        <a routerLink="login" *ngIf="!isLogged"
           ><span>
             <fa-icon
               [icon]="faBlog"
               style="color: rgb(226, 95, 72);"
             ></fa-icon> </span
         ></a>
-        <div *ngIf="isLogged">
-          <a>
+        <div *ngIf="isLogged" class="username">
+          <span>
             {{currentUser.nombreUsuario }}
-          </a>
+          </span>
         </div>
       </div>
       <div class="loginOut" *ngIf="isLogged">
-        <a
-          class="py-2 d-none d-md-inline-block"
-          routerLink="login"
-          (click)="logOut()"
+        <a routerLink="login" (click)="logOut()"
           ><span>
             <fa-icon
               [icon]="faUserOut"

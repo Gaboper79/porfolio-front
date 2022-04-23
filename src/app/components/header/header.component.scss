@@ -1,5 +1,5 @@
 .site-header {
-  height: 3rem;
+  height: 4rem;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
   box-shadow: inset 0 0 7px 0 rgb(209, 40, 40);
@@ -7,8 +7,8 @@
     justify-content: space-between;
     .hederizq {
       .logoarprog {
-        height: 3rem;
-        width: 5rem;
+        height: 4rem;
+        width: 5.5rem;
         color: rgb(255, 255, 255);
         text-decoration: none;
         font-size: 0.7rem;
@@ -29,7 +29,7 @@
       justify-content: space-between;
 
       width: auto;
-      height: 3rem;
+      height: 3.5rem;
       a {
         padding: 13px;
         border-radius: 40px;
@@ -55,10 +55,16 @@
   justify-content: flex-start;
 }
 .loginOut {
+  padding-top: 0.6rem;
   a {
     text-decoration: none;
+    color: white;
   }
   span {
     margin-right: 0.3rem;
   }
+}
+.username {
+  height: 3rem;
+  padding-top: 0.6rem;
 }
