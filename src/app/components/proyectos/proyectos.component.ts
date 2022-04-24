@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { ProyectoI } from "src/app/model/proyectoI";
 import { AuthService } from "src/app/servicios/auth.service";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
+
 import { ProyectoService } from "src/app/servicios/proyecto.service";
-import { UserDataService } from "src/app/servicios/user-data.service";
+
 @Component({
   selector: "app-proyectos",
   templateUrl: "./proyectos.component.html",

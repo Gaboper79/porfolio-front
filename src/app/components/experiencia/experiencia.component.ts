@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { Observable } from "rxjs";
+
 import { ExperienciaI } from "src/app/model/experiencia";
 import { AuthService } from "src/app/servicios/auth.service";
 import { ExperienciaService } from "src/app/servicios/experiencia.service";
 
-import { UserDataService } from "src/app/servicios/user-data.service";
 @Component({
   selector: "app-experiencia",
   templateUrl: "./experiencia.component.html",

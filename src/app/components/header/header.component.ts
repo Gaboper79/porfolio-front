@@ -5,9 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { Component, OnInit } from "@angular/core";
-import { UserDataService } from "src/app/servicios/user-data.service";
-import { UserI } from "src/app/model/userlogin";
-import { TokenService } from "src/app/servicios/token.service";
+
 import { AuthService } from "src/app/servicios/auth.service";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
@@ -18,11 +16,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  constructor(
-    public userService: UserDataService,
-    private authSVC: AuthService,
-    private rutas: Router
-  ) {}
+  constructor(private authSVC: AuthService, private rutas: Router) {}
   faBlog = faUser;
   fahome = faHome;
   faUserOut = faSignOutAlt;

@@ -4,7 +4,6 @@ import { Observable } from "rxjs";
 import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
 
 import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
-import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
   selector: "app-formuserdata",
@@ -20,7 +19,7 @@ export class FormuserdataComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public userService: UserDataService,
+
     public datosPSvc: DatosPersonalesService
   ) {
     this.datospersonales = this.datosPSvc.datospersonales;

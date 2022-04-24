@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { UserDataService } from "src/app/servicios/user-data.service";
+
 import { PortfolioI } from "src/app/model/portfolio";
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { Router } from "@angular/router";
@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
   currentUser: any;
   faBlog = faUser;
   constructor(
-    public userService: UserDataService,
     private portfolioSvc: PortfolioService,
     private ruta: Router,
     public authSVC: AuthService
@@ -26,14 +25,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    if (this.currentUser.token) {
-      //this.ruta.navigate(["/portfolio"]);
-    }
-    /* this.portfolioSvc.getAllPortfolio().subscribe((res) => {
-      this.portfolios = res;
-    }); */
-  }
+  ngOnInit(): void {}
   mostrarporfolio(portfolio: PortfolioI) {
     this.portfolioSvc.setPortfolio(portfolio);
     this.ruta.navigateByUrl("portfolio");

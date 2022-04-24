@@ -4,7 +4,6 @@ import { SkillI } from "src/app/model/skill";
 import { AuthService } from "src/app/servicios/auth.service";
 
 import { SkillService } from "src/app/servicios/skill.service";
-import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
   selector: "app-skills",
@@ -22,7 +21,7 @@ export class SkillsComponent implements OnInit {
 
   constructor(
     public readonly skillSVC: SkillService,
-    public readonly userService: UserDataService,
+
     private authSVC: AuthService
   ) {}
   ngOnInit(): void {

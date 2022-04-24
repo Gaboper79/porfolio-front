@@ -5,7 +5,6 @@ import { SkillI } from "src/app/model/skill";
 import { AuthService } from "src/app/servicios/auth.service";
 
 import { SkillService } from "src/app/servicios/skill.service";
-import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
   selector: "app-itemskill",
@@ -27,7 +26,7 @@ export class ItemskillComponent implements OnInit {
 
   constructor(
     public skillSVC: SkillService,
-    public userService: UserDataService,
+
     private authSVC: AuthService
   ) {}
 

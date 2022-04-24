@@ -1,14 +1,10 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
-import { Observable } from "rxjs/internal/Observable";
-import { Subject } from "rxjs/internal/Subject";
+
 import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
-import { PortfolioI } from "src/app/model/portfolio";
+
 import { AuthService } from "src/app/servicios/auth.service";
 import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
-import { UserDataService } from "src/app/servicios/user-data.service";
 
 @Component({
   selector: "app-userdata",

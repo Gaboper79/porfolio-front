@@ -10,7 +10,6 @@ import { RoundprogressModule } from "angular-svg-round-progressbar";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { UserDataService } from "./servicios/user-data.service";
 
 import { FormPortfolioComponent } from "./components/form-portfolio/form-portfolio.component";
 
@@ -39,7 +38,6 @@ import { RegistroComponent } from "./components/registro/registro.component";
     ReactiveFormsModule,
   ],
   providers: [
-    UserDataService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   ],
   bootstrap: [AppComponent],
