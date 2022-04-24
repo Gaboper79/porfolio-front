@@ -43,5 +43,12 @@ export class HeaderComponent implements OnInit {
   public logOut() {
     this.authSVC.logOut();
     window.location.reload();
+    this.rutas.navigate(["/"]);
+  }
+  public home() {
+    this.rutas.navigate(["/"]);
+  }
+  public portfolio() {
+    this.rutas.navigateByUrl("/portfolio");
   }
 }

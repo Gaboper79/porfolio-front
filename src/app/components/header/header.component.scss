@@ -1,54 +1,18 @@
-.site-header {
-  height: 4rem;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  box-shadow: inset 0 0 7px 0 rgb(209, 40, 40);
-  .container {
-    justify-content: space-between;
-    .hederizq {
-      .logoarprog {
-        height: 4rem;
-        width: 5.5rem;
-        color: rgb(255, 255, 255);
-        text-decoration: none;
-        font-size: 0.7rem;
-      }
-      a {
-        padding: 13px;
-        border-radius: 40px;
-      }
-      a:hover {
-        color: white;
-        text-decoration: none;
-        background-color: #1a1111;
-        box-shadow: inset 0 0 7px 0 rgb(40, 141, 209);
-      }
-    }
-    .headerderecha {
-      display: flex;
-      justify-content: space-between;
+.logoarprogImg {
+  height: auto;
+  width: 5.5rem;
 
-      width: auto;
-      height: 3.5rem;
-      a {
-        padding: 13px;
-        border-radius: 40px;
-      }
-      a:hover {
-        color: white;
-        text-decoration: none;
-        background-color: #1a1111;
-        box-shadow: inset 0 0 7px 0 rgb(40, 141, 209);
-      }
-    }
-    .login {
-      height: 3rem;
-      margin-left: 1.5rem;
-    }
-  }
-  .py-2 {
-    color: rgb(109, 103, 103);
-  }
+  padding: 0;
+}
+a {
+  padding: 13px;
+  border-radius: 40px;
+}
+a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #1a1111;
+  box-shadow: inset 0 0 7px 0 rgb(40, 141, 209);
 }
 .redes {
   display: flex;
@@ -67,4 +31,19 @@
 .username {
   height: 3rem;
   padding-top: 0.6rem;
+}
+.login {
+  height: 3rem;
+  margin-left: 0.3rem;
+  margin-top: 0.6rem;
+}
+.botonesNav {
+  justify-content: flex-end;
+  margin-right: 5rem;
+}
+.header {
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: inset 0 0 7px 0 rgb(209, 40, 40);
+  max-height: 3rem;
 }
