@@ -1,8 +1,13 @@
 .logoarprogImg {
-  height: auto;
-  width: 5.5rem;
-
+  height: 50px;
+  width: auto;
   padding: 0;
+  margin-top: -10px;
+}
+.logoarprog {
+  height: 2.5rem;
+  text-decoration: none;
+  padding: 5px;
 }
 a {
   padding: 13px;
@@ -45,5 +50,5 @@ a:hover {
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
   box-shadow: inset 0 0 7px 0 rgb(209, 40, 40);
-  max-height: 3rem;
+  /*max-height: 3rem; */
 }
