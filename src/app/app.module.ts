@@ -13,10 +13,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UserDataService } from "./servicios/user-data.service";
 
 import { FormPortfolioComponent } from "./components/form-portfolio/form-portfolio.component";
-import { RegistroComponent } from "./components/auth/registro.component";
+
 import { InterceptorService } from "./interceptors/interceptor.service";
-import { PruebaNavComponent } from "./components/prueba-nav/prueba-nav.component";
+
 import { CommonModule } from "@angular/common";
+import { RegistroComponent } from "./components/registro/registro.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,6 @@ import { CommonModule } from "@angular/common";
     FormPortfolioComponent,
 
     RegistroComponent,
-    PruebaNavComponent,
   ],
   imports: [
     CommonModule,
