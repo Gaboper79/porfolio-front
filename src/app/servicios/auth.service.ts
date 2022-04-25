@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, map, Observable, Subject, throwError } from "rxjs";
-import { JwtDTO } from "../model/security/jwt-dto";
+import { BehaviorSubject, map, Observable, Subject } from "rxjs";
+
 import { LoginUsuario } from "../model/security/login-usuario";
 import { NuevoUsuario } from "../model/security/nuevo-usuario";
 
