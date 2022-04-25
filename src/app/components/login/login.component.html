@@ -9,6 +9,9 @@
       (submit)="onLogin()"
       [formGroup]="loginDataForm"
     >
+      <p *ngIf="errMsj" class="alert alert-danger">
+        {{errMsj}}
+      </p>
       <div class="mb-3">
         <label for="usuario" class="form-label"> Usuario</label>
         <input

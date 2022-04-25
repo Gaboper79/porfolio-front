@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router, Routes } from "@angular/router";
+import { catchError, throwError } from "rxjs";
 import { LoginUsuario } from "src/app/model/security/login-usuario";
 
 import { AuthService } from "src/app/servicios/auth.service";
@@ -38,16 +39,30 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.loginUsuario = this.loginDataForm.value;
-
-    this.authSvc.login(this.loginUsuario).subscribe((data) => {
-      this.islogged = true;
-      this.isLoginFailed = false;
-      this.tokenSVC.setToken(data.token);
-      this.tokenSVC.setUserNAme(data.nombreUsuario);
-      this.tokenSVC.setAuthorities(data.authorities);
-      this.roles = data.authorities;
-      this.router.navigate(["/portfolio"]);
-    });
+    try {
+      this.authSvc
+        .login(this.loginUsuario)
+        .pipe(
+          catchError((err) => {
+            if (err.status === 401) {
+              this.errMsj = "Usuario o contraseña no autorizado";
+            }
+            return throwError(() => new Error("Login"));
+          })
+        )
+        .subscribe((data) => {
+          this.errMsj = "";
+          this.islogged = true;
+          this.isLoginFailed = false;
+          this.tokenSVC.setToken(data.token);
+          this.tokenSVC.setUserNAme(data.nombreUsuario);
+          this.tokenSVC.setAuthorities(data.authorities);
+          this.roles = data.authorities;
+          this.router.navigate(["/portfolio"]);
+        });
+    } catch (error) {
+      console.log("Ahora dip" + error);
+    }
   }
 
   cargoformNuevo(): FormGroup {
