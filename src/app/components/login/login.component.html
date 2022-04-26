@@ -1,68 +1,63 @@
-<div class="text-center" *ngIf="!islogged;else loggedout">
-  <h2>Ya has iniciado sesion</h2>
-</div>
-
-<ng-template #loggedout>
-  <div class="container">
-    <form
-      class="container-form"
-      (submit)="onLogin()"
-      [formGroup]="loginDataForm"
+<div class="container">
+  <form class="container-form" (submit)="onLogin()" [formGroup]="loginDataForm">
+    <p *ngIf="errMsj" class="alert alert-danger">
+      {{errMsj}}
+    </p>
+    <div class="mb-3">
+      <label for="usuario" class="form-label"> Usuario</label>
+      <input
+        type="text"
+        class="form-control"
+        name="nombreUsuario"
+        formControlName="nombreUsuario"
+        required
+      />
+    </div>
+    <p
+      *ngIf="loginDataForm.get('nombreUsuario')?.touched && loginDataForm.get('nombreUsuario')?.errors?.['required']"
+      class="alert alert-danger"
     >
-      <p *ngIf="errMsj" class="alert alert-danger">
-        {{errMsj}}
-      </p>
-      <div class="mb-3">
-        <label for="usuario" class="form-label"> Usuario</label>
-        <input
-          type="text"
-          class="form-control"
-          name="nombreUsuario"
-          formControlName="nombreUsuario"
-          required
-        />
-      </div>
-      <p
-        *ngIf="loginDataForm.get('nombreUsuario')?.touched && loginDataForm.get('nombreUsuario')?.errors?.['required']"
-        class="alert alert-danger"
-      >
-        "El usuario no debe estar vacio"
-      </p>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          name="exampleInputPassword1"
-          formControlName="password"
-          required
-        />
-      </div>
-      <p
-        class="alert alert-danger"
-        *ngIf="loginDataForm.get('password')?.touched && loginDataForm.get('password')?.errors?.['required']"
-      >
-        La contraseña es requerida
-      </p>
-      <p
-        class="alert alert-danger"
-        *ngIf="loginDataForm.get('password')?.touched && loginDataForm.get('password')?.errors?.['minlength']"
-      >
-        Minimo 4 caracteres...
-      </p>
+      "El usuario no debe estar vacio"
+    </p>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        name="exampleInputPassword1"
+        formControlName="password"
+        required
+      />
+    </div>
+    <p
+      class="alert alert-danger"
+      *ngIf="loginDataForm.get('password')?.touched && loginDataForm.get('password')?.errors?.['required']"
+    >
+      La contraseña es requerida
+    </p>
+    <p
+      class="alert alert-danger"
+      *ngIf="loginDataForm.get('password')?.touched && loginDataForm.get('password')?.errors?.['minlength']"
+    >
+      Minimo 4 caracteres...
+    </p>
 
-      <div class="container-btnlogin">
-        <button
-          type="submit"
-          class="btn btnFlashero btnLogin"
-          [disabled]="loginDataForm.invalid"
-        >
-          Login
-        </button>
-      </div>
+    <div class="container-btnlogin">
+      <button
+        type="submit"
+        class="btn btnFlashero btnLogin"
+        [disabled]="loginDataForm.invalid"
+      >
+        Login
+      </button>
+    </div>
+    <div class="container btnRegyOlvidePass">
       <div class="registrarce">
         <a routerLink="registro">Registrarse aqui!</a>
       </div>
-    </form>
-  </div>
-</ng-template>
+      <div class="olvideLaClave">
+        <a href=""> Olvide mi clave!</a>
+      </div>
+    </div>
+  </form>
+</div>
