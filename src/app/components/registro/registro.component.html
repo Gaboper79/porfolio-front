@@ -1,1 +1,113 @@
-<p>registro works!</p>
+<div class="container">
+  <form
+    class="container-form"
+    (submit)="graboNuevoUsuario()"
+    [formGroup]="registroDataForm"
+  >
+    <p *ngIf="errMsj" class="alert alert-danger">
+      {{errMsj}}
+    </p>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="usuario" class="form-label">Nombre de Usuario</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nombreUsuario"
+            formControlName="nombreUsuario"
+            required
+          />
+        </div>
+        <p
+          *ngIf="registroDataForm.get('nombreUsuario')?.touched && registroDataForm.get('nombreUsuario')?.errors?.['required']"
+          class="alert alert-danger"
+        >
+          "El usuario no debe estar vacio"
+        </p>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre </label>
+          <input
+            type="text"
+            class="form-control"
+            name="nombre"
+            formControlName="nombre"
+            required
+          />
+        </div>
+        <p
+          *ngIf="registroDataForm.get('nombre')?.touched && registroDataForm.get('nombre')?.errors?.['required']"
+          class="alert alert-danger"
+        >
+          "Debe ingresar un nombre.-"
+        </p>
+      </div>
+      <div class="class col-md-6">
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="exampleInputPassword1"
+            formControlName="password"
+            required
+          />
+        </div>
+        <p
+          class="alert alert-danger"
+          *ngIf="registroDataForm.get('password')?.touched && registroDataForm.get('password')?.errors?.['required']"
+        >
+          La contraseña es requerida
+        </p>
+        <p
+          class="alert alert-danger"
+          *ngIf="registroDataForm.get('password')?.touched && registroDataForm.get('password')?.errors?.['minlength']"
+        >
+          Minimo 4 caracteres...
+        </p>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            formControlName="email"
+            required
+          />
+        </div>
+        <p
+          class="alert alert-danger"
+          *ngIf="registroDataForm.get('email')?.touched && registroDataForm.get('email')?.errors?.['required']"
+        >
+          El email es querido.-
+        </p>
+        <p
+          class="alert alert-danger"
+          *ngIf="registroDataForm.get('email')?.touched && registroDataForm.get('email')?.errors?.['email']"
+        >
+          Email no reconocido.-
+        </p>
+        <label>
+          <input
+            type="checkbox"
+            name="isAdmin"
+            [(ngModel)]="isAdmin"
+            [ngModelOptions]="{standalone: true}"
+          />
+          Administrador</label
+        >
+      </div>
+    </div>
+
+    <div class="container-btnlogin">
+      <button
+        type="submit"
+        class="btn btnFlashero btnLogin"
+        [disabled]="registroDataForm.invalid"
+      >
+        Grabar
+      </button>
+    </div>
+  </form>
+</div>
