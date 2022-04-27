@@ -16,13 +16,15 @@ import { Router } from "@angular/router";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private authSVC: AuthService, private rutas: Router) {}
   faBlog = faUser;
   fahome = faHome;
   faUserOut = faSignOutAlt;
   currentUSer$!: Observable<any>;
   currentUser: any;
   isLogged = false;
+
+  constructor(private authSVC: AuthService, private rutas: Router) {}
+
   ngOnInit(): void {
     this.authSVC.currentUserSubject.subscribe((user) => {
       this.currentUser = user;

@@ -24,7 +24,9 @@ export class UserdataComponent implements OnInit {
   constructor(
     public datosPSvc: DatosPersonalesService,
     private authSVC: AuthService
-  ) {}
+  ) {
+    console.log("constructor");
+  }
   ngOnInit(): void {
     this.datosPSvc.getdatosP$().subscribe((result) => {
       this.datospersonales = result;
@@ -34,6 +36,7 @@ export class UserdataComponent implements OnInit {
       (res) => (this.currentUser = res)
     );
     this.isAdmin = this.authSVC.isAdmin();
+    console.log("init");
   }
 
   muestroModifico() {

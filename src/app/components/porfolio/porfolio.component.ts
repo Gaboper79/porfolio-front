@@ -7,7 +7,11 @@ import { AuthService } from "src/app/servicios/auth.service";
   styleUrls: ["./porfolio.component.scss"],
 })
 export class PorfolioComponent implements OnInit {
-  constructor() {}
+  constructor() {
+    console.log("porf cons");
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log("porf init");
+  }
 }
