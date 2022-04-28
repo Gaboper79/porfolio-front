@@ -37,7 +37,6 @@ export class UserdataComponent implements OnInit {
       (res) => (this.currentUser = res)
     );
     this.isAdmin = this.authSVC.isAdmin();
-    console.log("init");
   }
 
   muestroModifico() {

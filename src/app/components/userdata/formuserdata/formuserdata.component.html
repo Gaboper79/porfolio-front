@@ -1,5 +1,9 @@
 <div *ngIf="datospersonales" class="container-form userData">
-  <form [formGroup]="userDataForm" (ngSubmit)="guardoCambios()">
+  <form
+    [formGroup]="userDataForm"
+    enctype="multipart/form-data"
+    (ngSubmit)="guardoCambios()"
+  >
     <div class="mb-3">
       <h3>Datos personales</h3>
       <label for="usuario" class="form-label">Nombre</label>
@@ -20,9 +24,19 @@
       >
       </textarea>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 custom-file">
       <label for="acerdemi" class="form-label">Imagen</label>
-      <input type="textArea" class="form-control" formControlName="imgUser" />
+      <input type="file" class="file-upload" (change)="onFileChange($event)" />
+      <div *ngIf="imagen" class="mt-5">
+        <div>
+          <img
+            alt="imagen"
+            class="image-thumbnail"
+            style="max-width: 100px;"
+            [src]="imagenMin"
+          />
+        </div>
+      </div>
     </div>
     <div class="btn-container">
       <button

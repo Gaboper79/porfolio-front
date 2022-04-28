@@ -7,7 +7,7 @@ import { Imagen } from "../model/imagen";
   providedIn: "root",
 })
 export class ImagenService {
-  imagenURL = "https://localhost:8080/api//cloudinary/";
+  imagenURL = "http://localhost:8080/cloudinary/";
 
   constructor(private http: HttpClient) {}
   public list(): Observable<Imagen[]> {
@@ -16,10 +16,10 @@ export class ImagenService {
   public upload(imagen: File): Observable<any> {
     const formData = new FormData();
     formData.append("multipartFile", imagen);
-    return this.http.post(this.imagenURL + "upload", formData);
+    return this.http.post<any>(this.imagenURL + "upload", formData);
   }
 
   public delete(id: number): Observable<any> {
-    return this.http.delete<any>(this.imagenURL + `delete/${id}`);
+    return this.http.delete(this.imagenURL + `delete/${id}`);
   }
 }
