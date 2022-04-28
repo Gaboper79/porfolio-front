@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { NgxSpinnerService } from "ngx-spinner";
 
 import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
 
 import { AuthService } from "src/app/servicios/auth.service";
 import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
+import { ImagenService } from "src/app/servicios/imagen.service";
 
 @Component({
   selector: "app-userdata",
@@ -23,10 +25,9 @@ export class UserdataComponent implements OnInit {
 
   constructor(
     public datosPSvc: DatosPersonalesService,
-    private authSVC: AuthService
-  ) {
-    console.log("constructor");
-  }
+    private authSVC: AuthService,
+    private imgaSvc: ImagenService
+  ) {}
   ngOnInit(): void {
     this.datosPSvc.getdatosP$().subscribe((result) => {
       this.datospersonales = result;

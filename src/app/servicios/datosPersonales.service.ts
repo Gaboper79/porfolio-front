@@ -17,6 +17,7 @@ export class DatosPersonalesService {
     this.datosP$ = new Subject();
     this.http.get<DatosPersonalesI[]>(this.Url).subscribe((res) => {
       this.datospersonales = res;
+
       this.datosP$.next(this.datospersonales);
     });
   }

@@ -10,22 +10,22 @@ import { RoundprogressModule } from "angular-svg-round-progressbar";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { NgxSpinnerModule } from "ngx-spinner";
 import { FormPortfolioComponent } from "./components/form-portfolio/form-portfolio.component";
 
 import { InterceptorService } from "./interceptors/interceptor.service";
 
 import { CommonModule } from "@angular/common";
 import { RegistroComponent } from "./components/registro/registro.component";
+import { ListaComponent } from "./components/imagen/lista/lista.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-
     FormPortfolioComponent,
-
     RegistroComponent,
+    ListaComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +36,7 @@ import { RegistroComponent } from "./components/registro/registro.component";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

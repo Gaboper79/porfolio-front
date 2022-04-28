@@ -24,6 +24,8 @@ import { RoundprogressModule } from "angular-svg-round-progressbar";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PorfolioComponent } from "./porfolio.component";
+import { SpinnerComponent } from "../spinner/spinner.component";
+import { SpinnerModule } from "../spinner/spinner.module";
 
 @NgModule({
   declarations: [
@@ -48,12 +50,11 @@ import { PorfolioComponent } from "./porfolio.component";
   imports: [
     CommonModule,
     PorfolioRoutingModule,
-
     FontAwesomeModule,
     RoundprogressModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SpinnerModule,
   ],
 })
 export class PorfolioModule {}
