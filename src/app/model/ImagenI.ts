@@ -1,7 +1,6 @@
-export class Imagen {
+export interface ImagenI {
   id?: number;
-  /*  name: string;
+  name: string;
   imagenUrl: string;
   imagenId: string;
- */
 }

@@ -24,8 +24,8 @@
       >
       </textarea>
     </div>
+    <input type="text" class="form-control" formControlName="imgUser" hidden />
     <div class="mb-3 custom-file">
-      <label for="acerdemi" class="form-label">Imagen</label>
       <input type="file" class="file-upload" (change)="onFileChange($event)" />
       <div *ngIf="imagen" class="mt-5">
         <div>

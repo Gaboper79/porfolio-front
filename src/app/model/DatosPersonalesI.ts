@@ -1,6 +1,6 @@
 export interface DatosPersonalesI {
   id: number;
-  imgUser: String;
+  imgUser: number;
   aboutMe: String;
   titulo: String;
   nombre: String;
