@@ -30,6 +30,8 @@ export class ItemproyComponent implements OnInit {
     this.getImagen();
   }
   getImagen() {
+    console.log(this.proyecto);
+
     if (this.proyecto.imgUser) {
       this.imagenSvc.getOne(this.proyecto.imgUser).subscribe((result) => {
         this.imagenData = result;

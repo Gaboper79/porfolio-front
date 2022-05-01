@@ -53,7 +53,7 @@ export class FormproyectosComponent implements OnInit {
       nombre: [this.proyecto.nombre],
       link: [this.proyecto.link],
       descripcion: [this.proyecto.descripcion],
-      img: [this.proyecto.imgUser],
+      imgUser: [this.proyecto.imgUser],
     });
     this.id = this.proyecto.id;
   }
@@ -62,7 +62,7 @@ export class FormproyectosComponent implements OnInit {
       nombre: [""],
       link: [""],
       descripcion: [""],
-      img: [""],
+      imgUser: [""],
     });
   }
 
