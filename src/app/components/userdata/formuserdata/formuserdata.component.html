@@ -25,9 +25,15 @@
       </textarea>
     </div>
     <input type="text" class="form-control" formControlName="imgUser" hidden />
+    <h4>Imagen</h4>
     <div class="mb-3 custom-file">
-      <input type="file" class="file-upload" (change)="onFileChange($event)" />
-      <div *ngIf="imagen" class="mt-5">
+      <input
+        type="file"
+        class="file-upload"
+        (change)="onFileChange($event)"
+        #inputImagen
+      />
+      <div *ngIf="imagenMin" class="mt-5">
         <div>
           <img
             alt="imagen"
@@ -44,7 +50,7 @@
         type="submit"
         [disabled]="userDataForm.invalid"
       >
-        Grabar
+        Guardar
       </button>
       <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
         Cancelar

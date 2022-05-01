@@ -32,9 +32,7 @@ export class PortfolioService {
       .subscribe((res) => {});
   }
   agregoNuevoItemAPorfolio(portfolio: PortfolioI) {
-    this.http.post<PortfolioI>(this.Url, portfolio).subscribe((res) => {
-      console.log("item agregado correctamente.-");
-    });
+    this.http.post<PortfolioI>(this.Url, portfolio).subscribe((res) => {});
   }
   creoNuevoPorfolio() {}
 }

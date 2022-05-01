@@ -35,7 +35,6 @@ export class UserdataComponent implements OnInit {
         .getOne(this.datospersonales[0].imgUser)
         .subscribe((result) => {
           this.imagenData = result;
-          console.log("Dato de la imagen", this.imagenData.imagenUrl);
         });
     });
 

@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Observable } from "rxjs";
 import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
+import { ImagenI } from "src/app/model/ImagenI";
 
 import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
 import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
@@ -20,6 +21,8 @@ export class FormuserdataComponent implements OnInit {
   imagen!: File;
   imagenMin!: File;
   imagenId!: number;
+  imagenObjeto!: ImagenI;
+
   constructor(
     private formBuilder: FormBuilder,
     private imagenSvc: ImagenService,
@@ -30,18 +33,25 @@ export class FormuserdataComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.datospersonales[0].id;
-    this.imagenId = this.datospersonales[0].imgUser;
-    //this.cargoImagen(this.imagenId);
+
+    this.cargoFileImagen();
     this.cargorFormulario();
   }
-  cargoImagen(imgId: String) {
-    //this.imagenSvc.getOne(imgId).subscribe((img) => {});
+
+  cargoFileImagen() {
+    this.imagenId = this.datospersonales[0].imgUser;
+
+    //si tiene imagen la cargo
+    if (this.imagenId) {
+      this.imagenSvc.getOne(this.imagenId).subscribe((data) => {
+        this.imagenObjeto = data;
+      });
+    }
   }
   onFileChange(event: Event): void {
     const archivo = (event.target as HTMLInputElement)?.files;
     if (archivo) {
       this.imagen = archivo[0];
-      console.log(this.imagen);
     }
     const fr = new FileReader();
     fr.onload = (e: any) => {
@@ -59,13 +69,20 @@ export class FormuserdataComponent implements OnInit {
     });
   }
   guardoCambios() {
-    this.imagenSvc.upload(this.imagen).subscribe((data) => {
-      this.imagenId = data.id;
+    if (this.imagen) {
+      this.imagenSvc.upload(this.imagen).subscribe((data) => {
+        this.imagenId = data.id;
+        this.datospersonales[0] = this.userDataForm.value;
+        this.datospersonales[0].imgUser = this.imagenId;
+        this.datosPSvc.updateDatosP(this.datospersonales[0]);
+        this.evento.emit();
+      });
+    } else {
       this.datospersonales[0] = this.userDataForm.value;
       this.datospersonales[0].imgUser = this.imagenId;
       this.datosPSvc.updateDatosP(this.datospersonales[0]);
       this.evento.emit();
-    });
+    }
   }
   emitirEvento(opcion: String) {
     if (opcion == "guardar") {

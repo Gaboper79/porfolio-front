@@ -15,8 +15,6 @@ export class AuthService {
   isLogged$!: Subject<any>;
   roles: Array<string> = [];
   constructor(private httpClient: HttpClient) {
-    console.log("constructor del authsvc");
-
     this.currentUserSubject = new BehaviorSubject<any>(
       JSON.parse(sessionStorage.getItem("currentUser") || "{}")
     );
