@@ -1,3 +1,4 @@
+import { environment } from "./../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
@@ -9,7 +10,7 @@ import { ProyectoI } from "../model/proyectoI";
 export class ProyectoService {
   proyectoList!: ProyectoI[];
   private proyecto$!: Subject<ProyectoI[]>;
-  Url = "http://localhost:8080/api/proyecto";
+  Url = environment.porfolioUrl + "proyecto";
 
   constructor(private http: HttpClient) {
     this.proyecto$ = new Subject();

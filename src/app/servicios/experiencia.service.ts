@@ -1,3 +1,5 @@
+import { environment } from "./../../environments/environment";
+
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
@@ -9,7 +11,7 @@ import { ExperienciaI } from "../model/experiencia";
 export class ExperienciaService {
   experienciaList!: ExperienciaI[];
   private experiencia$: Subject<ExperienciaI[]>;
-  Url = "http://localhost:8080/api/experiencia";
+  Url = environment.porfolioUrl + "experiencia";
 
   constructor(private http: HttpClient) {
     this.experiencia$ = new Subject();

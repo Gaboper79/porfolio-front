@@ -1,3 +1,4 @@
+import { environment } from "./../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
@@ -7,7 +8,7 @@ import { ImagenI } from "../model/ImagenI";
   providedIn: "root",
 })
 export class ImagenService {
-  cloudinaryUrl = "http://localhost:8080/cloudinary/";
+  cloudinaryUrl = environment.cloudinaryUrl;
 
   constructor(private http: HttpClient) {}
   public list(): Observable<ImagenI[]> {

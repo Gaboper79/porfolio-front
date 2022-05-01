@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, map, Observable, Subject, throwError } from "rxjs";
-import { JwtDTO } from "../model/security/jwt-dto";
+import { environment } from "src/environments/environment";
 import { LoginUsuario } from "../model/security/login-usuario";
 import { NuevoUsuario } from "../model/security/nuevo-usuario";
 
@@ -9,7 +9,7 @@ import { NuevoUsuario } from "../model/security/nuevo-usuario";
   providedIn: "root",
 })
 export class AuthService {
-  authURL = "http://localhost:8080/auth/";
+  authURL = environment.authURL;
   currentUserSubject: BehaviorSubject<any>;
   isLogged = false;
   isLogged$!: Subject<any>;

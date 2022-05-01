@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  authURL: "http://localhost:8080/auth/",
+  porfolioUrl: "http://localhost:8080/api/",
+  cloudinaryUrl: "http://localhost:8080/cloudinary/",
 };
 
 /*
