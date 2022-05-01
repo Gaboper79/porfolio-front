@@ -27,7 +27,31 @@
             <label for="puesto" class="form-label">Imagen</label>
             <input type="text" class="form-control" formControlName="img" />
           </div>
-
+          <input
+            type="text"
+            class="form-control"
+            formControlName="imgUser"
+            hidden
+          />
+          <h4>Imagen</h4>
+          <div class="mb-3 custom-file">
+            <input
+              type="file"
+              class="file-upload"
+              (change)="onFileChange($event)"
+              #inputImagen
+            />
+            <div *ngIf="imagenMin" class="mt-5">
+              <div>
+                <img
+                  alt="imagen"
+                  class="image-thumbnail"
+                  style="max-width: 100px;"
+                  [src]="imagenMin"
+                />
+              </div>
+            </div>
+          </div>
           <div class="container mt-5">
             <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
               Guardar

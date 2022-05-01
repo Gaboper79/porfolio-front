@@ -22,14 +22,19 @@ export class ItemproyComponent implements OnInit {
   constructor(
     private proyectoSvc: ProyectoService,
     private authSVC: AuthService,
-    private imgenSvc: ImagenService
+    private imagenSvc: ImagenService
   ) {}
 
   ngOnInit(): void {
     this.isAdmin = this.authSVC.isAdmin();
-    // this.imgenSvc.getOne(this.proyecto.imgUser).subscribe((result) => {
-    //   this.imagenData = result;
-    // });
+    this.getImagen();
+  }
+  getImagen() {
+    if (this.proyecto.imgUser) {
+      this.imagenSvc.getOne(this.proyecto.imgUser).subscribe((result) => {
+        this.imagenData = result;
+      });
+    }
   }
   CambioModifico() {
     this.modifico = !this.modifico;

@@ -86,7 +86,7 @@ export class FormexperComponent implements OnInit {
           this.experiencia = this.userDataForm.value;
           this.experiencia.id = this.id;
           this.experiencia.imgUser = data.id;
-          console.log(this.experiencia);
+
           this.experienciaScv.updateExperiencia(this.experiencia, this.item);
         });
       } else {

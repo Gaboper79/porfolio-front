@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ProyectoI } from "src/app/model/proyectoI";
+import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
 
 import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { ProyectoService } from "src/app/servicios/proyecto.service";
@@ -13,6 +14,9 @@ import { ProyectoService } from "src/app/servicios/proyecto.service";
 export class FormproyectosComponent implements OnInit {
   userDataForm!: FormGroup;
   id!: number;
+  imagen!: File;
+  imagenMin!: File;
+  imagenId!: number;
   @Output() evento = new EventEmitter<String>();
   @Input() proyecto!: ProyectoI;
   @Input() item!: number;
@@ -21,6 +25,7 @@ export class FormproyectosComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private imagenSvc: ImagenService,
     private proyectoSvc: ProyectoService
   ) {}
 
@@ -31,8 +36,19 @@ export class FormproyectosComponent implements OnInit {
       this.cargoformNuevo();
     }
   }
-
+  onFileChange(event: Event): void {
+    const archivo = (event.target as HTMLInputElement)?.files;
+    if (archivo) {
+      this.imagen = archivo[0];
+    }
+    const fr = new FileReader();
+    fr.onload = (e: any) => {
+      this.imagenMin = e.target.result;
+    };
+    fr.readAsDataURL(this.imagen);
+  }
   cargoformModifico() {
+    this.imagenId = this.proyecto.imgUser;
     this.userDataForm = this.formBuilder.group({
       nombre: [this.proyecto.nombre],
       link: [this.proyecto.link],
@@ -59,11 +75,32 @@ export class FormproyectosComponent implements OnInit {
   guardoCambios() {
     if (this.modifico) {
       //modifico
-      this.proyecto = this.userDataForm.value;
-      this.proyecto.id = this.id;
+      //controlo si modifico la imagen del
+      if (this.imagen) {
+        this.imagenSvc.upload(this.imagen).subscribe((data) => {
+          this.proyecto = this.userDataForm.value;
+          this.proyecto.id = this.id;
+          this.proyecto.imgUser = data.id;
+          this.proyectoSvc.updateProyecto(this.proyecto, this.item);
+        });
+      } else {
+        this.proyecto = this.userDataForm.value;
+        this.proyecto.id = this.id;
+        this.proyecto.imgUser = this.imagenId;
+      }
       this.proyectoSvc.updateProyecto(this.proyecto, this.item);
     } else {
       //agrego nueva exp
+      if (this.imagen) {
+        this.imagenSvc.upload(this.imagen).subscribe((data) => {
+          this.imagenId = data.id;
+          this.proyecto = this.userDataForm.value;
+          this.proyecto.imgUser = this.imagenId;
+        });
+      } else {
+        this.proyecto = this.userDataForm.value;
+        this.proyecto.imgUser = this.imagenId;
+      }
       this.proyectoSvc.addProyecto(this.userDataForm.value);
     }
   }
