@@ -23,7 +23,7 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    this.spinnerSVC.show();
+    this.spinnerSVC.isLoading$.next(true);
 
     let currentUser = this.authSVC.UsuaroAutenticado;
     if (currentUser && currentUser.token) {
@@ -33,7 +33,7 @@ export class InterceptorService implements HttpInterceptor {
         },
       });
     }
-
+    this.spinnerSVC.isLoading$.next(false);
     return next.handle(req).pipe(finalize(() => this.spinnerSVC.hide()));
   }
 }

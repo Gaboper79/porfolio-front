@@ -40,6 +40,7 @@
         <div *ngIf="errMsje" class="alert alert-danger">{{errMsje}}</div>
         <div class="mb-3 custom-file">
           <input
+            accept="image/*"
             type="file"
             class="file-upload"
             (change)="onFileChange($event)"

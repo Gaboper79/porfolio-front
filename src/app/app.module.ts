@@ -18,6 +18,7 @@ import { InterceptorService } from "./interceptors/interceptor.service";
 import { CommonModule } from "@angular/common";
 import { RegistroComponent } from "./components/registro/registro.component";
 import { ListaComponent } from "./components/imagen/lista/lista.component";
+import { SpinnerComponent } from "./components/spinner/spinner.component";
 
 @NgModule({
   declarations: [

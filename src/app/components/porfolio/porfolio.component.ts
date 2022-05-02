@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { SpinnerService } from "src/app/servicios/spinner.service";
 
 @Component({
   selector: "app-porfolio",
@@ -6,7 +7,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./porfolio.component.scss"],
 })
 export class PorfolioComponent implements OnInit {
-  constructor() {}
+  constructor(private spinerSVC: SpinnerService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.spinerSVC.isLoading$.next(true);
+    this.spinerSVC.isLoading$.next(false);
+  }
+  spinner() {
+    this.spinerSVC.isLoading$.next(true);
+  }
 }

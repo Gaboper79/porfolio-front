@@ -27,8 +27,7 @@ export class UserdataComponent implements OnInit {
   constructor(
     public datosPSvc: DatosPersonalesService,
     private authSVC: AuthService,
-    private imgenSvc: ImagenService,
-    private spinnerSvc: SpinnerService
+    private imgenSvc: ImagenService
   ) {}
   ngOnInit(): void {
     this.datosPSvc.getdatosP$().subscribe((result) => {

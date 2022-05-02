@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { SpinnerService } from "src/app/servicios/spinner.service";
-
+//
 @Component({
   selector: "app-spinner",
   template: `

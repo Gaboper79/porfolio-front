@@ -9,6 +9,7 @@ import { Component, OnInit } from "@angular/core";
 import { AuthService } from "src/app/servicios/auth.service";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
+import { SpinnerService } from "src/app/servicios/spinner.service";
 
 @Component({
   selector: "app-header",
@@ -23,7 +24,11 @@ export class HeaderComponent implements OnInit {
   currentUser: any;
   isLogged = false;
 
-  constructor(private authSVC: AuthService, private rutas: Router) {}
+  constructor(
+    private authSVC: AuthService,
+    private rutas: Router,
+    private spinerSVC: SpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.authSVC.currentUserSubject.subscribe((user) => {
