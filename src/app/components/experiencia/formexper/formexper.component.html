@@ -37,6 +37,7 @@
           hidden
         />
         <h4>Imagen</h4>
+        <div *ngIf="errMsje" class="alert alert-danger">{{errMsje}}</div>
         <div class="mb-3 custom-file">
           <input
             type="file"

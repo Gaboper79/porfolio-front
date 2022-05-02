@@ -17,6 +17,7 @@ export class FormexperComponent implements OnInit {
   imagen!: File;
   imagenMin!: File;
   imagenId!: number;
+  errMsje: String = "";
   @Output() evento = new EventEmitter<String>();
   @Input() experiencia!: ExperienciaI;
   @Input() modifico!: boolean;
@@ -36,10 +37,20 @@ export class FormexperComponent implements OnInit {
       this.cargoformNuevo();
     }
   }
+  //max byte 1048576
   onFileChange(event: Event): void {
     const archivo = (event.target as HTMLInputElement)?.files;
     if (archivo) {
       this.imagen = archivo[0];
+
+      if (this.imagen.size >= 1048576) {
+        this.errMsje = "Imagen muy grande.Permitido hasta 1048.5 kb";
+
+        return;
+      } else {
+        this.errMsje = "";
+      }
+      console.log(this.imagen.size);
     }
     const fr = new FileReader();
     fr.onload = (e: any) => {
@@ -86,7 +97,6 @@ export class FormexperComponent implements OnInit {
           this.experiencia = this.userDataForm.value;
           this.experiencia.id = this.id;
           this.experiencia.imgUser = data.id;
-
           this.experienciaScv.updateExperiencia(this.experiencia, this.item);
         });
       } else {

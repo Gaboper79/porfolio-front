@@ -22,6 +22,7 @@ export class FormproyectosComponent implements OnInit {
   @Input() item!: number;
   @Input() modifico!: boolean;
   @Input() nuevaProy!: boolean;
+  errMsje: string = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,6 +41,13 @@ export class FormproyectosComponent implements OnInit {
     const archivo = (event.target as HTMLInputElement)?.files;
     if (archivo) {
       this.imagen = archivo[0];
+      if (this.imagen.size >= 1048576) {
+        this.errMsje = "Imagen muy grande.Permitido hasta 1048.5 kb";
+
+        return;
+      } else {
+        this.errMsje = "";
+      }
     }
     const fr = new FileReader();
     fr.onload = (e: any) => {
@@ -87,8 +95,8 @@ export class FormproyectosComponent implements OnInit {
         this.proyecto = this.userDataForm.value;
         this.proyecto.id = this.id;
         this.proyecto.imgUser = this.imagenId;
+        this.proyectoSvc.updateProyecto(this.proyecto, this.item);
       }
-      this.proyectoSvc.updateProyecto(this.proyecto, this.item);
     } else {
       //agrego nueva exp
       if (this.imagen) {
@@ -96,12 +104,13 @@ export class FormproyectosComponent implements OnInit {
           this.imagenId = data.id;
           this.proyecto = this.userDataForm.value;
           this.proyecto.imgUser = this.imagenId;
+          this.proyectoSvc.addProyecto(this.userDataForm.value);
         });
       } else {
         this.proyecto = this.userDataForm.value;
         this.proyecto.imgUser = this.imagenId;
+        this.proyectoSvc.addProyecto(this.userDataForm.value);
       }
-      this.proyectoSvc.addProyecto(this.userDataForm.value);
     }
   }
 }

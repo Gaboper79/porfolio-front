@@ -22,6 +22,7 @@ export class FormuserdataComponent implements OnInit {
   imagenMin!: File;
   imagenId!: number;
   imagenObjeto!: ImagenI;
+  errMsje: string = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,6 +53,13 @@ export class FormuserdataComponent implements OnInit {
     const archivo = (event.target as HTMLInputElement)?.files;
     if (archivo) {
       this.imagen = archivo[0];
+      if (this.imagen.size >= 1048576) {
+        this.errMsje = "Imagen muy grande.Permitido hasta 1048.5 kb";
+
+        return;
+      } else {
+        this.errMsje = "";
+      }
     }
     const fr = new FileReader();
     fr.onload = (e: any) => {

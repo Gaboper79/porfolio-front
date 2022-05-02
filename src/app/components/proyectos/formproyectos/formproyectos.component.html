@@ -23,7 +23,7 @@
             <label for="puesto" class="form-label">Link</label>
             <input type="text" class="form-control" formControlName="link" />
           </div>
-
+          <div *ngIf="errMsje" class="alert alert-danger">{{errMsje}}</div>
           <input
             type="text"
             class="form-control"
