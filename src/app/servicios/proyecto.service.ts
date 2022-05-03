@@ -26,8 +26,9 @@ export class ProyectoService {
     return this.http.get<ProyectoI[]>(this.Url);
   }
   addProyecto(proyecto: ProyectoI) {
-    this.http.post(this.Url + "/add", proyecto).subscribe((res) => {});
-    this.proyectoList.push(proyecto);
+    this.http.post<ProyectoI>(this.Url + "/add", proyecto).subscribe((res) => {
+      this.proyectoList.push(res);
+    });
     this.proyecto$.next(this.proyectoList);
   }
   updateProyecto(proyecto: ProyectoI, item: number) {

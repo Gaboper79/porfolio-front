@@ -28,8 +28,12 @@ export class ExperienciaService {
     return this.http.get<ExperienciaI[]>(this.Url);
   }
   addExperiencia(experiencia: ExperienciaI) {
-    this.http.post(this.Url + "/add", experiencia).subscribe((res) => {});
-    this.experienciaList.push(experiencia);
+    this.http
+      .post<ExperienciaI>(this.Url + "/add", experiencia)
+      .subscribe((res) => {
+        this.experienciaList.push(res);
+      });
+
     this.experiencia$.next(this.experienciaList);
   }
   updateExperiencia(experiencia: ExperienciaI, item: number) {
@@ -38,6 +42,8 @@ export class ExperienciaService {
     this.experiencia$.next(this.experienciaList);
   }
   deleteExperiencia(experiencia: ExperienciaI, item: number) {
+    // console.log("este deberia ser el id:" + experiencia.id);
+
     this.http.delete(this.Url + "/" + experiencia.id).subscribe();
     this.experienciaList.splice(item, 1);
     this.experiencia$.next(this.experienciaList);
