@@ -6,7 +6,6 @@ import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
 import { AuthService } from "src/app/servicios/auth.service";
 import { DatosPersonalesService } from "src/app/servicios/datosPersonales.service";
 import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
-import { SpinnerService } from "src/app/servicios/spinner.service";
 
 @Component({
   selector: "app-userdata",

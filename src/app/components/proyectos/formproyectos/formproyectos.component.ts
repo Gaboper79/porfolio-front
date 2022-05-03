@@ -3,9 +3,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { ProyectoI } from "src/app/model/proyectoI";
 import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
 
-import { PortfolioService } from "src/app/servicios/portfolio.service";
 import { ProyectoService } from "src/app/servicios/proyecto.service";
-import { SpinnerService } from "src/app/servicios/spinner.service";
 
 @Component({
   selector: "app-formproyectos",
@@ -28,8 +26,7 @@ export class FormproyectosComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private imagenSvc: ImagenService,
-    private proyectoSvc: ProyectoService,
-    private spinerSvc: SpinnerService
+    private proyectoSvc: ProyectoService
   ) {}
 
   ngOnInit(): void {
