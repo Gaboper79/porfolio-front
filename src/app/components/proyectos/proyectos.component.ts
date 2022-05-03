@@ -22,9 +22,13 @@ export class ProyectosComponent implements OnInit {
     private authSVC: AuthService
   ) {}
   ngOnInit(): void {
-    this.proyectoSVC.getProyecto$().subscribe((res) => {
-      this.proyectoList = res;
-    });
+    if (!this.proyectoSVC.proyectoList) {
+      this.proyectoSVC.getProyecto$().subscribe((res) => {
+        this.proyectoList = res;
+      });
+    } else {
+      this.proyectoList = this.proyectoSVC.proyectoList;
+    }
     this.isAdmin = this.authSVC.isAdmin();
   }
 

@@ -22,9 +22,13 @@ export class ExperienciaComponent implements OnInit {
     private authSVC: AuthService
   ) {}
   ngOnInit(): void {
-    this.experienciaSVC.getExperiencia$().subscribe((res) => {
-      this.experienciaList = res;
-    });
+    if (!this.experienciaSVC.experienciaList) {
+      this.experienciaSVC.getExperiencia$().subscribe((res) => {
+        this.experienciaList = res;
+      });
+    } else {
+      this.experienciaList = this.experienciaSVC.experienciaList;
+    }
     this.isAdmin = this.authSVC.isAdmin();
   }
 

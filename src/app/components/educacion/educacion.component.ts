@@ -22,9 +22,13 @@ export class EducacionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.educacionSvc
-      .geteducacion$()
-      .subscribe((res) => (this.educacionList = res));
+    if (!this.educacionSvc.educacionList) {
+      this.educacionSvc
+        .geteducacion$()
+        .subscribe((res) => (this.educacionList = res));
+    } else {
+      this.educacionList = this.educacionSvc.educacionList;
+    }
     this.isAdmin = this.authSVC.isAdmin();
   }
   nuevaEduFuncion() {

@@ -25,9 +25,13 @@ export class SkillsComponent implements OnInit {
     private authSVC: AuthService
   ) {}
   ngOnInit(): void {
-    this.skillSVC.getSkill$().subscribe((result) => {
-      this.skillList = result;
-    });
+    if (!this.skillSVC.skillList) {
+      this.skillSVC.getSkill$().subscribe((result) => {
+        this.skillList = result;
+      });
+    } else {
+      this.skillList = this.skillSVC.skillList;
+    }
     this.isAdmin = this.authSVC.isAdmin();
   }
   nuevaSkillFuncion() {
