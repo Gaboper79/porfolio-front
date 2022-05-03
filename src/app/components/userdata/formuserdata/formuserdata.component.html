@@ -1,5 +1,9 @@
 <div *ngIf="datospersonales" class="container-form userData">
-  <form [formGroup]="userDataForm" (ngSubmit)="guardoCambios()">
+  <form
+    [formGroup]="userDataForm"
+    enctype="multipart/form-data"
+    (ngSubmit)="guardoCambios()"
+  >
     <div class="mb-3">
       <h3>Datos personales</h3>
       <label for="usuario" class="form-label">Nombre</label>
@@ -20,9 +24,26 @@
       >
       </textarea>
     </div>
-    <div class="mb-3">
-      <label for="acerdemi" class="form-label">Imagen</label>
-      <input type="textArea" class="form-control" formControlName="imgUser" />
+    <input type="text" class="form-control" formControlName="imgUser" hidden />
+    <h4>Imagen</h4>
+    <div class="mb-3 custom-file">
+      <input
+        type="file"
+        accept="image/*"
+        class="file-upload"
+        (change)="onFileChange($event)"
+        #inputImagen
+      />
+      <div *ngIf="imagenMin" class="mt-5">
+        <div>
+          <img
+            alt="imagen"
+            class="image-thumbnail"
+            style="max-width: 100px;"
+            [src]="imagenMin"
+          />
+        </div>
+      </div>
     </div>
     <div class="btn-container">
       <button
@@ -30,7 +51,7 @@
         type="submit"
         [disabled]="userDataForm.invalid"
       >
-        Grabar
+        Guardar
       </button>
       <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
         Cancelar

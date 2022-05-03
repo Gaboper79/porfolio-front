@@ -1,3 +1,4 @@
+import { environment } from "./../../environments/environment";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
@@ -9,7 +10,7 @@ import { SkillI } from "../model/skill";
 export class SkillService {
   skillList!: SkillI[];
   private skill$: Subject<SkillI[]>;
-  Url = "http://localhost:8080/api/skill";
+  Url = environment.porfolioUrl + "skill";
 
   constructor(private http: HttpClient) {
     this.skill$ = new Subject();

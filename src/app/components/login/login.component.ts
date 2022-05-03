@@ -60,9 +60,7 @@ export class LoginComponent implements OnInit {
           this.roles = data.authorities;
           this.router.navigate(["/portfolio"]);
         });
-    } catch (error) {
-      console.log("Ahora dip" + error);
-    }
+    } catch (error) {}
   }
 
   cargoformNuevo(): FormGroup {

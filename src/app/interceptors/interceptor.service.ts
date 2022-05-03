@@ -6,19 +6,25 @@ import {
   HttpRequest,
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, throwError } from "rxjs";
+import { finalize, Observable } from "rxjs";
 import { AuthService } from "../servicios/auth.service";
+import { SpinnerService } from "../servicios/spinner.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class InterceptorService implements HttpInterceptor {
-  constructor(private authSVC: AuthService) {}
+  constructor(
+    private authSVC: AuthService,
+    private spinnerSVC: SpinnerService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    this.spinnerSVC.isLoading$.next(true);
+
     let currentUser = this.authSVC.UsuaroAutenticado;
     if (currentUser && currentUser.token) {
       req = req.clone({
@@ -27,16 +33,7 @@ export class InterceptorService implements HttpInterceptor {
         },
       });
     }
-
-    return next.handle(
-      req
-    ) /* .pipe(
-      catchError((err: HttpErrorResponse) => {
-        if (err.status === 401) {
-          console.log("este es el error:" + err.message);
-        }
-        return throwError(err);
-      })
-    ) */;
+    this.spinnerSVC.isLoading$.next(false);
+    return next.handle(req).pipe(finalize(() => this.spinnerSVC.hide()));
   }
 }

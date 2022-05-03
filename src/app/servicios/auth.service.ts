@@ -1,7 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+<<<<<<< HEAD
 import { BehaviorSubject, map, Observable, Subject } from "rxjs";
 
+=======
+import { BehaviorSubject, map, Observable, Subject, throwError } from "rxjs";
+import { environment } from "src/environments/environment";
+>>>>>>> desarrollo
 import { LoginUsuario } from "../model/security/login-usuario";
 import { NuevoUsuario } from "../model/security/nuevo-usuario";
 
@@ -9,14 +14,12 @@ import { NuevoUsuario } from "../model/security/nuevo-usuario";
   providedIn: "root",
 })
 export class AuthService {
-  authURL = "http://localhost:8080/auth/";
+  authURL = environment.authURL;
   currentUserSubject: BehaviorSubject<any>;
   isLogged = false;
   isLogged$!: Subject<any>;
   roles: Array<string> = [];
   constructor(private httpClient: HttpClient) {
-    console.log("constructor del authsvc");
-
     this.currentUserSubject = new BehaviorSubject<any>(
       JSON.parse(sessionStorage.getItem("currentUser") || "{}")
     );

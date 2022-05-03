@@ -23,10 +23,6 @@
       </div>
       <div class="col-md-6">
         <div class="mb-3">
-          <label for="puesto" class="form-label">Imagen</label>
-          <input type="text" class="form-control" formControlName="img" />
-        </div>
-        <div class="mb-3">
           <label for="empresa" class="form-label">Fecha Ingreso</label>
           <input type="text" class="form-control" formControlName="fechIni" />
         </div>
@@ -34,8 +30,38 @@
           <label for="empresa" class="form-label">Fecha Finalizacion</label>
           <input type="text" class="form-control" formControlName="fechaFin" />
         </div>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="imgUser"
+          hidden
+        />
+        <h4>Imagen</h4>
+        <div *ngIf="errMsje" class="alert alert-danger">{{errMsje}}</div>
+        <div class="mb-3 custom-file">
+          <input
+            accept="image/*"
+            type="file"
+            class="file-upload"
+            (change)="onFileChange($event)"
+          />
+          <div *ngIf="imagen" class="mt-5">
+            <div>
+              <img
+                alt="imagen"
+                class="image-thumbnail"
+                style="max-width: 100px;"
+                [src]="imagenMin"
+              />
+            </div>
+          </div>
+        </div>
         <div class="container mt-5">
-          <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
+          <button
+            type="submit"
+            class="btn btnFlashero"
+            (click)="emitirEvento('guardar')"
+          >
             Guardar
           </button>
           <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">

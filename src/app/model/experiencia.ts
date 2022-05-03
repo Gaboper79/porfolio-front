@@ -1,7 +1,7 @@
 export interface ExperienciaI {
   id: number;
   empresa: string;
-  img: string;
+  imgUser: number;
   descripcion: string;
   fechIni: string;
   fechaFin: string;

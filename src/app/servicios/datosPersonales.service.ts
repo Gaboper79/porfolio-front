@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, Subject } from "rxjs";
-
+import { Observable, Subject } from "rxjs";
+import { environment } from "src/environments/environment";
 import { DatosPersonalesI } from "../model/DatosPersonalesI";
 import { AuthService } from "./auth.service";
 
@@ -11,12 +11,13 @@ import { AuthService } from "./auth.service";
 export class DatosPersonalesService {
   datospersonales!: DatosPersonalesI[];
   private datosP$: Subject<DatosPersonalesI[]>;
-  Url = "http://localhost:8080/api/datosper";
+  Url = environment.porfolioUrl + "datosper";
 
   constructor(private http: HttpClient, private authSVC: AuthService) {
     this.datosP$ = new Subject();
     this.http.get<DatosPersonalesI[]>(this.Url).subscribe((res) => {
       this.datospersonales = res;
+
       this.datosP$.next(this.datospersonales);
     });
   }

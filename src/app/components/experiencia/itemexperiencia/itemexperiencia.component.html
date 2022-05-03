@@ -2,7 +2,8 @@
   <div class="row g-0">
     <div class="col-md-3 img_experiencia">
       <img
-        src="./assets/img/proanalisis2.png"
+        *ngIf="imagenData"
+        [src]="imagenData.imagenUrl"
         class="img-fluid rounded-start"
         alt="Logo"
       />

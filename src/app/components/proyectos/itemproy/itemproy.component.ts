@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { ImagenI } from "src/app/model/ImagenI";
 import { AuthService } from "src/app/servicios/auth.service";
+import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
 import { ProyectoService } from "src/app/servicios/proyecto.service";
 import { ProyectoI } from "../../../model/proyectoI";
 
@@ -16,13 +18,23 @@ export class ItemproyComponent implements OnInit {
   faEdit = faEdit;
   faDelete = faTrash;
   isAdmin = false;
+  imagenData!: ImagenI;
   constructor(
     private proyectoSvc: ProyectoService,
-    private authSVC: AuthService
+    private authSVC: AuthService,
+    private imagenSvc: ImagenService
   ) {}
 
   ngOnInit(): void {
     this.isAdmin = this.authSVC.isAdmin();
+    this.getImagen();
+  }
+  getImagen() {
+    if (this.proyecto.imgUser) {
+      this.imagenSvc.getOne(this.proyecto.imgUser).subscribe((result) => {
+        this.imagenData = result;
+      });
+    }
   }
   CambioModifico() {
     this.modifico = !this.modifico;
@@ -33,6 +45,7 @@ export class ItemproyComponent implements OnInit {
     this.modifico = !this.modifico;
   }
   eliminarProyecto() {
+    this.imagenSvc.delete(this.proyecto.imgUser).subscribe();
     this.proyectoSvc.deleteProyecto(this.proyecto, this.item);
   }
 }

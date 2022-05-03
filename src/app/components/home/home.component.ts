@@ -12,22 +12,13 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  portfolios!: PortfolioI[];
   currentUser: any;
   faBlog = faUser;
-  constructor(
-    private portfolioSvc: PortfolioService,
-    private ruta: Router,
-    public authSVC: AuthService
-  ) {
+  constructor(public authSVC: AuthService) {}
+
+  ngOnInit(): void {
     this.authSVC.currentUserSubject.subscribe(
       (res) => (this.currentUser = res)
     );
-  }
-
-  ngOnInit(): void {}
-  mostrarporfolio(portfolio: PortfolioI) {
-    this.portfolioSvc.setPortfolio(portfolio);
-    this.ruta.navigateByUrl("portfolio");
   }
 }

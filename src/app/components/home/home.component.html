@@ -1,14 +1,11 @@
+<app-spinner></app-spinner>
 <div class="container botonesHomecontainer">
-  <a type="button" [routerLink]="['/portfolio']"><h2>PORFOLIO</h2></a>
+  <a routerLink="/portfolio"><h2>PORFOLIO</h2></a>
 </div>
 
 <div *ngIf="!currentUser.token" class="container text-center">
-  <h3>Por favor inicie session aqui.-</h3>
-  <a class="" [routerLink]="['/login']"
-    ><span>
-      <fa-icon
-        [icon]="faBlog"
-        style="color: rgb(226, 95, 72);"
-      ></fa-icon> </span
-  ></a>
+  <a class="linkLogin" [routerLink]="['/login']">
+    <fa-icon [icon]="faBlog" style="color: rgb(226, 95, 72);"></fa-icon>
+    Por favor inicie session aqui.-
+  </a>
 </div>

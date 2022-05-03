@@ -15,7 +15,7 @@ export class PortfolioService {
     this.portf$ = new Subject<PortfolioI>();
   }
 
-  getAllPortfolio(): Observable<any> {
+  /*  getAllPortfolio(): Observable<any> {
     return this.http.get(this.Url);
   }
   setPortfolio(portfolio: PortfolioI) {
@@ -32,9 +32,7 @@ export class PortfolioService {
       .subscribe((res) => {});
   }
   agregoNuevoItemAPorfolio(portfolio: PortfolioI) {
-    this.http.post<PortfolioI>(this.Url, portfolio).subscribe((res) => {
-      console.log("item agregado correctamente.-");
-    });
+    this.http.post<PortfolioI>(this.Url, portfolio).subscribe((res) => {});
   }
-  creoNuevoPorfolio() {}
+  creoNuevoPorfolio() {}*/
 }
