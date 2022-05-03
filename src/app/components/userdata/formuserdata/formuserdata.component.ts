@@ -78,11 +78,11 @@ export class FormuserdataComponent implements OnInit {
   }
   guardoCambios() {
     if (this.imagen) {
+      //show de spinner diegojserrano@gmail.com
       this.imagenSvc.upload(this.imagen).subscribe((data) => {
         this.imagenId = data.id;
         this.datospersonales[0] = this.userDataForm.value;
         this.datospersonales[0].imgUser = this.imagenId;
-        this.datosPSvc.updateDatosP(this.datospersonales[0]);
         this.evento.emit();
       });
     } else {

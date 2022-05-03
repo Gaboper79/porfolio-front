@@ -1,5 +1,5 @@
 <div class="container-form Experiencia" *ngIf="modifico || nuevaExpe">
-  <form [formGroup]="userDataForm" (ngSubmit)="guardoCambios()">
+  <form [formGroup]="userDataForm">
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
@@ -57,7 +57,11 @@
           </div>
         </div>
         <div class="container mt-5">
-          <button type="submit" class="btn btnFlashero">
+          <button
+            type="submit"
+            class="btn btnFlashero"
+            (click)="emitirEvento('guardar')"
+          >
             Guardar
           </button>
           <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">

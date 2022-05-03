@@ -50,7 +50,6 @@ export class FormexperComponent implements OnInit {
       } else {
         this.errMsje = "";
       }
-      console.log(this.imagen.size);
     }
     const fr = new FileReader();
     fr.onload = (e: any) => {
@@ -112,7 +111,6 @@ export class FormexperComponent implements OnInit {
           this.imagenId = data.id;
           this.experiencia = this.userDataForm.value;
           this.experiencia.imgUser = this.imagenId;
-
           this.experienciaScv.addExperiencia(this.userDataForm.value);
         });
       } else {

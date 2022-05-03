@@ -30,14 +30,23 @@ export class UserdataComponent implements OnInit {
     private imgenSvc: ImagenService
   ) {}
   ngOnInit(): void {
-    this.datosPSvc.getdatosP$().subscribe((result) => {
-      this.datospersonales = result;
+    if (!this.datosPSvc.datospersonales) {
+      this.datosPSvc.getdatosP$().subscribe((result) => {
+        this.datospersonales = result;
+        this.imgenSvc
+          .getOne(this.datospersonales[0].imgUser)
+          .subscribe((result) => {
+            this.imagenData = result;
+          });
+      });
+    } else {
+      this.datospersonales = this.datosPSvc.datospersonales;
       this.imgenSvc
         .getOne(this.datospersonales[0].imgUser)
         .subscribe((result) => {
           this.imagenData = result;
         });
-    });
+    }
 
     this.authSVC.currentUserSubject.subscribe(
       (res) => (this.currentUser = res)
