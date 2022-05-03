@@ -45,7 +45,10 @@ export class ItemexperienciaComponent implements OnInit {
     this.modifico = !this.modifico;
   }
   eliminarExperiencia() {
-    this.imagenSvc.delete(this.experiencia.imgUser).subscribe();
+    if (this.experiencia.imgUser) {
+      this.imagenSvc.delete(this.experiencia.imgUser).subscribe();
+    }
+
     this.experienciaSVC.deleteExperiencia(this.experiencia, this.item);
   }
 }

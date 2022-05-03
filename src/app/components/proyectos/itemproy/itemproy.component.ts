@@ -45,7 +45,9 @@ export class ItemproyComponent implements OnInit {
     this.modifico = !this.modifico;
   }
   eliminarProyecto() {
-    this.imagenSvc.delete(this.proyecto.imgUser).subscribe();
+    if (this.proyecto.imgUser) {
+      this.imagenSvc.delete(this.proyecto.imgUser).subscribe();
+    }
     this.proyectoSvc.deleteProyecto(this.proyecto, this.item);
   }
 }

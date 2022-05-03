@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { faEdit, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { Observable } from "rxjs";
 
 import { ExperienciaI } from "src/app/model/experiencia";
 import { AuthService } from "src/app/servicios/auth.service";
@@ -16,6 +17,7 @@ export class ExperienciaComponent implements OnInit {
   isAdmin = false;
   experienciaList!: ExperienciaI[];
   nuevaExpe: boolean = false;
+  experiencia$!: Observable<ExperienciaI[]>;
 
   constructor(
     private readonly experienciaSVC: ExperienciaService,
