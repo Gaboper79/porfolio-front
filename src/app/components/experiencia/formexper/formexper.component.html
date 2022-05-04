@@ -1,10 +1,16 @@
 <div class="container-form Experiencia" *ngIf="modifico || nuevaExpe">
-  <form [formGroup]="userDataForm">
+  <form [formGroup]="expDataForm">
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
           <label for="empresa" class="form-label">Empresa</label>
           <input type="text" class="form-control" formControlName="empresa" />
+          <p
+            class="alert alert-danger"
+            *ngIf="expDataForm.get('empresa')?.touched && expDataForm.get('empresa')?.errors?.['required']"
+          >
+            La Empresa es requerida
+          </p>
         </div>
         <div class="mb-3">
           <label for="descripcion" class="form-label">Descripcion</label>
@@ -15,10 +21,22 @@
             placeholder="Descripcion"
           >
           </textarea>
+          <p
+            class="alert alert-danger"
+            *ngIf="expDataForm.get('descripcion')?.touched && expDataForm.get('descripcion')?.errors?.['required']"
+          >
+            Una descripcion es requerida
+          </p>
         </div>
         <div class="mb-3">
           <label for="puesto" class="form-label">Puesto</label>
           <input type="text" class="form-control" formControlName="puesto" />
+          <p
+            class="alert alert-danger"
+            *ngIf="expDataForm.get('puesto')?.touched && expDataForm.get('puesto')?.errors?.['required']"
+          >
+            Un Puesto es requerida
+          </p>
         </div>
       </div>
       <div class="col-md-6">
@@ -61,6 +79,7 @@
             type="submit"
             class="btn btnFlashero"
             (click)="emitirEvento('guardar')"
+            [disabled]="expDataForm.invalid"
           >
             Guardar
           </button>

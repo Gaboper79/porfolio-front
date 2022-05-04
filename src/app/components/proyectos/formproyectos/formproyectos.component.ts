@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { ProyectoI } from "src/app/model/proyectoI";
 import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
@@ -12,7 +12,7 @@ import { ProyectoService } from "src/app/servicios/proyecto.service";
   styleUrls: ["./formproyectos.component.scss"],
 })
 export class FormproyectosComponent implements OnInit {
-  userDataForm!: FormGroup;
+  proyDataForm!: FormGroup;
   id!: number;
   imagen!: File;
   imagenMin!: File;
@@ -57,19 +57,19 @@ export class FormproyectosComponent implements OnInit {
   }
   cargoformModifico() {
     this.imagenId = this.proyecto.imgUser;
-    this.userDataForm = this.formBuilder.group({
-      nombre: [this.proyecto.nombre],
+    this.proyDataForm = this.formBuilder.group({
+      nombre: [this.proyecto.nombre, [Validators.required]],
       link: [this.proyecto.link],
-      descripcion: [this.proyecto.descripcion],
+      descripcion: [this.proyecto.descripcion, [Validators.required]],
       imgUser: [this.proyecto.imgUser],
     });
     this.id = this.proyecto.id;
   }
   cargoformNuevo() {
-    this.userDataForm = this.formBuilder.group({
-      nombre: [""],
+    this.proyDataForm = this.formBuilder.group({
+      nombre: ["", [Validators.required]],
       link: [""],
-      descripcion: [""],
+      descripcion: ["", [Validators.required]],
       imgUser: [""],
     });
   }
@@ -86,13 +86,13 @@ export class FormproyectosComponent implements OnInit {
       //controlo si modifico la imagen del
       if (this.imagen) {
         this.imagenSvc.upload(this.imagen).subscribe((data) => {
-          this.proyecto = this.userDataForm.value;
+          this.proyecto = this.proyDataForm.value;
           this.proyecto.id = this.id;
           this.proyecto.imgUser = data.id;
           this.proyectoSvc.updateProyecto(this.proyecto, this.item);
         });
       } else {
-        this.proyecto = this.userDataForm.value;
+        this.proyecto = this.proyDataForm.value;
         this.proyecto.id = this.id;
         this.proyecto.imgUser = this.imagenId;
         this.proyectoSvc.updateProyecto(this.proyecto, this.item);
@@ -102,14 +102,14 @@ export class FormproyectosComponent implements OnInit {
       if (this.imagen) {
         this.imagenSvc.upload(this.imagen).subscribe((data) => {
           this.imagenId = data.id;
-          this.proyecto = this.userDataForm.value;
+          this.proyecto = this.proyDataForm.value;
           this.proyecto.imgUser = this.imagenId;
-          this.proyectoSvc.addProyecto(this.userDataForm.value);
+          this.proyectoSvc.addProyecto(this.proyDataForm.value);
         });
       } else {
-        this.proyecto = this.userDataForm.value;
+        this.proyecto = this.proyDataForm.value;
         this.proyecto.imgUser = this.imagenId;
-        this.proyectoSvc.addProyecto(this.userDataForm.value);
+        this.proyectoSvc.addProyecto(this.proyDataForm.value);
       }
     }
   }

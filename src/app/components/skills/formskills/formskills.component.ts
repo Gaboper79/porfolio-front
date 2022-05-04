@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { PortfolioI } from "src/app/model/portfolio";
 import { SkillI } from "src/app/model/skill";
@@ -12,7 +12,7 @@ import { SkillService } from "src/app/servicios/skill.service";
   styleUrls: ["./formskills.component.scss"],
 })
 export class FormskillsComponent implements OnInit {
-  userDataForm!: FormGroup;
+  skillDataForm!: FormGroup;
   id!: number;
 
   @Output() evento = new EventEmitter<String>();
@@ -35,16 +35,19 @@ export class FormskillsComponent implements OnInit {
   }
 
   cargoformModifico() {
-    this.userDataForm = this.formBuilder.group({
-      skill: [this.skill.skill],
-      valor: [this.skill.valor],
+    this.skillDataForm = this.formBuilder.group({
+      skill: [this.skill.skill, [Validators.required]],
+      valor: [this.skill.valor, [Validators.required]],
     });
     this.id = this.skill.id;
   }
   cargoformNuevo() {
-    this.userDataForm = this.formBuilder.group({
-      skill: [""],
-      valor: [""],
+    this.skillDataForm = this.formBuilder.group({
+      skill: ["", [Validators.required]],
+      valor: [
+        "",
+        [Validators.required, Validators.min(1), Validators.max(100)],
+      ],
     });
   }
 
@@ -58,13 +61,13 @@ export class FormskillsComponent implements OnInit {
     if (this.modifico) {
       //modifico
 
-      this.skill = this.userDataForm.value;
+      this.skill = this.skillDataForm.value;
       this.skill.id = this.id;
 
       this.skillSVC.updateSkill(this.skill, this.item);
     } else {
       //agrego nueva exp
-      this.skillSVC.addSkill(this.userDataForm.value);
+      this.skillSVC.addSkill(this.skillDataForm.value);
     }
   }
 }
