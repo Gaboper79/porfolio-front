@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 import { Observable, Subject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { DatosPersonalesI } from "../model/DatosPersonalesI";
@@ -13,7 +14,11 @@ export class DatosPersonalesService {
   private datosP$: Subject<DatosPersonalesI[]>;
   Url = environment.porfolioUrl + "datosper";
 
-  constructor(private http: HttpClient, private authSVC: AuthService) {
+  constructor(
+    private http: HttpClient,
+    private authSVC: AuthService,
+    private toastSvc: ToastrService
+  ) {
     this.datosP$ = new Subject();
     this.http.get<DatosPersonalesI[]>(this.Url).subscribe((res) => {
       this.datospersonales = res;
@@ -31,7 +36,14 @@ export class DatosPersonalesService {
   }
 
   updateDatosP(datosP: DatosPersonalesI) {
-    this.http.put(this.Url, datosP).subscribe();
+    this.http
+      .put(this.Url, datosP)
+      .subscribe(() =>
+        this.toastSvc.success(
+          ` ${datosP.nombre} Modificado exisotamente`,
+          "Datos Personales"
+        )
+      );
     this.datospersonales[0] = datosP;
 
     this.datosP$.next(this.datospersonales);

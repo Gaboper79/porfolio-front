@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
 import { EducacionI } from "src/app/model/educacionI";
 import { EducacionService } from "src/app/servicios/Educacion.service";
 

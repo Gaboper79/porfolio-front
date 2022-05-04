@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { ToastrService } from "ngx-toastr";
 import { ImagenI } from "src/app/model/ImagenI";
 import { AuthService } from "src/app/servicios/auth.service";
 import { ImagenService } from "src/app/servicios/imagenCloudinary.service";

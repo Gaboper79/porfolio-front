@@ -14,11 +14,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { FormPortfolioComponent } from "./components/form-portfolio/form-portfolio.component";
 
 import { InterceptorService } from "./interceptors/interceptor.service";
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule } from "@angular/common";
 import { RegistroComponent } from "./components/registro/registro.component";
-import { ListaComponent } from "./components/imagen/lista/lista.component";
-import { SpinnerComponent } from "./components/spinner/spinner.component";
+
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -26,7 +26,6 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
     HeaderComponent,
     FormPortfolioComponent,
     RegistroComponent,
-    ListaComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +37,8 @@ import { SpinnerComponent } from "./components/spinner/spinner.component";
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

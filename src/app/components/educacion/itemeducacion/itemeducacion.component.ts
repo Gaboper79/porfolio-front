@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { ToastrService } from "ngx-toastr";
 import { EducacionI } from "src/app/model/educacionI";
 import { AuthService } from "src/app/servicios/auth.service";
 import { EducacionService } from "src/app/servicios/Educacion.service";

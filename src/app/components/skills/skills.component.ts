@@ -21,7 +21,6 @@ export class SkillsComponent implements OnInit {
 
   constructor(
     public readonly skillSVC: SkillService,
-
     private authSVC: AuthService
   ) {}
   ngOnInit(): void {
