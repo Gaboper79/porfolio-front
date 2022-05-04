@@ -17,7 +17,7 @@ import { InterceptorService } from "./interceptors/interceptor.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule } from "@angular/common";
 import { RegistroComponent } from "./components/registro/registro.component";
-
+import { ShowHidePasswordModule } from "ngx-show-hide-password";
 import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
@@ -39,6 +39,7 @@ import { ToastrModule } from "ngx-toastr";
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ShowHidePasswordModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

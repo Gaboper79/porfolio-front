@@ -25,11 +25,7 @@ export class ItemskillComponent implements OnInit {
   background = "'#eaeaea'";
   color = "#479c4e";
 
-  constructor(
-    public skillSVC: SkillService,
-
-    private authSVC: AuthService
-  ) {}
+  constructor(public skillSVC: SkillService, private authSVC: AuthService) {}
 
   ngOnInit(): void {
     this.current = this.skill.valor;

@@ -45,13 +45,15 @@
       <div class="class col-md-6">
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            name="exampleInputPassword1"
-            formControlName="password"
-            required
-          />
+          <show-hide-password size="lg">
+            <input
+              type="password"
+              class="form-control"
+              name="exampleInputPassword1"
+              formControlName="password"
+              required
+            />
+          </show-hide-password>
         </div>
         <p
           class="alert alert-danger"
