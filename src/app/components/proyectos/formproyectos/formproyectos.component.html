@@ -1,11 +1,17 @@
 <div class="container" *ngIf="modifico || nuevaProy">
-  <form [formGroup]="userDataForm">
+  <form [formGroup]="proyDataForm">
     <div class="container-form Experiencia">
       <div class="row">
         <div class="col-md-6">
           <div class="mb-3">
             <label for="empresa" class="form-label">Nombre o Titulo</label>
             <input type="text" class="form-control" formControlName="nombre" />
+            <p
+              class="alert alert-danger"
+              *ngIf="proyDataForm.get('nombre')?.touched && proyDataForm.get('nombre')?.errors?.['required']"
+            >
+              Un Nombre es requerido
+            </p>
           </div>
           <div class="mb-3">
             <label for="descripcion" class="form-label">Descripcion</label>
@@ -16,6 +22,12 @@
               placeholder="Descripcion"
             >
             </textarea>
+            <p
+              class="alert alert-danger"
+              *ngIf="proyDataForm.get('descripcion')?.touched && proyDataForm.get('descripcion')?.errors?.['required']"
+            >
+              Una Descripcion es requerida
+            </p>
           </div>
         </div>
         <div class="col-md-6">
@@ -51,7 +63,11 @@
             </div>
           </div>
           <div class="container mt-5">
-            <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
+            <button
+              class="btn btnFlashero"
+              (click)="emitirEvento('guardar')"
+              [disabled]="proyDataForm.invalid"
+            >
               Guardar
             </button>
             <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">

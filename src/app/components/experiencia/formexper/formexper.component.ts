@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { ExperienciaI } from "src/app/model/experiencia";
 
@@ -13,7 +13,7 @@ import { PortfolioService } from "src/app/servicios/portfolio.service";
   styleUrls: ["./formexper.component.scss"],
 })
 export class FormexperComponent implements OnInit {
-  userDataForm!: FormGroup;
+  expDataForm!: FormGroup;
   id!: number;
   imagen!: File;
   imagenMin!: File;
@@ -60,23 +60,23 @@ export class FormexperComponent implements OnInit {
   }
   cargoformModifico() {
     this.imagenId = this.experiencia.imgUser;
-    this.userDataForm = this.formBuilder.group({
-      empresa: [this.experiencia.empresa],
-      descripcion: [this.experiencia.descripcion],
-      fechIni: [this.experiencia.fechIni],
+    this.expDataForm = this.formBuilder.group({
+      empresa: [this.experiencia.empresa, [Validators.required]],
+      descripcion: [this.experiencia.descripcion, [Validators.required]],
+      fechaIni: [this.experiencia.fechaIni],
       fechaFin: [this.experiencia.fechaFin],
-      puesto: [this.experiencia.puesto],
+      puesto: [this.experiencia.puesto, [Validators.required]],
       imgUser: [this.experiencia.imgUser],
     });
     this.id = this.experiencia.id;
   }
   cargoformNuevo() {
-    this.userDataForm = this.formBuilder.group({
-      empresa: [""],
-      descripcion: [""],
-      fechIni: [""],
+    this.expDataForm = this.formBuilder.group({
+      empresa: ["", [Validators.required]],
+      descripcion: ["", [Validators.required]],
+      fechaIni: [""],
       fechaFin: [""],
-      puesto: [""],
+      puesto: ["", [Validators.required]],
       imgUser: [""],
     });
   }
@@ -94,13 +94,13 @@ export class FormexperComponent implements OnInit {
       //controlo si modifico la imagen del
       if (this.imagen) {
         this.imagenSvc.upload(this.imagen).subscribe((data) => {
-          this.experiencia = this.userDataForm.value;
+          this.experiencia = this.expDataForm.value;
           this.experiencia.id = this.id;
           this.experiencia.imgUser = data.id;
           this.experienciaScv.updateExperiencia(this.experiencia, this.item);
         });
       } else {
-        this.experiencia = this.userDataForm.value;
+        this.experiencia = this.expDataForm.value;
         this.experiencia.id = this.id;
         this.experiencia.imgUser = this.imagenId;
         this.experienciaScv.updateExperiencia(this.experiencia, this.item);
@@ -110,15 +110,17 @@ export class FormexperComponent implements OnInit {
       if (this.imagen) {
         this.imagenSvc.upload(this.imagen).subscribe((data) => {
           this.imagenId = data.id;
-          this.experiencia = this.userDataForm.value;
+          this.experiencia = this.expDataForm.value;
           this.experiencia.imgUser = this.imagenId;
-          this.experienciaScv.addExperiencia(this.userDataForm.value);
+          this.experienciaScv.addExperiencia(this.expDataForm.value);
         });
       } else {
-        this.experiencia = this.userDataForm.value;
+        console.log(this.expDataForm.value);
+
+        this.experiencia = this.expDataForm.value;
         this.experiencia.imgUser = this.imagenId;
 
-        this.experienciaScv.addExperiencia(this.userDataForm.value);
+        this.experienciaScv.addExperiencia(this.expDataForm.value);
       }
     }
   }

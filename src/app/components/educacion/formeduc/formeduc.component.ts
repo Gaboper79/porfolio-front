@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { EducacionI } from "src/app/model/educacionI";
 import { EducacionService } from "src/app/servicios/Educacion.service";
@@ -10,7 +10,7 @@ import { EducacionService } from "src/app/servicios/Educacion.service";
   styleUrls: ["./formeduc.component.scss"],
 })
 export class FormeducComponent implements OnInit {
-  userDataForm!: FormGroup;
+  eduDataForm!: FormGroup;
   id!: number;
 
   @Output() evento = new EventEmitter<String>();
@@ -31,7 +31,7 @@ export class FormeducComponent implements OnInit {
     }
   }
   cargoformModifico() {
-    this.userDataForm = this.formBuilder.group({
+    this.eduDataForm = this.formBuilder.group({
       titulo: [this.educacion.titulo],
       institucion: [this.educacion.institucion],
       fecha: [this.educacion.fecha],
@@ -39,9 +39,9 @@ export class FormeducComponent implements OnInit {
     this.id = this.educacion.id;
   }
   cargoformNuevo() {
-    this.userDataForm = this.formBuilder.group({
-      titulo: [""],
-      institucion: [""],
+    this.eduDataForm = this.formBuilder.group({
+      titulo: ["", [Validators.required]],
+      institucion: ["", [Validators.required]],
       fecha: [""],
     });
   }
@@ -54,12 +54,12 @@ export class FormeducComponent implements OnInit {
   guardoCambios() {
     if (this.modifico) {
       //modifico
-      this.educacion = this.userDataForm.value;
+      this.educacion = this.eduDataForm.value;
       this.educacion.id = this.id;
       this.educacionSvc.updateEducacion(this.educacion, this.item);
     } else {
       //agrego nueva exp
-      this.educacionSvc.addEducacion(this.userDataForm.value);
+      this.educacionSvc.addEducacion(this.eduDataForm.value);
     }
   }
 }

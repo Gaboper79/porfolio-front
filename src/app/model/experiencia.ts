@@ -3,7 +3,7 @@ export interface ExperienciaI {
   empresa: string;
   imgUser: number;
   descripcion: string;
-  fechIni: string;
+  fechaIni: string;
   fechaFin: string;
   puesto: string;
 }

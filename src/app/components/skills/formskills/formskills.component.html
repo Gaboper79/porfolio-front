@@ -1,20 +1,48 @@
-<form [formGroup]="userDataForm">
+<form [formGroup]="skillDataForm">
   <div class="container-form Experiencia">
     <div class="row">
       <div class="container">
         <div class="mb-3">
           <label for="empresa" class="form-label">Nombre del Skill</label>
           <input type="text" class="form-control" formControlName="skill" />
+          <p
+            class="alert alert-danger"
+            *ngIf="skillDataForm.get('skill')?.touched && skillDataForm.get('skill')?.errors?.['required']"
+          >
+            Nombre del Skill es requerido
+          </p>
         </div>
 
         <div class="mb-3">
           <label for="puesto" class="form-label">% del Skill</label>
-          <input type="number" class="form-control" formControlName="valor" />
+          <input
+            type="number"
+            min="1"
+            max="100"
+            class="form-control"
+            formControlName="valor"
+          />
+          <p
+            class="alert alert-danger"
+            *ngIf="skillDataForm.get('valor')?.touched && skillDataForm.get('valor')?.errors?.['required']"
+          >
+            Un valor es requerido
+          </p>
+          <p
+            class="alert alert-danger"
+            *ngIf="skillDataForm.get('valor')?.touched && skillDataForm.get('valor')?.errors?.['min'] ||skillDataForm.get('valor')?.errors?.['max'] "
+          >
+            El valor debe ser entre 1 y 100%
+          </p>
         </div>
       </div>
 
       <div class="container mt-5">
-        <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
+        <button
+          class="btn btnFlashero"
+          (click)="emitirEvento('guardar')"
+          [disabled]="skillDataForm.invalid"
+        >
           Guardar
         </button>
         <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">

@@ -5,7 +5,6 @@ import { ExperienciaService } from "src/app/servicios/experiencia.service";
 import { AuthService } from "src/app/servicios/auth.service";
 import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
 import { ImagenI } from "src/app/model/ImagenI";
-import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-itemexperiencia",

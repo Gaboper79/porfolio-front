@@ -1,5 +1,5 @@
 <div class="container" *ngIf="modifico || nuevaEdu">
-  <form [formGroup]="userDataForm">
+  <form [formGroup]="eduDataForm">
     <div class="container-form Experiencia">
       <div class="row">
         <div class="col-md-6">
@@ -11,6 +11,12 @@
               formControlName="titulo"
               placeholder="Titulo"
             />
+            <p
+              class="alert alert-danger"
+              *ngIf="eduDataForm.get('titulo')?.touched && eduDataForm.get('titulo')?.errors?.['required']"
+            >
+              El titulo es requerido
+            </p>
           </div>
           <div class="mb-3">
             <label for="descripcion" class="form-label">Establecimiento</label>
@@ -19,6 +25,12 @@
               formControlName="institucion"
               placeholder="Establecimiento"
             />
+            <p
+              class="alert alert-danger"
+              *ngIf="eduDataForm.get('institucion')?.touched && eduDataForm.get('institucion')?.errors?.['required']"
+            >
+              La Institucion es requerida
+            </p>
           </div>
         </div>
         <div class="col-md-6">
@@ -29,7 +41,11 @@
             placeholder="Fecha"
           />
           <div class="container mt-5">
-            <button class="btn btnFlashero" (click)="emitirEvento('guardar')">
+            <button
+              [disabled]="eduDataForm.invalid"
+              class="btn btnFlashero"
+              (click)="emitirEvento('guardar')"
+            >
               Guardar
             </button>
             <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
