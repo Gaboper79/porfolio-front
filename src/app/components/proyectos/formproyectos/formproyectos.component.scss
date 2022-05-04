@@ -5,8 +5,8 @@
 }
 .container-form {
   margin-top: 5%;
-  min-width: 200px;
-  width: 500px;
+  min-width: 100px;
+  width: 99%;
   padding: 2rem;
   border-radius: 15px;
   background-image: linear-gradient(to bottom right, #11141a, #31123a);
@@ -28,7 +28,12 @@
   color: white;
 }
 .custom-file {
-  padding: 10px;
+  padding: 15px;
+  width: auto;
   border: 1px solid white;
   border-radius: 5px;
+}
+.file-upload {
+  font-size: 0.7rem;
+  max-width: auto;
 }
