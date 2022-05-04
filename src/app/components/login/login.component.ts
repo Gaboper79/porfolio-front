@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   password!: string;
   roles: string[] = [];
   errMsj!: string;
-
+  passOjo: boolean = false;
   constructor(
     private tokenSVC: TokenService,
     private authSvc: AuthService,
@@ -36,7 +36,14 @@ export class LoginComponent implements OnInit {
     }
     this.loginDataForm = this.cargoformNuevo();
   }
-
+  password_show_hide() {
+    if (this.passOjo) {
+      alert("oculto");
+    } else {
+      alert("muestro");
+    }
+    this.passOjo = !this.passOjo;
+  }
   onLogin() {
     this.loginUsuario = this.loginDataForm.value;
     try {

@@ -24,7 +24,7 @@ import { RoundprogressModule } from "angular-svg-round-progressbar";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PorfolioComponent } from "./porfolio.component";
-import { SpinnerComponent } from "../spinner/spinner.component";
+import { ShowHidePasswordModule } from "ngx-show-hide-password";
 import { SpinnerModule } from "../spinner/spinner.module";
 
 @NgModule({
@@ -55,6 +55,7 @@ import { SpinnerModule } from "../spinner/spinner.module";
     FormsModule,
     ReactiveFormsModule,
     SpinnerModule,
+    ShowHidePasswordModule,
   ],
 })
 export class PorfolioModule {}
