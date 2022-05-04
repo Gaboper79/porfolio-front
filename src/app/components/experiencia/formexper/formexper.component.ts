@@ -63,7 +63,7 @@ export class FormexperComponent implements OnInit {
     this.expDataForm = this.formBuilder.group({
       empresa: [this.experiencia.empresa, [Validators.required]],
       descripcion: [this.experiencia.descripcion, [Validators.required]],
-      fechIni: [this.experiencia.fechIni],
+      fechaIni: [this.experiencia.fechaIni],
       fechaFin: [this.experiencia.fechaFin],
       puesto: [this.experiencia.puesto, [Validators.required]],
       imgUser: [this.experiencia.imgUser],
@@ -74,7 +74,7 @@ export class FormexperComponent implements OnInit {
     this.expDataForm = this.formBuilder.group({
       empresa: ["", [Validators.required]],
       descripcion: ["", [Validators.required]],
-      fechIni: [""],
+      fechaIni: [""],
       fechaFin: [""],
       puesto: ["", [Validators.required]],
       imgUser: [""],
@@ -115,6 +115,8 @@ export class FormexperComponent implements OnInit {
           this.experienciaScv.addExperiencia(this.expDataForm.value);
         });
       } else {
+        console.log(this.expDataForm.value);
+
         this.experiencia = this.expDataForm.value;
         this.experiencia.imgUser = this.imagenId;
 
