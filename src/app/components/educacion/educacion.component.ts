@@ -20,7 +20,7 @@ export class EducacionComponent implements OnInit {
     private readonly educacionSvc: EducacionService,
     private authSVC: AuthService
   ) {}
-
+  //prueba
   ngOnInit(): void {
     if (!this.educacionSvc.educacionList) {
       this.educacionSvc
