@@ -1,4 +1,4 @@
-<div class="card mb-3 item_experiencia" style="max-width: 80%;">
+<div [class]="claseEducacion" style="max-width: 80%;">
   <div class="container">
     <div class="row">
       <div class="col-md-3">
@@ -31,7 +31,7 @@
       *ngIf="!modifico && isAdmin"
       type="button"
       class="btnFlashero mb-3"
-      (click)="eliminarEducacion()"
+      (click)="eliminarItem()"
     >
       <fa-icon [icon]="faDelete" style="color: rgb(226, 95, 72);"></fa-icon>
     </button>

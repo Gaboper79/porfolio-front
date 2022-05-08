@@ -20,6 +20,7 @@ export class ItemproyComponent implements OnInit {
   faDelete = faTrash;
   isAdmin = false;
   imagenData!: ImagenI;
+  claseProyecto = "card mb-3 item_experiencia";
   constructor(
     private proyectoSvc: ProyectoService,
     private authSVC: AuthService,
@@ -46,6 +47,13 @@ export class ItemproyComponent implements OnInit {
     this.modifico = !this.modifico;
   }
   eliminarProyecto() {
+    //efecto fadeOut
+    this.claseProyecto =
+      "card mb-3 item_experiencia animate__animated animate__bounceOutRight";
+    setTimeout(() => this.eliminoItem(), 1000);
+  }
+
+  eliminoItem() {
     if (this.proyecto.imgUser) {
       this.imagenSvc.delete(this.proyecto.imgUser).subscribe();
     }

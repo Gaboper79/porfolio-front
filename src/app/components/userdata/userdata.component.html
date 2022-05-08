@@ -7,6 +7,7 @@
         alt="..."
       />
     </div>
+    <div class="animate__animated animate__bounce"></div>
     <div *ngIf="imagenData" class="imgUserContainer">
       <img class="imguser2" [src]="imagenData.imagenUrl" alt="imagen Usuario" />
     </div>
@@ -14,7 +15,7 @@
 
   <div class="card-body" *ngIf="datospersonales">
     <div class="textCard">
-      <div class="card-text col-sm-6">
+      <div class="card-text col-sm-6 animate__animated animate__backInLeft">
         <h1 style="text-align: center;">
           {{datospersonales[0].nombre}}
         </h1>
@@ -23,7 +24,7 @@
           {{datospersonales[0].titulo}}
         </h5>
       </div>
-      <div class="card-text col-sm-6">
+      <div class="card-text col-sm-6 animate__animated animate__backInRight">
         <h5 class="aboutme">Acerca de mi...</h5>
         <p style="max-width: 500px;">
           {{datospersonales[0].aboutMe}}

@@ -17,6 +17,7 @@ export class ItemeducacionComponent implements OnInit {
   faEdit = faEdit;
   faDelete = faTrash;
   isAdmin = false;
+  claseEducacion = "card mb-3 item_experiencia";
   constructor(
     private readonly educacionSvc: EducacionService,
     private authSVC: AuthService
@@ -33,7 +34,13 @@ export class ItemeducacionComponent implements OnInit {
     }
     this.modifico = !this.modifico;
   }
-  eliminarEducacion() {
+  eliminarItem() {
+    //efecto fadeOut
+    this.claseEducacion =
+      "card mb-3 item_experiencia animate__animated animate__bounceOutRight";
+    setTimeout(() => this.eliminoItem(), 1000);
+  }
+  eliminoItem() {
     this.educacionSvc.deleteEducacion(this.educacion, this.item);
   }
 }

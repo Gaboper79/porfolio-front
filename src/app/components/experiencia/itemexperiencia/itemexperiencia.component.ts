@@ -19,6 +19,7 @@ export class ItemexperienciaComponent implements OnInit {
   faDelete = faTrash;
   isAdmin = false;
   imagenData!: ImagenI;
+  claseExperiencia = "card mb-3 item_experiencia";
   constructor(
     private experienciaSVC: ExperienciaService,
     private authSVC: AuthService,
@@ -44,7 +45,14 @@ export class ItemexperienciaComponent implements OnInit {
     }
     this.modifico = !this.modifico;
   }
-  eliminarExperiencia() {
+
+  eliminarItem() {
+    //efecto fadeOut
+    this.claseExperiencia =
+      "card mb-3 item_experiencia animate__animated animate__bounceOutRight";
+    setTimeout(() => this.eliminoItem(), 1000);
+  }
+  eliminoItem() {
     if (this.experiencia.imgUser) {
       this.imagenSvc.delete(this.experiencia.imgUser).subscribe();
     }
