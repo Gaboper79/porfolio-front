@@ -18,10 +18,10 @@ import { ItemexperienciaComponent } from "../experiencia/itemexperiencia/itemexp
 import { ItemeducacionComponent } from "../educacion/itemeducacion/itemeducacion.component";
 import { ItemproyComponent } from "../proyectos/itemproy/itemproy.component";
 import { ItemskillComponent } from "../skills/itemskill/itemskill.component";
-import { BrowserModule } from "@angular/platform-browser";
+
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { RoundprogressModule } from "angular-svg-round-progressbar";
-import { HttpClientModule } from "@angular/common/http";
+
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PorfolioComponent } from "./porfolio.component";
 import { ShowHidePasswordModule } from "ngx-show-hide-password";
