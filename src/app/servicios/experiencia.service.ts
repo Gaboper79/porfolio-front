@@ -29,8 +29,6 @@ export class ExperienciaService {
     return this.http.get<ExperienciaI[]>(this.Url);
   }
   addExperiencia(experiencia: ExperienciaI) {
-    console.log("esta es f ini", experiencia.fechaIni);
-
     this.http
       .post<ExperienciaI>(this.Url + "/add", experiencia)
       .subscribe((res) => {

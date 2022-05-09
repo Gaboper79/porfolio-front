@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { Observable } from "rxjs";
 import { DatosPersonalesI } from "src/app/model/DatosPersonalesI";
 import { ImagenI } from "src/app/model/ImagenI";
 
@@ -82,8 +81,10 @@ export class FormuserdataComponent implements OnInit {
       //show de spinner diegojserrano@gmail.com
       this.imagenSvc.upload(this.imagen).subscribe((data) => {
         this.imagenId = data.id;
+
         this.datospersonales[0] = this.userDataForm.value;
         this.datospersonales[0].imgUser = this.imagenId;
+        this.datosPSvc.updateDatosP(this.datospersonales[0]);
         this.evento.emit();
       });
     } else {
@@ -95,16 +96,13 @@ export class FormuserdataComponent implements OnInit {
   }
   emitirEvento(opcion: String) {
     //fadeOut
-    this.claseform =
-      "container-form userData animate__animated animate__lightSpeedOutLeft";
-    setTimeout(() => this.emitoevento(opcion), 2000);
-  }
-  emitoevento(opcion: String) {
     if (opcion === "guardar") {
-      alert("Guardar");
-      this.guardoCambios();
+      this.claseform = "container-form animate__animated animate__bounceOut";
+      setTimeout(() => this.guardoCambios(), 1000);
+    } else {
+      this.claseform =
+        "container-form animate__animated animate__lightSpeedOutLeft";
+      setTimeout(() => this.evento.emit(), 1000);
     }
-
-    this.evento.emit();
   }
 }

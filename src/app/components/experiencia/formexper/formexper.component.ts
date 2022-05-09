@@ -1,11 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ToastrService } from "ngx-toastr";
 import { ExperienciaI } from "src/app/model/experiencia";
 
 import { ExperienciaService } from "src/app/servicios/experiencia.service";
 import { ImagenService } from "src/app/servicios/imagenCloudinary.service";
-import { PortfolioService } from "src/app/servicios/portfolio.service";
 
 @Component({
   selector: "app-formexper",
@@ -121,13 +119,12 @@ export class FormexperComponent implements OnInit {
           this.experienciaScv.addExperiencia(this.expDataForm.value);
         });
       } else {
-        console.log(this.expDataForm.value);
-
         this.experiencia = this.expDataForm.value;
         this.experiencia.imgUser = this.imagenId;
 
         this.experienciaScv.addExperiencia(this.expDataForm.value);
       }
     }
+    this.evento.emit();
   }
 }

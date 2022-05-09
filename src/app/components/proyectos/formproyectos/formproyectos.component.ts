@@ -117,5 +117,6 @@ export class FormproyectosComponent implements OnInit {
         this.proyectoSvc.addProyecto(this.proyDataForm.value);
       }
     }
+    this.evento.emit();
   }
 }

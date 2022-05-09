@@ -74,5 +74,6 @@ export class FormskillsComponent implements OnInit {
       //agrego nueva exp
       this.skillSVC.addSkill(this.skillDataForm.value);
     }
+    this.evento.emit();
   }
 }

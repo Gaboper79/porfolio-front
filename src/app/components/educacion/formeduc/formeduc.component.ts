@@ -66,5 +66,6 @@ export class FormeducComponent implements OnInit {
       //agrego nueva exp
       this.educacionSvc.addEducacion(this.eduDataForm.value);
     }
+    this.evento.emit();
   }
 }

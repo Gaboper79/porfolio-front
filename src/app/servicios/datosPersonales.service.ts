@@ -36,15 +36,13 @@ export class DatosPersonalesService {
   }
 
   updateDatosP(datosP: DatosPersonalesI) {
-    this.http
-      .put(this.Url, datosP)
-      .subscribe(() =>
-        this.toastSvc.success(
-          ` ${datosP.nombre} Modificado exisotamente`,
-          "Datos Personales"
-        )
+    this.http.put<DatosPersonalesI>(this.Url, datosP).subscribe((res) => {
+      this.toastSvc.success(
+        ` ${datosP.nombre} Modificado exisotamente`,
+        "Datos Personales"
       );
-    this.datospersonales[0] = datosP;
+      this.datospersonales[0] = res;
+    });
 
     this.datosP$.next(this.datospersonales);
   }
