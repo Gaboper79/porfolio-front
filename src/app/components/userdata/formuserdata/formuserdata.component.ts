@@ -23,7 +23,8 @@ export class FormuserdataComponent implements OnInit {
   imagenId!: number;
   imagenObjeto!: ImagenI;
   errMsje: string = "";
-
+  claseform =
+    "container-form userData animate__animated animate__lightSpeedInLeft";
   constructor(
     private formBuilder: FormBuilder,
     private imagenSvc: ImagenService,
@@ -93,9 +94,17 @@ export class FormuserdataComponent implements OnInit {
     }
   }
   emitirEvento(opcion: String) {
-    if (opcion == "guardar") {
+    //fadeOut
+    this.claseform =
+      "container-form userData animate__animated animate__lightSpeedOutLeft";
+    setTimeout(() => this.emitoevento(opcion), 2000);
+  }
+  emitoevento(opcion: String) {
+    if (opcion === "guardar") {
+      alert("Guardar");
       this.guardoCambios();
     }
+
     this.evento.emit();
   }
 }

@@ -17,6 +17,7 @@ export class FormproyectosComponent implements OnInit {
   imagen!: File;
   imagenMin!: File;
   imagenId!: number;
+  claseform = "container animate__animated animate__lightSpeedInLeft";
   @Output() evento = new EventEmitter<String>();
   @Input() proyecto!: ProyectoI;
   @Input() item!: number;
@@ -75,10 +76,14 @@ export class FormproyectosComponent implements OnInit {
   }
 
   emitirEvento(opcion: String) {
-    if (opcion == "guardar") {
-      this.guardoCambios();
+    //fadeOut
+    if (opcion === "guardar") {
+      this.claseform = "container animate__animated animate__bounceOut";
+      setTimeout(() => this.guardoCambios(), 1000);
+    } else {
+      this.claseform = "container animate__animated animate__lightSpeedOutLeft";
+      setTimeout(() => this.evento.emit(), 1000);
     }
-    this.evento.emit();
   }
   guardoCambios() {
     if (this.modifico) {

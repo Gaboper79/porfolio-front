@@ -37,8 +37,8 @@ export class ItemeducacionComponent implements OnInit {
   eliminarItem() {
     //efecto fadeOut
     this.claseEducacion =
-      "card mb-3 item_experiencia animate__animated animate__bounceOutRight";
-    setTimeout(() => this.eliminoItem(), 1000);
+      "card mb-3 item_experiencia animate__animated animate__hinge";
+    setTimeout(() => this.eliminoItem(), 2000);
   }
   eliminoItem() {
     this.educacionSvc.deleteEducacion(this.educacion, this.item);

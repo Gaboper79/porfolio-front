@@ -19,6 +19,7 @@ export class FormexperComponent implements OnInit {
   imagenMin!: File;
   imagenId!: number;
   errMsje: String = "";
+  claseform = "container-form animate__animated animate__lightSpeedInLeft";
   @Output() evento = new EventEmitter<String>();
   @Input() experiencia!: ExperienciaI;
   @Input() modifico!: boolean;
@@ -82,10 +83,15 @@ export class FormexperComponent implements OnInit {
   }
 
   emitirEvento(opcion: String) {
-    if (opcion == "guardar") {
-      this.guardoCambios();
+    //fadeOut
+    if (opcion === "guardar") {
+      this.claseform = "container-form animate__animated animate__bounceOut";
+      setTimeout(() => this.guardoCambios(), 1000);
+    } else {
+      this.claseform =
+        "container-form animate__animated animate__lightSpeedOutLeft";
+      setTimeout(() => this.evento.emit(), 1000);
     }
-    this.evento.emit();
   }
   guardoCambios() {
     if (this.modifico) {

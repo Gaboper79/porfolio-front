@@ -12,7 +12,7 @@ import { EducacionService } from "src/app/servicios/Educacion.service";
 export class FormeducComponent implements OnInit {
   eduDataForm!: FormGroup;
   id!: number;
-
+  claseform = "container animate__animated animate__lightSpeedInLeft";
   @Output() evento = new EventEmitter<String>();
   @Input() educacion!: EducacionI;
   @Input() item!: number;
@@ -46,11 +46,16 @@ export class FormeducComponent implements OnInit {
     });
   }
   emitirEvento(opcion: String) {
-    if (opcion == "guardar") {
-      this.guardoCambios();
+    //fadeOut
+    if (opcion === "guardar") {
+      this.claseform = "container animate__animated animate__bounceOut";
+      setTimeout(() => this.guardoCambios(), 1000);
+    } else {
+      this.claseform = "container animate__animated animate__lightSpeedOutLeft";
+      setTimeout(() => this.evento.emit(), 1000);
     }
-    this.evento.emit();
   }
+
   guardoCambios() {
     if (this.modifico) {
       //modifico

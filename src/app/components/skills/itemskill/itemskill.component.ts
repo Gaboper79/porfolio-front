@@ -24,9 +24,9 @@ export class ItemskillComponent implements OnInit {
   radius = 80;
   background = "'#eaeaea'";
   color = "#479c4e";
+  classRounderes = "rounderes";
 
   constructor(public skillSVC: SkillService, private authSVC: AuthService) {}
-
   ngOnInit(): void {
     this.current = this.skill.valor;
     this.isAdmin = this.authSVC.isAdmin();
@@ -40,6 +40,11 @@ export class ItemskillComponent implements OnInit {
     this.modifico = !this.modifico;
   }
   eliminarSkill() {
+    this.classRounderes = "rounderes animate__animated animate__bounceOutRight";
+
+    setTimeout(() => this.eliminoItem(), 1000);
+  }
+  eliminoItem() {
     this.skillSVC.deleteSkill(this.skill, this.item);
   }
 }
