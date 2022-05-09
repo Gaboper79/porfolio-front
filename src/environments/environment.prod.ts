@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  authURL: "http://localhost:8080/auth/",
-  porfolioUrl: "http://localhost:8080/api/",
-  cloudinaryUrl: "http://localhost:8080/cloudinary/",
+  authURL: "https://porfolio-back.herokuapp.com/auth/",
+  porfolioUrl: "https://porfolio-back.herokuapp.com/api/",
+  cloudinaryUrl: "https://porfolio-back.herokuapp.com/cloudinary/",
 };
