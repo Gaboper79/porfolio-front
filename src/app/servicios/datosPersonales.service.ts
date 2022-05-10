@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 import { Observable, Subject } from "rxjs";
-import { environment } from "src/environments/environment.prod";
+import { environment } from "src/environments/environment";
 import { DatosPersonalesI } from "../model/DatosPersonalesI";
 import { AuthService } from "./auth.service";
 
