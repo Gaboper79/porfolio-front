@@ -16,7 +16,7 @@ export class DatosPersonalesService {
 
   constructor(
     private http: HttpClient,
-    private authSVC: AuthService,
+
     private toastSvc: ToastrService
   ) {
     this.datosP$ = new Subject();
