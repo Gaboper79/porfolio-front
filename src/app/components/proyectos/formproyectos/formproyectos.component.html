@@ -1,79 +1,77 @@
 <div [class]="claseform" *ngIf="modifico || nuevaProy">
   <form [formGroup]="proyDataForm">
-    <div class="container-form Experiencia">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="empresa" class="form-label">Nombre o Titulo</label>
-            <input type="text" class="form-control" formControlName="nombre" />
-            <p
-              class="alert alert-danger"
-              *ngIf="proyDataForm.get('nombre')?.touched && proyDataForm.get('nombre')?.errors?.['required']"
-            >
-              Un Nombre es requerido
-            </p>
-          </div>
-          <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripcion</label>
-            <textarea
-              rows="4"
-              class="form-control"
-              formControlName="descripcion"
-              placeholder="Descripcion"
-            >
-            </textarea>
-            <p
-              class="alert alert-danger"
-              *ngIf="proyDataForm.get('descripcion')?.touched && proyDataForm.get('descripcion')?.errors?.['required']"
-            >
-              Una Descripcion es requerida
-            </p>
-          </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Nombre o Titulo</label>
+          <input type="text" class="form-control" formControlName="nombre" />
+          <p
+            class="alert alert-danger"
+            *ngIf="proyDataForm.get('nombre')?.touched && proyDataForm.get('nombre')?.errors?.['required']"
+          >
+            Un Nombre es requerido
+          </p>
         </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="puesto" class="form-label">Link</label>
-            <input type="text" class="form-control" formControlName="link" />
-          </div>
-          <div *ngIf="errMsje" class="alert alert-danger">{{errMsje}}</div>
-          <input
-            type="text"
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripcion</label>
+          <textarea
+            rows="4"
             class="form-control"
-            formControlName="imgUser"
-            hidden
+            formControlName="descripcion"
+            placeholder="Descripcion"
+          >
+          </textarea>
+          <p
+            class="alert alert-danger"
+            *ngIf="proyDataForm.get('descripcion')?.touched && proyDataForm.get('descripcion')?.errors?.['required']"
+          >
+            Una Descripcion es requerida
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="puesto" class="form-label">Link</label>
+          <input type="text" class="form-control" formControlName="link" />
+        </div>
+        <div *ngIf="errMsje" class="alert alert-danger">{{errMsje}}</div>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="imgUser"
+          hidden
+        />
+        <h4>Imagen</h4>
+        <div class="mb-3 custom-file">
+          <input
+            accept="image/*"
+            type="file"
+            class="file-upload"
+            (change)="onFileChange($event)"
+            #inputImagen
           />
-          <h4>Imagen</h4>
-          <div class="mb-3 custom-file">
-            <input
-              accept="image/*"
-              type="file"
-              class="file-upload"
-              (change)="onFileChange($event)"
-              #inputImagen
-            />
-            <div *ngIf="imagenMin" class="mt-5">
-              <div>
-                <img
-                  alt="imagen"
-                  class="image-thumbnail"
-                  style="max-width: 100px;"
-                  [src]="imagenMin"
-                />
-              </div>
+          <div *ngIf="imagenMin" class="mt-5">
+            <div>
+              <img
+                alt="imagen"
+                class="image-thumbnail"
+                style="max-width: 100px;"
+                [src]="imagenMin"
+              />
             </div>
           </div>
-          <div class="container mt-5">
-            <button
-              class="btn btnFlashero"
-              (click)="emitirEvento('guardar')"
-              [disabled]="proyDataForm.invalid"
-            >
-              Guardar
-            </button>
-            <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
-              Cancelar
-            </button>
-          </div>
+        </div>
+        <div class="container mt-5">
+          <button
+            class="btn btnFlashero"
+            (click)="emitirEvento('guardar')"
+            [disabled]="proyDataForm.invalid"
+          >
+            Guardar
+          </button>
+          <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
+            Cancelar
+          </button>
         </div>
       </div>
     </div>

@@ -1,57 +1,55 @@
 <div [class]="claseform" *ngIf="modifico || nuevaEdu">
   <form [formGroup]="eduDataForm">
-    <div class="container-form Experiencia">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <label for="empresa" class="form-label">Titulo</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="titulo"
-              placeholder="Titulo"
-            />
-            <p
-              class="alert alert-danger"
-              *ngIf="eduDataForm.get('titulo')?.touched && eduDataForm.get('titulo')?.errors?.['required']"
-            >
-              El titulo es requerido
-            </p>
-          </div>
-          <div class="mb-3">
-            <label for="descripcion" class="form-label">Establecimiento</label>
-            <input
-              class="form-control"
-              formControlName="institucion"
-              placeholder="Establecimiento"
-            />
-            <p
-              class="alert alert-danger"
-              *ngIf="eduDataForm.get('institucion')?.touched && eduDataForm.get('institucion')?.errors?.['required']"
-            >
-              La Institucion es requerida
-            </p>
-          </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Titulo</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="titulo"
+            placeholder="Titulo"
+          />
+          <p
+            class="alert alert-danger"
+            *ngIf="eduDataForm.get('titulo')?.touched && eduDataForm.get('titulo')?.errors?.['required']"
+          >
+            El titulo es requerido
+          </p>
         </div>
-        <div class="col-md-6">
-          <label for="descripcion" class="form-label">Fecha</label>
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Establecimiento</label>
           <input
             class="form-control"
-            formControlName="fecha"
-            placeholder="Fecha"
+            formControlName="institucion"
+            placeholder="Establecimiento"
           />
-          <div class="container mt-5">
-            <button
-              [disabled]="eduDataForm.invalid"
-              class="btn btnFlashero"
-              (click)="emitirEvento('guardar')"
-            >
-              Guardar
-            </button>
-            <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
-              Cancelar
-            </button>
-          </div>
+          <p
+            class="alert alert-danger"
+            *ngIf="eduDataForm.get('institucion')?.touched && eduDataForm.get('institucion')?.errors?.['required']"
+          >
+            La Institucion es requerida
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="descripcion" class="form-label">Fecha</label>
+        <input
+          class="form-control"
+          formControlName="fecha"
+          placeholder="Fecha"
+        />
+        <div class="container mt-5">
+          <button
+            [disabled]="eduDataForm.invalid"
+            class="btn btnFlashero"
+            (click)="emitirEvento('guardar')"
+          >
+            Guardar
+          </button>
+          <button class="btn btnFlashero" (click)="emitirEvento('cancelar')">
+            Cancelar
+          </button>
         </div>
       </div>
     </div>
