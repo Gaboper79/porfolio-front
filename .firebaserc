@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "porfoliogp"
-  }
+    "default": "porfoliogp-46548",
+    "prod": "porfoliogp-46548"
+  },
+  "targets": {}
 }
