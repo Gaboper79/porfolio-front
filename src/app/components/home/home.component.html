@@ -3,6 +3,10 @@
 </div>
 
 <div *ngIf="!currentUser.token" class="container text-center">
+  <a class="linkLogin" (click)="loginInvitado()">
+    <fa-icon [icon]="faBlog" style="color: rgb(72, 193, 226);"></fa-icon>
+    Ingresar como invitado
+  </a>
   <a class="linkLogin" [routerLink]="['/login']">
     <fa-icon [icon]="faBlog" style="color: rgb(226, 95, 72);"></fa-icon>
     Por favor inicie session aqui.-
