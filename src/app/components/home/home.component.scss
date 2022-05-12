@@ -35,6 +35,11 @@ a:hover {
 .linkLogin {
   text-decoration: none;
   color: white;
-  margin: 2rem;
-  width: 100%;
+
+  margin: 5px;
+  width: 90%;
+  cursor: pointer;
+}
+.text-center {
+  display: flex;
 }
